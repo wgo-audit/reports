@@ -1,0 +1,46 @@
+{
+  "asset": "vanityurls.link",
+  "assetUrl": "https://vanityurls.link",
+  "title": "vanityURLs Continuity And Third-Party Operability Audit",
+  "product": "vanityURLs — community-maintained open-source Cloudflare Workers short-link redirector",
+  "auditType": "continuity-and-third-party-operability",
+  "depth": "deep",
+  "label": "Continuity & third-party operability (deep)",
+  "highlights": [
+    "Portable codebase",
+    "Continuity gaps in external authority, custody, recovery, and independent proof"
+  ],
+  "evidenceCutoff": "2026-07-22",
+  "generatedAt": "2026-07-24",
+  "entrypoint": "index.md",
+  "generator": {
+    "repo": "wgo-audit/code",
+    "version": null,
+    "commit": null
+  },
+  "sources": [
+    { "repo": "vanityURLs/code", "commit": "bc4a75d28340eadd31ecbf43923c2062ccc62166" },
+    { "repo": "vanityURLs/v8s-config", "commit": "a24eac8585be9fd1a7fff81b0a0dd7bd535ea063" },
+    { "repo": "vanityURLs/v8s-link", "commit": "2159e433a408e76b71308b12b2daae703b7f63c3" },
+    { "repo": "vanityURLs/website", "url": "https://github.com/vanityURLs/website", "ref": "main", "commit": "c2d735b494a36bc3a8cd340c324012b1e8fb00bb" }
+  ],
+  "reviewers": [
+    "architecture",
+    "product-value",
+    "project-health",
+    "code-quality",
+    "security-privacy",
+    "scalability",
+    "business-continuity",
+    "maintenance-cost",
+    "contributor-vendor-value",
+    "expense-exposure",
+    "revenue-risk"
+  ],
+  "conclusions": {
+    "Can a new maintainer onboard with minimal creator involvement?": "No",
+    "Can an independent third party stand up a new instance?": "Plausible, but not yet proven easy",
+    "Can a third party take over the existing project, domain, and demo?": "No, not on public evidence",
+    "Can a successor fork and keep evolving it after abandonment?": "Yes, probably with moderate effort; identity/service not assured"
+  }
+}

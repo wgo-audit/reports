@@ -1,0 +1,16 @@
+{
+  "count": 1,
+  "reports": [
+    {
+      "asset": "vanityurls.link",
+      "evidenceCutoff": "2026-07-22",
+      "path": "audits/vanityurls.link/2026-07-22",
+      "label": "Continuity & third-party operability (deep)",
+      "highlights": [
+        "Portable codebase",
+        "Continuity gaps in external authority, custody, recovery, and independent proof"
+      ],
+      "generatedAt": "2026-07-24"
+    }
+  ]
+}

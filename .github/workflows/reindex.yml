@@ -1,0 +1,41 @@
+name: Reindex
+
+# Verify-only: never commits. It regenerates the index from manifests and fails
+# if the committed README / per-asset READMEs / index.json are out of date, so
+# every commit stays authored by a human. Fix by running the generator locally
+# and committing the result.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "audits/**/manifest.json"
+      - "scripts/build_index.py"
+      - "README.md"
+  pull_request:
+    paths:
+      - "audits/**/manifest.json"
+      - "scripts/build_index.py"
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate index
+        run: python3 scripts/build_index.py
+
+      - name: Check the index is committed and up to date
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::Report index is out of date. Run 'python3 scripts/build_index.py' and commit the result."
+            git --no-pager diff
+            exit 1
+          fi
+          echo "Index is up to date."
