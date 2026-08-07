@@ -3,7 +3,7 @@
 </p>
 
 <!-- BADGES:START -->
-<a href="#reports"><img alt="Reports" src="https://img.shields.io/badge/Reports-1-2DD4BF?style=flat-square&labelColor=111827"></a>
+<a href="#reports"><img alt="Reports" src="https://img.shields.io/badge/Reports-2-2DD4BF?style=flat-square&labelColor=111827"></a>
 <a href="https://github.com/wgo-audit/reports/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/wgo-audit/reports?style=flat-square&labelColor=111827&color=2DD4BF&label=Last%20commit"></a>
 <a href="LICENSE.md"><img alt="License" src="https://img.shields.io/github/license/wgo-audit/reports?style=flat-square&labelColor=111827&color=2DD4BF"></a>
 <!-- BADGES:END -->
@@ -26,6 +26,7 @@ situation evolves over time.
 <!-- REPORTS:START -->
 | Asset | Evidence cutoff | Audit |
 |---|---|---|
+| [docuseal](audits/docuseal/README.md) | [2026-08-06](audits/docuseal/2026-08-06/index.md) | TODO — e.g. Continuity & third-party operability (deep) |
 | [vanityurls.link](audits/vanityurls.link/README.md) | [2026-07-22](audits/vanityurls.link/2026-07-22/index.md) | Continuity & third-party operability (deep) |
 <!-- REPORTS:END -->
 

@@ -1,5 +1,5 @@
 {
-  "count": 1,
+  "count": 2,
   "reports": [
     {
       "asset": "vanityurls.link",
@@ -11,6 +11,14 @@
         "Continuity gaps in external authority, custody, recovery, and independent proof"
       ],
       "generatedAt": "2026-07-24"
+    },
+    {
+      "asset": "docuseal",
+      "evidenceCutoff": "2026-08-06",
+      "path": "audits/docuseal/2026-08-06",
+      "label": "TODO — e.g. Continuity & third-party operability (deep)",
+      "highlights": [],
+      "generatedAt": null
     }
   ]
 }
