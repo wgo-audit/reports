@@ -13,29 +13,27 @@ report**, covered below.
   the audited project, or an audited project's `.git/`.
 - **Keep each folder self-contained** — `index.md` is always the entrypoint and
   `manifest.json` is always present.
-- **Don't hand-edit generated files.** `README.md` (Reports table + badges), each
-  `audits/<asset>/README.md`, and `audits/index.json` are produced by
-  `scripts/build_index.py`; CI regenerates them and fails if a commit is out of date.
+- **Never fabricate or revise a manifest during upload.** WGO creates it after the
+  executive summary is final; report ingestion only verifies and packages it.
 
 ### manifest.json
 
-Every report folder carries a `manifest.json` describing the audit. Minimum fields:
+Every report folder carries the final `manifest.json` produced by its audit. Its
+`$schema` identifies the contract. The top-level fields are:
 
 | Field | Purpose |
 |---|---|
-| `asset` | The audited asset, e.g. `vanityurls.link`. |
-| `assetUrl` | Public URL for the asset; used to link its name on the per-asset page. Optional. |
-| `evidenceCutoff` | ISO date the evidence was frozen. |
-| `label` | Display name for the index, e.g. `Continuity & third-party operability (deep)`. |
-| `highlights` | Key takeaways, one string per item — shown as bullets on the per-asset page. |
-| `conclusions` | `question: answer` map — powers the per-asset "conclusions over time" matrix. |
-| `sources` | List of `{repo, commit}` the audit was pinned to. |
-| `generatedAt`, `generator`, `reviewers` | Provenance; fill when known. |
+| `$schema`, `schemaVersion` | Exact machine-readable contract. |
+| `report` | Stable report identity, title, entrypoint, and optional headline. |
+| `subject` | Stable identity of the audited subject. |
+| `audit` | Audit type, mode, and depth. |
+| `businessConcerns` | Approved concerns paired one-to-one with conclusions. |
+| `evidence` | Cutoff, pinned sources, access boundary, and limitations. |
+| `execution` | Generator, platform, and reviewer-version provenance. |
+| `relationships` | Previous, baseline, comparison, and supersession links. |
 
-> **Not yet emitted by the engine.** The audit engine does not currently write
-> `manifest.json` — it is added when the report is ingested (the script scaffolds one if
-> the bundle lacks it). Automating this in the engine is tracked in
-> [wgo-audit/code#3](https://github.com/wgo-audit/code/issues/3).
+Reject a bundle whose manifest is absent, invalid, contains unresolved placeholders, or
+uses the legacy flat `asset`, `evidenceCutoff`, or question-keyed `conclusions` format.
 
 ## Layout
 
@@ -62,33 +60,16 @@ audits/
 
 ## Adding a report
 
-Always add a report with the script:
+Submit the complete report bundle in a pull request at
+`audits/<subject.id>/<evidence.cutoff>/`. Refuse to overwrite an existing report. Before
+review, confirm that:
 
-```bash
-scripts/add-report.sh <bundle-dir-or-zip> --asset <asset> --cutoff <YYYY-MM-DD>
-```
+1. `manifest.json` is valid JSON and its entrypoint exists;
+2. `subject.id` and `evidence.cutoff` match the destination path;
+3. every Git source uses its full resolved commit when known;
+4. every selected WGO reviewer records its ID, version, and status; and
+5. build junk, local paths, credentials, session IDs, and unresolved placeholders are
+   absent.
 
-For example, ingesting the vanityurls.link bundle:
-
-```bash
-scripts/add-report.sh ~/Downloads/_whats-going-on.zip \
-  --asset vanityurls.link --cutoff 2026-07-22
-```
-
-Review the result and commit the report.
-
-### What the script does
-
-1. Unpacks the bundle (or copies the directory) into a temporary area.
-2. Strips cruft — `.DS_Store`, `__MACOSX/`, any `.git/` from the audited project, and any
-   `tmp/` clone of the audited source.
-3. Places the report verbatim at `audits/<asset>/<evidence-cutoff>/`, refusing to
-   overwrite an existing one (reports are immutable). `<evidence-cutoff>` is the ISO date
-   the evidence was frozen — not the generation date.
-4. Scaffolds `manifest.json` if the bundle didn't include one, leaving `TODO` fields for
-   you to fill.
-5. Regenerates the index (`scripts/build_index.py`): the README Reports table and badges,
-   every per-asset page, and `audits/index.json`.
-
-It stops there without staging anything, and prints the `git` commands to review and
-commit.
+The pull request may update repository-level discovery files when needed, but it must
+not derive a replacement manifest from report prose or an older schema.
