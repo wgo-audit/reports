@@ -1,6 +1,6 @@
 # API-Equivalent Audit Cost Estimate
 
-**Status: Unreconciled.** Two independent `gpt-5.6-terra` calculations reconcile exactly for the 28 included sessions, producing an included-session subtotal of **USD 151.4883488**. This is not a complete audit total because one spawned audit collector lacks the terminal lifecycle event required to establish its frozen cutoff and remains excluded from the immutable manifest. This control is an API-equivalent estimate, not a Codex invoice.
+**Status: Unreconciled.** Two independent `gpt-5.6-terra` calculations reconcile exactly for the 28 included sessions, producing an included-session subtotal of **$151.49**. This is not a complete audit total because one spawned audit collector lacks the terminal lifecycle event required to establish its frozen cutoff and remains excluded from the immutable manifest. This control is an API-equivalent estimate, not a Codex invoice.
 
 ## Pricing Basis And Rate Card
 
@@ -27,47 +27,47 @@ It contains 28 included sessions: the WGO audit root, 16 direct audit descendant
 
 ## Token Totals By Session And Model
 
-| Session / WGO role | Model | Tier / band | Uncached input | Cached input | Output | Reasoning* | Cost (USD) |
+| Session / WGO role | Model | Tier / band | Uncached input | Cached input | Output | Reasoning* | Cost |
 |---|---|---|---:|---:|---:|---:|---:|
-| `019fd855…` WGO audit coordinator | `gpt-5.6-sol` | standard / short | 2,097,534 | 85,129,728 | 176,728 | 38,616 | 58.3543740 |
-| `019fd855…` WGO audit coordinator | `gpt-5.6-terra` | standard / short | 495,393 | 8,685,824 | 44,690 | 19,599 | 3.2642308 |
-| `019fd8df…` documentation preparation | `gpt-5.6-sol` | standard / short | 130,866 | 1,654,528 | 22,310 | 3,647 | 2.1508940 |
-| `019fd954…` GitHub-history collector | `gpt-5.6-sol` | standard / short | 195,005 | 3,063,296 | 17,644 | 5,431 | 3.0359930 |
-| `019fd95d…` architecture reviewer | `gpt-5.6-sol` | standard / short | 203,239 | 9,629,440 | 44,610 | 6,885 | 7.1692150 |
-| `019fd95e…` architecture components | `gpt-5.6-sol` | standard / short | 154,414 | 2,740,736 | 12,136 | 2,376 | 2.5065180 |
-| `019fd95e…` architecture data/jobs | `gpt-5.6-sol` | standard / short | 124,694 | 2,691,072 | 15,812 | 2,281 | 2.4433660 |
-| `019fd963…` architecture runtime | `gpt-5.6-sol` | standard / short | 119,705 | 2,184,448 | 12,088 | 2,830 | 2.0533890 |
-| `019fd96e…` architecture quality | `gpt-5.6-sol` | standard / short | 40,245 | 297,984 | 2,822 | 588 | 0.4348770 |
-| `019fd978…` code-quality reviewer | `gpt-5.6-sol` | standard / short | 172,159 | 7,103,744 | 29,297 | 6,947 | 5.2915770 |
-| `019fd978…` product-value reviewer | `gpt-5.6-sol` | standard / short | 200,865 | 6,378,752 | 40,723 | 4,402 | 5.4153910 |
-| `019fd978…` security identity | `gpt-5.6-sol` | standard / short | 182,086 | 3,756,288 | 16,276 | 2,833 | 3.2768540 |
-| `019fd980…` product-value quality | `gpt-5.6-sol` | standard / short | 93,826 | 1,809,664 | 8,565 | 2,729 | 1.6309120 |
-| `019fd984…` code-quality artifact review | `gpt-5.6-sol` | standard / short | 64,118 | 590,848 | 7,964 | 3,359 | 0.8549340 |
-| `019fd988…` security edge | `gpt-5.6-sol` | standard / short | 150,924 | 2,057,728 | 16,280 | 3,063 | 2.2718840 |
-| `019fd98a…` security supply chain | `gpt-5.6-sol` | standard / short | 228,053 | 5,447,168 | 23,838 | 6,086 | 4.5789890 |
-| `019fd994…` security quality | `gpt-5.6-sol` | standard / short | 93,396 | 931,072 | 10,632 | 5,546 | 1.2514760 |
-| `019fd9a0…` business-continuity reviewer | `gpt-5.6-sol` | standard / short | 660,856 | 13,344,000 | 46,273 | 8,375 | 11.3644700 |
-| `019fd9a0…` expense-exposure reviewer | `gpt-5.6-sol` | standard / short | 221,766 | 6,596,864 | 22,808 | 4,448 | 5.0915020 |
-| `019fd9a8…` expense quality | `gpt-5.6-sol` | standard / short | 116,161 | 1,408,768 | 11,053 | 6,350 | 1.6167790 |
-| `019fd9e1…` scalability reviewer | `gpt-5.6-sol` | standard / short | 273,972 | 9,376,000 | 31,904 | 6,854 | 7.0149800 |
-| `019fdc4a…` contributor/vendor reviewer | `gpt-5.6-sol` | standard / short | 194,709 | 9,223,680 | 36,369 | 6,271 | 6.6764550 |
-| `019fdc4a…` maintenance-cost reviewer | `gpt-5.6-sol` | standard / short | 133,886 | 5,406,464 | 29,473 | 5,460 | 4.2568520 |
-| `019fdc57…` maintenance quality | `gpt-5.6-sol` | standard / short | 62,344 | 812,032 | 6,476 | 2,659 | 0.9120160 |
-| `019fdc5b…` contributor/vendor quality | `gpt-5.6-sol` | standard / short | 64,230 | 1,069,312 | 8,394 | 2,697 | 1.1076260 |
-| `019fdc5f…` revenue-risk reviewer | `gpt-5.6-sol` | standard / short | 129,600 | 3,224,064 | 25,697 | 5,067 | 3.0309420 |
-| `019fdc65…` revenue quality | `gpt-5.6-sol` | standard / short | 100,421 | 1,052,160 | 8,976 | 4,136 | 1.2974650 |
-| `019fdc72…` project-health reviewer | `gpt-5.6-sol` | standard / short | 115,690 | 2,610,688 | 18,748 | 2,780 | 2.4462340 |
-| `019fdc7c…` project-health quality | `gpt-5.6-sol` | standard / short | 49,512 | 418,048 | 7,719 | 4,156 | 0.6881540 |
+| `019fd855…` WGO audit coordinator | `gpt-5.6-sol` | standard / short | 2,097,534 | 85,129,728 | 176,728 | 38,616 | $58.35 |
+| `019fd855…` WGO audit coordinator | `gpt-5.6-terra` | standard / short | 495,393 | 8,685,824 | 44,690 | 19,599 | $3.26 |
+| `019fd8df…` documentation preparation | `gpt-5.6-sol` | standard / short | 130,866 | 1,654,528 | 22,310 | 3,647 | $2.15 |
+| `019fd954…` GitHub-history collector | `gpt-5.6-sol` | standard / short | 195,005 | 3,063,296 | 17,644 | 5,431 | $3.04 |
+| `019fd95d…` architecture reviewer | `gpt-5.6-sol` | standard / short | 203,239 | 9,629,440 | 44,610 | 6,885 | $7.17 |
+| `019fd95e…` architecture components | `gpt-5.6-sol` | standard / short | 154,414 | 2,740,736 | 12,136 | 2,376 | $2.51 |
+| `019fd95e…` architecture data/jobs | `gpt-5.6-sol` | standard / short | 124,694 | 2,691,072 | 15,812 | 2,281 | $2.44 |
+| `019fd963…` architecture runtime | `gpt-5.6-sol` | standard / short | 119,705 | 2,184,448 | 12,088 | 2,830 | $2.05 |
+| `019fd96e…` architecture quality | `gpt-5.6-sol` | standard / short | 40,245 | 297,984 | 2,822 | 588 | $0.43 |
+| `019fd978…` code-quality reviewer | `gpt-5.6-sol` | standard / short | 172,159 | 7,103,744 | 29,297 | 6,947 | $5.29 |
+| `019fd978…` product-value reviewer | `gpt-5.6-sol` | standard / short | 200,865 | 6,378,752 | 40,723 | 4,402 | $5.42 |
+| `019fd978…` security identity | `gpt-5.6-sol` | standard / short | 182,086 | 3,756,288 | 16,276 | 2,833 | $3.28 |
+| `019fd980…` product-value quality | `gpt-5.6-sol` | standard / short | 93,826 | 1,809,664 | 8,565 | 2,729 | $1.63 |
+| `019fd984…` code-quality artifact review | `gpt-5.6-sol` | standard / short | 64,118 | 590,848 | 7,964 | 3,359 | $0.85 |
+| `019fd988…` security edge | `gpt-5.6-sol` | standard / short | 150,924 | 2,057,728 | 16,280 | 3,063 | $2.27 |
+| `019fd98a…` security supply chain | `gpt-5.6-sol` | standard / short | 228,053 | 5,447,168 | 23,838 | 6,086 | $4.58 |
+| `019fd994…` security quality | `gpt-5.6-sol` | standard / short | 93,396 | 931,072 | 10,632 | 5,546 | $1.25 |
+| `019fd9a0…` business-continuity reviewer | `gpt-5.6-sol` | standard / short | 660,856 | 13,344,000 | 46,273 | 8,375 | $11.36 |
+| `019fd9a0…` expense-exposure reviewer | `gpt-5.6-sol` | standard / short | 221,766 | 6,596,864 | 22,808 | 4,448 | $5.09 |
+| `019fd9a8…` expense quality | `gpt-5.6-sol` | standard / short | 116,161 | 1,408,768 | 11,053 | 6,350 | $1.62 |
+| `019fd9e1…` scalability reviewer | `gpt-5.6-sol` | standard / short | 273,972 | 9,376,000 | 31,904 | 6,854 | $7.01 |
+| `019fdc4a…` contributor/vendor reviewer | `gpt-5.6-sol` | standard / short | 194,709 | 9,223,680 | 36,369 | 6,271 | $6.68 |
+| `019fdc4a…` maintenance-cost reviewer | `gpt-5.6-sol` | standard / short | 133,886 | 5,406,464 | 29,473 | 5,460 | $4.26 |
+| `019fdc57…` maintenance quality | `gpt-5.6-sol` | standard / short | 62,344 | 812,032 | 6,476 | 2,659 | $0.91 |
+| `019fdc5b…` contributor/vendor quality | `gpt-5.6-sol` | standard / short | 64,230 | 1,069,312 | 8,394 | 2,697 | $1.11 |
+| `019fdc5f…` revenue-risk reviewer | `gpt-5.6-sol` | standard / short | 129,600 | 3,224,064 | 25,697 | 5,067 | $3.03 |
+| `019fdc65…` revenue quality | `gpt-5.6-sol` | standard / short | 100,421 | 1,052,160 | 8,976 | 4,136 | $1.30 |
+| `019fdc72…` project-health reviewer | `gpt-5.6-sol` | standard / short | 115,690 | 2,610,688 | 18,748 | 2,780 | $2.45 |
+| `019fdc7c…` project-health quality | `gpt-5.6-sol` | standard / short | 49,512 | 418,048 | 7,719 | 4,156 | $0.69 |
 
 \* Reasoning is included within output and is shown only for transparency.
 
 ## Model-By-Model Cost
 
-| Model | Tier / band | Uncached input | Cached input | Output | Reasoning* | Included-session subtotal (USD) |
+| Model | Tier / band | Uncached input | Cached input | Output | Reasoning* | Included-session subtotal |
 |---|---|---:|---:|---:|---:|---:|
-| `gpt-5.6-sol` | standard / short | 6,374,276 | 190,008,576 | 711,615 | 156,872 | 148.2241180 |
-| `gpt-5.6-terra` | standard / short | 495,393 | 8,685,824 | 44,690 | 19,599 | 3.2642308 |
-| **Included sessions** |  | **6,869,669** | **198,694,400** | **756,305** | **176,471** | **151.4883488** |
+| `gpt-5.6-sol` | standard / short | 6,374,276 | 190,008,576 | 711,615 | 156,872 | $148.22 |
+| `gpt-5.6-terra` | standard / short | 495,393 | 8,685,824 | 44,690 | 19,599 | $3.26 |
+| **Included sessions** |  | **6,869,669** | **198,694,400** | **756,305** | **176,471** | **$151.49** |
 
 ## Reconciliation Status
 
@@ -78,7 +78,7 @@ The auditor explicitly authorized `gpt-5.6-terra` as the substitute for unavaila
 - 0 request, schema, pricing, or hash issues; and
 - identical token rows and included-session subtotal.
 
-The status remains **Unreconciled** solely because the excluded `feature_contribution_collector` has no terminal lifecycle cutoff. The reported USD 151.4883488 is therefore a reconciled subtotal for the frozen included sessions, not a complete audit total.
+The status remains **Unreconciled** solely because the excluded `feature_contribution_collector` has no terminal lifecycle cutoff. The reported $151.49 is therefore a reconciled subtotal for the frozen included sessions, not a complete audit total. Exact fractional values remain in the linked machine-readable verification results.
 
 ## Limitations
 
