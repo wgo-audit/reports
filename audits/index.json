@@ -1,5 +1,5 @@
 {
-  "count": 1,
+  "count": 2,
   "reports": [
     {
       "reportId": "vanityurls-link-2026-07-22-continuity-third-party-operability",
@@ -15,6 +15,21 @@
         "statement": "vanityURLs has a portable codebase, but canonical continuity and existing-service takeover remain blocked by public evidence gaps in authority, custody, recovery, and independent proof."
       },
       "generatedAt": "2026-07-24"
+    },
+    {
+      "reportId": "docuseal-2026-08-06-regulated-esignature-readiness",
+      "subject": "docuseal",
+      "subjectName": "DocuSeal",
+      "evidenceCutoff": "2026-08-06",
+      "path": "audits/docuseal/2026-08-06",
+      "entrypoint": "index.md",
+      "title": "DocuSeal Regulated eSignature Readiness Audit",
+      "label": "Regulated eSignature readiness (deep)",
+      "headline": {
+        "rating": "material-gaps",
+        "statement": "DocuSeal Community is a substantive foundation for further evaluation, but production reliance remains conditional on unresolved technical, vendor, specialist, and operating evidence."
+      },
+      "generatedAt": null
     }
   ]
 }
