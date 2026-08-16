@@ -80,8 +80,11 @@ jobs:
             exit 0
           fi
 
+          # Generated index-only commit after destination-only report uploads.
+          # Authored by github-actions[bot] so human-authored report payloads
+          # remain separate from derived repository metadata.
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md audits/index.json audits/*/README.md
-          git commit -m "Regenerate report index"
+          git commit -m "chore(index): regenerate report index [skip ci]"
           git push
