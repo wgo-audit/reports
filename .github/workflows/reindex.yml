@@ -1,9 +1,9 @@
 name: Reindex
 
-# Verify-only: never commits. It regenerates the index from manifests and fails
-# if the committed README / per-asset READMEs / index.json are out of date, so
-# every commit stays authored by a human. Fix by running the generator locally
-# and committing the result.
+# Pull requests that edit repository-level index files must keep them
+# regenerated and committed. Destination-only upload PRs are allowed to contain
+# only the immutable report payload; the push-to-main job regenerates and
+# commits repository-level indexes after merge.
 
 on:
   push:
@@ -20,22 +20,68 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect destination-only upload PR
+        id: changes
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          upload_only=true
+          saw_file=false
+          while IFS= read -r path; do
+            [[ -n "$path" ]] || continue
+            saw_file=true
+            if [[ ! "$path" =~ ^audits/[^/]+/[0-9]{4}-[0-9]{2}-[0-9]{2}/ ]]; then
+              upload_only=false
+            fi
+          done < <(git diff --name-only \
+            "${{ github.event.pull_request.base.sha }}" \
+            "${{ github.event.pull_request.head.sha }}")
+
+          if [[ "$saw_file" != true ]]; then
+            upload_only=false
+          fi
+
+          echo "upload_only=$upload_only" >> "$GITHUB_OUTPUT"
 
       - name: Regenerate index
         run: python3 scripts/build_index.py
 
       - name: Check the index is committed and up to date
+        if: github.event_name == 'pull_request'
         run: |
+          if [[ "${{ steps.changes.outputs.upload_only }}" == "true" ]]; then
+            echo "Destination-only upload PR; generated index changes are expected after merge."
+            git --no-pager diff --stat
+            exit 0
+          fi
+
           if ! git diff --quiet; then
             echo "::error::Report index is out of date. Run 'python3 scripts/build_index.py' and commit the result."
             git --no-pager diff
             exit 1
           fi
           echo "Index is up to date."
+
+      - name: Commit regenerated index on main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          if git diff --quiet; then
+            echo "Index is up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md audits/index.json audits/*/README.md
+          git commit -m "Regenerate report index"
+          git push
