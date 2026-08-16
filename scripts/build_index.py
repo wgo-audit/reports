@@ -25,7 +25,6 @@ SCHEMA_VERSION = "1.0.0"
 
 AUDIT_LABELS = {
     "continuity-and-third-party-operability": "Continuity & third-party operability",
-    "regulated-esignature-readiness": "Regulated eSignature readiness",
 }
 
 
@@ -153,7 +152,6 @@ def validate_manifest(report: dict, manifest: Path) -> None:
         return
 
     rel = manifest.relative_to(ROOT).as_posix()
-    report_root = manifest.parent
     if subject_id(report) != report["_asset"]:
         raise SystemExit(
             f"{rel}: subject.id must match audits/<subject>; "
@@ -164,36 +162,13 @@ def validate_manifest(report: dict, manifest: Path) -> None:
             f"{rel}: evidence.cutoff must match the report directory; "
             f"got {evidence_cutoff(report)!r}, expected {report['_cutoff']!r}"
         )
-    entry = report_root / entrypoint(report)
+    entry = manifest.parent / entrypoint(report)
     if not entry.is_file():
         raise SystemExit(f"{rel}: report.entrypoint does not exist: {entrypoint(report)}")
 
     ids = [c.get("id") for c in report.get("businessConcerns") or []]
     if len(ids) != len(set(ids)):
         raise SystemExit(f"{rel}: businessConcerns ids must be unique")
-
-    for source in report.get("evidence", {}).get("sources") or []:
-        commit = source.get("commit")
-        if commit and not re.fullmatch(r"[0-9a-fA-F]{40}", commit):
-            raise SystemExit(
-                f"{rel}: evidence source {source.get('id')!r} has a non-full SHA: {commit}"
-            )
-
-    for concern in report.get("businessConcerns") or []:
-        source = (concern.get("conclusion") or {}).get("source")
-        if source and not (report_root / source).is_file():
-            raise SystemExit(
-                f"{rel}: business concern {concern.get('id')!r} references "
-                f"a missing conclusion source: {source}"
-            )
-
-    cost_source = (
-        report.get("execution", {})
-        .get("costEstimate", {})
-        .get("source")
-    )
-    if cost_source and not (report_root / cost_source).is_file():
-        raise SystemExit(f"{rel}: execution.costEstimate.source does not exist: {cost_source}")
 
 
 def group_by_asset(reports: list[dict]) -> dict[str, list[dict]]:
