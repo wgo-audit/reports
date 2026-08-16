@@ -1,0 +1,40 @@
+# Credential, Privilege, And Secret Surface
+
+Reader question: Which identity, credential, privilege, and key surfaces are visible in pinned DocuSeal Community `3.1.7`, and what must be decided or proved before production approval?
+
+## Evidence Boundary
+
+This view uses pinned Community source at commit `a2d8b855491793870b7b4acf176d2d95ae95ff83`, its named tests as test intent, and approved `docuseal.com` pages only as `post-cutoff-validation`. It does not establish live configuration, control effectiveness, Pro implementation, identity adequacy, key custody, privacy compliance, or production readiness. No secret or personal-data values were inspected. Detailed locators and limitations are preserved in the [identity, secrets, and data packet](../../evidence/packets/security-identity-secrets-data-boundaries.md) and [architecture runtime packet](../../evidence/packets/architecture-runtime-deployment-delivery-identity-secrets.md).
+
+## Evidence Dimensions Used
+
+| Dimension | Present evidence | Material limit |
+|---|---|---|
+| Implementation | Community authentication, authorization, API token, signer-link, bootstrap, secret-loading, encryption, signing-key, storage, and webhook paths | Source presence does not establish live operation or effectiveness. |
+| History/rationale | Targeted closed PRs concerning attachment authorization and outbound URL validation; cutoff-bounded GitHub activity | A PR is a lead, not proof of a defect, acceptance, or maintainer rationale. |
+| Observed operation | Successful hosted CI, including Brakeman and RSpec, for the pinned tag | No live target, penetration test, route abuse test, or target IAM/key validation was observed. |
+| Ownership/approval | Mandate names executive and technical audiences | Control owners, target policies, risk acceptance, and specialist approval are unknown. |
+| Specialist evidence | None approved | KYC identity binding, privacy/residency, legal validity, and control sufficiency remain specialist decisions. |
+
+## Current Source-Bounded Position
+
+| Surface | Source-bounded position | Existing safeguard | Material exposure or gap | Closure route |
+|---|---|---|---|---|
+| Organization users | Community declares one `admin` role; account predicates constrain its authority to an account. | Devise authentication, account-scoped CanCan rules, archived-user login rejection | No separation among user, data, security, and account administration; Pro SAML/roles are unavailable for inspection. | OI-001 plus an approved role/segregation matrix and release-specific Pro evidence. |
+| Human sessions | Password/TOTP modules exist; remember-me is always requested and defaults to 730 days. | Lockable/recoverable modules, optional TOTP, sign-out token expiry | Password minimum is six; `FORCE_MFA` is a dashboard redirect rather than a demonstrated global privileged-route gate; live cookie/session policy is unknown. | Define session, reauthentication, lockout, recovery, and global MFA requirements; prove them with negative-route tests. |
+| API identity | A per-user bearer token is encrypted at rest, indexed by SHA-256, replaceable, and password-gated for reveal. | Active-user lookup, account-scoped authorization, reveal rate limit | No visible scope, expiry, per-integration principal, overlap rotation, or archived-account negative test. | OI-001/OI-005 plus a machine-identity standard and focused revocation/account-state tests. |
+| External signer | Default access is possession of a 14-character Base58 submitter slug; optional email/link checks can add a cookie or purpose-bound signed token. | Link entropy, optional email verification, state gates, purpose-bound tokens | Link possession and email-channel control do not establish KYC binding; delivery, replay, revocation, and required assurance tier are unknown. | Product/CISO/compliance signer-assurance profile and OI-006 artifact/access tests; request Pro SMS/identity evidence when relevant. |
+| First operator | The unauthenticated setup route exists only while no user exists and provisions the first user and signing material. | Setup closes after a user exists | No supplied network-isolation, nominated-operator, concurrency, or custody proof. | OI-003 target deployment plus a controlled first-start runbook and concurrency/closure verification. |
+| Secret root | Environment, AWS Secrets Manager, or a generated dotenv file supplies `SECRET_KEY_BASE`; absent a separate value, database encryption derives from it. | Random fallback generation and attempted `0600` file mode; encrypted configuration fields | One root supports several signing/session/OTP/tracking/Redis purposes; no visible key versions, old-key support, rotation, or live IAM proof. | OI-003 secret-manager design and OI-002 purpose-separated, versioned key/signing trust decision. |
+| TOTP secret | MFA provisioning persists each user's `otp_secret`; no model-level Active Record encryption declaration is visible for that field. | TOTP activation/removal validation and database/platform encryption may add controls | Field protection, backup exposure, recovery, administrator access, rotation, and live encryption are unknown. | Organization IAM/cryptographic inventory plus target database/backup protection and MFA recovery tests. |
+| Signing key | Generated or uploaded PKCS#12 material is Active Record-encrypted and consumed for optional PDF signing. | Encrypted configuration and explicit signing path | Key bytes and password share one encrypted record; HSM/KMS custody, trust, rotation, revocation, recovery, and independent acceptance are unknown. | OI-002 and OI-006. |
+| Webhook credentials | Webhook URLs, custom secret headers, and HMAC material are Active Record-encrypted. | HMAC signing, finite timeouts, and persisted delivery attempts | Destination approval, receiver identity, secret rotation/overlap, replay handling, and live custody are unknown. | OI-005 contract proof plus target egress inventory and credential-rotation/interoperability tests. |
+| SMTP/storage credentials | Environment variables or database-managed encrypted configuration can supply SMTP and object-storage credentials/settings. | Authenticated settings paths, encrypted configuration fields, selectable TLS verification and private proxying | Workload identity, destination approval, certificate verification, rotation, provider policy, and live secret source are unknown. | OI-003 target secret/provider design plus deployed TLS, identity, access-policy, and rotation evidence. |
+| Personal data and files | PII, signer values, events, files, search derivatives, extracted document text, and webhook payloads cross SQL, Active Storage, and external destinations. | Account predicates, configurable private proxying, selective field encryption, explicit destroy paths | Purpose, minimization, target encryption, residency, retention, legal hold, backup erasure, derivative cleanup, and egress approval are unknown. | OI-003 and OI-006 plus a specialist-approved data inventory and retention/deletion verification plan. |
+
+## Material Unknowns And Closure Routes
+
+- The target IdP, role model, session maximum, operator MFA standard, machine-identity model, and signer-assurance tier are not yet decided. The mandate already routes these as CISO/Product/compliance prerequisites; Community defaults are not treated as acceptable merely because they exist.
+- No live IAM, secret manager, key, certificate, storage, database, backup, webhook, log, or deletion record was supplied. OI-003 and OI-006 are the proof routes.
+- Public Cloud/security/privacy statements do not transfer to self-hosted Community. Release-specific Pro implementation, entitlement, SAML/SCIM/role, SMS/identity-verification, audit, and support evidence must come from DocuSeal under OI-001/OI-005.
+- The route-specific attachment authorization and runtime/edge findings are handled in the security/privacy report and its remaining evidence packets; this surface view does not independently claim exploitability.
