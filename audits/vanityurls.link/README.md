@@ -1,6 +1,6 @@
 # vanityurls.link
 
-Point-in-time audits of [vanityurls.link](https://vanityurls.link), newest first. Each row is a frozen snapshot; read across the columns below to see how the situation changes over time.
+Point-in-time audits of [vanityURLs](https://vanityurls.link), newest first. Each row is a frozen snapshot; read across the columns below to see how the situation changes over time.
 
 | Evidence cutoff | Audit |
 |---|---|
@@ -8,12 +8,11 @@ Point-in-time audits of [vanityurls.link](https://vanityurls.link), newest first
 
 ## Conclusions over time
 
-- Portable codebase
-- Continuity gaps in external authority, custody, recovery, and independent proof
+- vanityURLs has a portable codebase, but canonical continuity and existing-service takeover remain blocked by public evidence gaps in authority, custody, recovery, and independent proof.
 
 | Question | 2026-07-22 |
 |---|---|
-| Can a new maintainer onboard with minimal creator involvement? | No |
-| Can an independent third party stand up a new instance? | Plausible, but not yet proven easy |
-| Can a third party take over the existing project, domain, and demo? | No, not on public evidence |
-| Can a successor fork and keep evolving it after abandonment? | Yes, probably with moderate effort; identity/service not assured |
+| Can a new maintainer take over the canonical project with minimal creator involvement? | No |
+| Can a third party establish and operate a new, independently controlled vanityURLs instance? | Plausible, but not yet proven easy |
+| Can a third party take over and operate the existing project, v8s.link domain, and demo service? | No, not on public evidence |
+| If the creators abandon the project, can someone else pick it up and evolve it? | Yes for a fork, probably with moderate effort; no assurance for canonical continuity |

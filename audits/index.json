@@ -1,24 +1,20 @@
 {
-  "count": 2,
+  "count": 1,
   "reports": [
     {
-      "asset": "vanityurls.link",
+      "reportId": "vanityurls-link-2026-07-22-continuity-third-party-operability",
+      "subject": "vanityurls.link",
+      "subjectName": "vanityURLs",
       "evidenceCutoff": "2026-07-22",
       "path": "audits/vanityurls.link/2026-07-22",
+      "entrypoint": "index.md",
+      "title": "vanityURLs Continuity And Third-Party Operability Audit",
       "label": "Continuity & third-party operability (deep)",
-      "highlights": [
-        "Portable codebase",
-        "Continuity gaps in external authority, custody, recovery, and independent proof"
-      ],
+      "headline": {
+        "rating": "continuity-gaps",
+        "statement": "vanityURLs has a portable codebase, but canonical continuity and existing-service takeover remain blocked by public evidence gaps in authority, custody, recovery, and independent proof."
+      },
       "generatedAt": "2026-07-24"
-    },
-    {
-      "asset": "docuseal",
-      "evidenceCutoff": "2026-08-06",
-      "path": "audits/docuseal/2026-08-06",
-      "label": "TODO — e.g. Continuity & third-party operability (deep)",
-      "highlights": [],
-      "generatedAt": null
     }
   ]
 }
