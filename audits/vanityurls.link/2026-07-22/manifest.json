@@ -1,46 +1,188 @@
 {
-  "asset": "vanityurls.link",
-  "assetUrl": "https://vanityurls.link",
-  "title": "vanityURLs Continuity And Third-Party Operability Audit",
-  "product": "vanityURLs — community-maintained open-source Cloudflare Workers short-link redirector",
-  "auditType": "continuity-and-third-party-operability",
-  "depth": "deep",
-  "label": "Continuity & third-party operability (deep)",
-  "highlights": [
-    "Portable codebase",
-    "Continuity gaps in external authority, custody, recovery, and independent proof"
-  ],
-  "evidenceCutoff": "2026-07-22",
-  "generatedAt": "2026-07-24",
-  "entrypoint": "index.md",
-  "generator": {
-    "repo": "wgo-audit/code",
-    "version": null,
-    "commit": null
+  "$schema": "https://wgo-audit.com/schemas/manifest/1.0.0.json",
+  "schemaVersion": "1.0.0",
+  "report": {
+    "id": "vanityurls-link-2026-07-22-continuity-third-party-operability",
+    "title": "vanityURLs Continuity And Third-Party Operability Audit",
+    "generatedAt": "2026-07-24",
+    "language": "en",
+    "entrypoint": "index.md",
+    "headline": {
+      "rating": "continuity-gaps",
+      "statement": "vanityURLs has a portable codebase, but canonical continuity and existing-service takeover remain blocked by public evidence gaps in authority, custody, recovery, and independent proof."
+    }
   },
-  "sources": [
-    { "repo": "vanityURLs/code", "commit": "bc4a75d28340eadd31ecbf43923c2062ccc62166" },
-    { "repo": "vanityURLs/v8s-config", "commit": "a24eac8585be9fd1a7fff81b0a0dd7bd535ea063" },
-    { "repo": "vanityURLs/v8s-link", "commit": "2159e433a408e76b71308b12b2daae703b7f63c3" },
-    { "repo": "vanityURLs/website", "url": "https://github.com/vanityURLs/website", "ref": "main", "commit": "c2d735b494a36bc3a8cd340c324012b1e8fb00bb" }
+  "subject": {
+    "id": "vanityurls.link",
+    "name": "vanityURLs",
+    "kind": "software-project",
+    "description": "Community-maintained open-source Cloudflare Workers short-link redirector",
+    "canonicalUrl": "https://vanityurls.link"
+  },
+  "audit": {
+    "type": "continuity-and-third-party-operability",
+    "mode": "baseline",
+    "depth": "deep"
+  },
+  "businessConcerns": [
+    {
+      "id": "canonical-maintainer-onboarding",
+      "type": "question",
+      "statement": "Can a new maintainer take over the canonical project with minimal creator involvement?",
+      "conclusion": {
+        "outcome": "no",
+        "statement": "No",
+        "summary": "The code and public decision history are strong, but canonical maintainer appointment, cross-repository authority, administrative controls, release-signer recovery, and successor access are not defined and exercised end to end.",
+        "confidence": "high",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "independent-third-party-instance",
+      "type": "question",
+      "statement": "Can a third party establish and operate a new, independently controlled vanityURLs instance?",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "Plausible, but not yet proven easy",
+        "summary": "The stateless, Git-backed design, MIT license, setup/detach/upgrade tooling, tests, and operator documentation support this outcome. A non-creator has not been observed completing setup, release, deployment, rollback, and recovery with measured assistance.",
+        "confidence": "high",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "existing-project-domain-demo-takeover",
+      "type": "question",
+      "statement": "Can a third party take over and operate the existing project, v8s.link domain, and demo service?",
+      "conclusion": {
+        "outcome": "no",
+        "statement": "No, not on public evidence",
+        "summary": "GitHub, Cloudflare, registrar/domain, Terraform state, secrets, deployment, alert, renewal, and recovery custody are external to the repositories and have no evidenced transfer path.",
+        "confidence": "high",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "successor-fork-evolution",
+      "type": "question",
+      "statement": "If the creators abandon the project, can someone else pick it up and evolve it?",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "Yes for a fork, probably with moderate effort; no assurance for canonical continuity",
+        "summary": "Public source, tests, documentation, ADRs, release history, and a low-state runtime provide a credible technical foundation. Preserving the existing identity, trusted releases, domain, and service requires controls not demonstrated here.",
+        "confidence": "high",
+        "source": "executive-summary.md"
+      }
+    }
   ],
-  "reviewers": [
-    "architecture",
-    "product-value",
-    "project-health",
-    "code-quality",
-    "security-privacy",
-    "scalability",
-    "business-continuity",
-    "maintenance-cost",
-    "contributor-vendor-value",
-    "expense-exposure",
-    "revenue-risk"
-  ],
-  "conclusions": {
-    "Can a new maintainer onboard with minimal creator involvement?": "No",
-    "Can an independent third party stand up a new instance?": "Plausible, but not yet proven easy",
-    "Can a third party take over the existing project, domain, and demo?": "No, not on public evidence",
-    "Can a successor fork and keep evolving it after abandonment?": "Yes, probably with moderate effort; identity/service not assured"
+  "evidence": {
+    "cutoff": "2026-07-22",
+    "sources": [
+      {
+        "id": "product-code",
+        "kind": "git-repository",
+        "repository": "vanityURLs/code",
+        "url": "https://github.com/vanityURLs/code",
+        "ref": "main",
+        "commit": "bc4a75d28340eadd31ecbf43923c2062ccc62166",
+        "role": "primary"
+      },
+      {
+        "id": "terraform-source",
+        "kind": "git-repository",
+        "repository": "vanityURLs/v8s-config",
+        "url": "https://github.com/vanityURLs/v8s-config",
+        "ref": "main",
+        "commit": "a24eac8585be9fd1a7fff81b0a0dd7bd535ea063",
+        "role": "supporting"
+      },
+      {
+        "id": "reference-instance",
+        "kind": "git-repository",
+        "repository": "vanityURLs/v8s-link",
+        "url": "https://github.com/vanityURLs/v8s-link",
+        "ref": "main",
+        "commit": "2159e433a408e76b71308b12b2daae703b7f63c3",
+        "role": "supporting"
+      },
+      {
+        "id": "website-docs",
+        "kind": "git-repository",
+        "repository": "vanityURLs/website",
+        "url": "https://github.com/vanityURLs/website",
+        "ref": "main",
+        "commit": "c2d735b494a36bc3a8cd340c324012b1e8fb00bb",
+        "role": "supporting"
+      },
+      {
+        "id": "public-website",
+        "kind": "website",
+        "url": "https://vanityurls.link/en/",
+        "role": "supporting"
+      }
+    ],
+    "accessBoundary": {
+      "level": "public-only",
+      "included": [
+        "Repository files and Git history for the four pinned repositories",
+        "Public GitHub pull requests, issues, projects, releases, workflows, and Actions metadata",
+        "Approved local documentation folders and public website material"
+      ],
+      "excluded": [
+        "Authenticated or private repository settings",
+        "Cloud, registrar, secret, Terraform-state, billing, contract, and private operating records",
+        "Dependency restores, tests, builds, Terraform operations, deployments, and recovery exercises",
+        "Post-cutoff facts except explicitly labeled validation"
+      ]
+    },
+    "limitations": [
+      {
+        "code": "PUBLIC_ONLY_BOUNDARY",
+        "description": "Only public, read-only evidence was approved.",
+        "impact": "Control transfer for the existing project and demo instance cannot be proved from the available evidence."
+      },
+      {
+        "code": "NO_EXECUTION_EXERCISE",
+        "description": "No local dependency restore, test, build, deployment, Terraform operation, or recovery exercise was performed.",
+        "impact": "Independent operation remains plausible but unproved."
+      },
+      {
+        "code": "AUTHORITY_CUSTODY_UNAVAILABLE",
+        "description": "Authenticated ownership, billing, secret custody, live settings, and runtime evidence were not available.",
+        "impact": "Canonical continuity and existing-service takeover remain unresolved."
+      }
+    ]
+  },
+  "execution": {
+    "generator": {
+      "name": "wgo-audit",
+      "repository": "wgo-audit/code",
+      "version": null,
+      "commit": null
+    },
+    "platform": {
+      "runtime": "codex",
+      "runtimeVersion": null,
+      "models": []
+    },
+    "reviewers": [
+      { "id": "architecture", "version": null, "status": "completed" },
+      { "id": "product-value", "version": null, "status": "completed" },
+      { "id": "project-health", "version": null, "status": "completed" },
+      { "id": "code-quality", "version": null, "status": "completed" },
+      { "id": "security-privacy", "version": null, "status": "completed" },
+      { "id": "scalability", "version": null, "status": "completed" },
+      { "id": "business-continuity", "version": null, "status": "completed" },
+      { "id": "maintenance-cost", "version": null, "status": "completed" },
+      { "id": "contributor-vendor-value", "version": null, "status": "completed" },
+      { "id": "expense-exposure", "version": null, "status": "completed" },
+      { "id": "revenue-risk", "version": null, "status": "completed" }
+    ],
+    "acceptedVariances": []
+  },
+  "relationships": {
+    "previousAudit": null,
+    "baseline": null,
+    "comparesTo": [],
+    "supersedes": null
   }
 }

@@ -21,6 +21,11 @@ ROOT = Path(__file__).resolve().parent.parent
 AUDITS = ROOT / "audits"
 README = ROOT / "README.md"
 REPO = "wgo-audit/reports"
+SCHEMA_VERSION = "1.0.0"
+
+AUDIT_LABELS = {
+    "continuity-and-third-party-operability": "Continuity & third-party operability",
+}
 
 
 def load_reports() -> list[dict]:
@@ -30,6 +35,7 @@ def load_reports() -> list[dict]:
         data["_dir"] = manifest.parent.relative_to(ROOT).as_posix()
         data["_asset"] = manifest.parent.parent.name
         data["_cutoff"] = manifest.parent.name
+        validate_manifest(data, manifest)
         reports.append(data)
     return reports
 
@@ -38,7 +44,85 @@ def esc(value) -> str:
     return str(value).replace("|", "\\|")
 
 
+def manifest_version(report: dict) -> str | None:
+    return report.get("schemaVersion")
+
+
+def subject_id(report: dict) -> str:
+    if manifest_version(report) == SCHEMA_VERSION:
+        return report["subject"]["id"]
+    return report.get("asset") or report["_asset"]
+
+
+def subject_name(report: dict) -> str:
+    if manifest_version(report) == SCHEMA_VERSION:
+        return report["subject"].get("name") or subject_id(report)
+    return report.get("asset") or report["_asset"]
+
+
+def subject_url(report: dict) -> str | None:
+    if manifest_version(report) == SCHEMA_VERSION:
+        return report["subject"].get("canonicalUrl")
+    return report.get("assetUrl")
+
+
+def evidence_cutoff(report: dict) -> str:
+    if manifest_version(report) == SCHEMA_VERSION:
+        return report["evidence"]["cutoff"]
+    return report.get("evidenceCutoff") or report["_cutoff"]
+
+
+def report_title(report: dict) -> str:
+    if manifest_version(report) == SCHEMA_VERSION:
+        return report["report"]["title"]
+    return report.get("title") or label(report)
+
+
+def generated_at(report: dict):
+    if manifest_version(report) == SCHEMA_VERSION:
+        return report["report"].get("generatedAt")
+    return report.get("generatedAt")
+
+
+def entrypoint(report: dict) -> str:
+    if manifest_version(report) == SCHEMA_VERSION:
+        return report["report"]["entrypoint"]
+    return report.get("entrypoint", "index.md")
+
+
+def headline(report: dict) -> dict | None:
+    if manifest_version(report) == SCHEMA_VERSION:
+        value = report["report"].get("headline")
+        return value if isinstance(value, dict) else None
+    text = report.get("headline")
+    if text:
+        return {"rating": None, "statement": text}
+    return None
+
+
+def audit_label_from_type(audit_type: str) -> str:
+    if audit_type in AUDIT_LABELS:
+        return AUDIT_LABELS[audit_type]
+    words = audit_type.replace("_", "-").split("-")
+    if not words:
+        return "Audit"
+    rendered = []
+    for i, word in enumerate(words):
+        if word == "and":
+            rendered.append("&")
+        elif i == 0:
+            rendered.append(word.capitalize())
+        else:
+            rendered.append(word)
+    return " ".join(rendered)
+
+
 def label(report: dict) -> str:
+    if manifest_version(report) == SCHEMA_VERSION:
+        audit = report["audit"]
+        kind = audit_label_from_type(audit["type"])
+        depth = audit.get("depth")
+        return f"{kind} ({depth})" if depth else kind
     if report.get("label"):
         return report["label"]
     kind = str(report.get("auditType", "audit")).replace("-", " ")
@@ -46,24 +130,65 @@ def label(report: dict) -> str:
     return f"{kind} ({depth})" if depth else kind
 
 
+def conclusions(report: dict) -> dict[str, str]:
+    if manifest_version(report) == SCHEMA_VERSION:
+        out = {}
+        for concern in report.get("businessConcerns") or []:
+            conclusion = concern.get("conclusion") or {}
+            out[concern["statement"]] = conclusion.get("statement", "")
+        return out
+    return report.get("conclusions") or {}
+
+
+def highlights(report: dict) -> list[str]:
+    if manifest_version(report) == SCHEMA_VERSION:
+        value = headline(report)
+        return [value["statement"]] if value and value.get("statement") else []
+    return report.get("highlights", [])
+
+
+def validate_manifest(report: dict, manifest: Path) -> None:
+    if manifest_version(report) != SCHEMA_VERSION:
+        return
+
+    rel = manifest.relative_to(ROOT).as_posix()
+    if subject_id(report) != report["_asset"]:
+        raise SystemExit(
+            f"{rel}: subject.id must match audits/<subject>; "
+            f"got {subject_id(report)!r}, expected {report['_asset']!r}"
+        )
+    if evidence_cutoff(report) != report["_cutoff"]:
+        raise SystemExit(
+            f"{rel}: evidence.cutoff must match the report directory; "
+            f"got {evidence_cutoff(report)!r}, expected {report['_cutoff']!r}"
+        )
+    entry = manifest.parent / entrypoint(report)
+    if not entry.is_file():
+        raise SystemExit(f"{rel}: report.entrypoint does not exist: {entrypoint(report)}")
+
+    ids = [c.get("id") for c in report.get("businessConcerns") or []]
+    if len(ids) != len(set(ids)):
+        raise SystemExit(f"{rel}: businessConcerns ids must be unique")
+
+
 def group_by_asset(reports: list[dict]) -> dict[str, list[dict]]:
     grouped: dict[str, list[dict]] = {}
     for report in reports:
-        grouped.setdefault(report["_asset"], []).append(report)
+        grouped.setdefault(subject_id(report), []).append(report)
     for rs in grouped.values():
-        rs.sort(key=lambda r: r["_cutoff"], reverse=True)
+        rs.sort(key=evidence_cutoff, reverse=True)
     return grouped
 
 
 def reports_section(reports: list[dict]) -> str:
     if not reports:
         return "_No reports published yet._\n"
-    rs = sorted(reports, key=lambda r: r["_cutoff"], reverse=True)
-    rs = sorted(rs, key=lambda r: r["_asset"])
+    rs = sorted(reports, key=evidence_cutoff, reverse=True)
+    rs = sorted(rs, key=subject_id)
     out = ["| Asset | Evidence cutoff | Audit |", "|---|---|---|"]
     for r in rs:
-        asset_link = f'[{r["_asset"]}](audits/{r["_asset"]}/README.md)'
-        cutoff_link = f'[{r["_cutoff"]}]({r["_dir"]}/index.md)'
+        asset_link = f'[{subject_id(r)}](audits/{subject_id(r)}/README.md)'
+        cutoff_link = f'[{evidence_cutoff(r)}]({r["_dir"]}/{entrypoint(r)})'
         out.append(f'| {asset_link} | {cutoff_link} | {esc(label(r))} |')
     return "\n".join(out).rstrip() + "\n"
 
@@ -93,8 +218,9 @@ def replace_block(text: str, name: str, content: str) -> str:
 
 
 def per_asset_readme(asset: str, rs: list[dict]) -> str:
-    asset_url = next((r.get("assetUrl") for r in rs if r.get("assetUrl")), None)
-    asset_ref = f"[{asset}]({asset_url})" if asset_url else asset
+    asset_url = next((subject_url(r) for r in rs if subject_url(r)), None)
+    name = next((subject_name(r) for r in rs if subject_name(r)), asset)
+    asset_ref = f"[{name}]({asset_url})" if asset_url else name
     out = [
         f"# {asset}",
         "",
@@ -106,30 +232,30 @@ def per_asset_readme(asset: str, rs: list[dict]) -> str:
         "|---|---|",
     ]
     for r in rs:
-        link = f'[{r["_cutoff"]}]({r["_cutoff"]}/index.md)'
+        link = f'[{evidence_cutoff(r)}]({r["_cutoff"]}/{entrypoint(r)})'
         out.append(f'| {link} | {esc(label(r))} |')
     out.append("")
 
     keys: list[str] = []
     for r in rs:
-        for key in (r.get("conclusions") or {}):
+        for key in conclusions(r):
             if key not in keys:
                 keys.append(key)
-    highlights = rs[0].get("highlights") or [] if rs else []
-    if keys or highlights:
+    current_highlights = highlights(rs[0]) if rs else []
+    if keys or current_highlights:
         out.append("## Conclusions over time")
         out.append("")
-        for item in highlights:
+        for item in current_highlights:
             out.append(f"- {item}")
-        if highlights:
+        if current_highlights:
             out.append("")
         if keys:
-            out.append("| Question | " + " | ".join(r["_cutoff"] for r in rs) + " |")
+            out.append("| Question | " + " | ".join(evidence_cutoff(r) for r in rs) + " |")
             out.append("|" + "---|" * (len(rs) + 1))
             for key in keys:
                 cells = [esc(key)]
                 for r in rs:
-                    cells.append(esc((r.get("conclusions") or {}).get(key, "—")))
+                    cells.append(esc(conclusions(r).get(key, "—")))
                 out.append("| " + " | ".join(cells) + " |")
             out.append("")
     return "\n".join(out).rstrip() + "\n"
@@ -137,14 +263,19 @@ def per_asset_readme(asset: str, rs: list[dict]) -> str:
 
 def index_json(reports: list[dict]) -> dict:
     items = []
-    for r in sorted(reports, key=lambda r: (r["_asset"], r["_cutoff"]), reverse=True):
+    for r in sorted(reports, key=lambda r: (subject_id(r), evidence_cutoff(r)), reverse=True):
+        head = headline(r)
         items.append({
-            "asset": r["_asset"],
-            "evidenceCutoff": r["_cutoff"],
+            "reportId": r.get("report", {}).get("id") if manifest_version(r) == SCHEMA_VERSION else None,
+            "subject": subject_id(r),
+            "subjectName": subject_name(r),
+            "evidenceCutoff": evidence_cutoff(r),
             "path": r["_dir"],
+            "entrypoint": entrypoint(r),
+            "title": report_title(r),
             "label": label(r),
-            "highlights": r.get("highlights", []),
-            "generatedAt": r.get("generatedAt"),
+            "headline": head,
+            "generatedAt": generated_at(r),
         })
     return {"count": len(items), "reports": items}
 
