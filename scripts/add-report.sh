@@ -7,7 +7,8 @@
 # What it does:
 #   1. Unpacks/copies the bundle to a temp area and strips cruft
 #      (.DS_Store, __MACOSX, nested .git, tmp/ clones of the audited project).
-#   2. Reads --asset / --cutoff, falling back to the bundle's manifest.json.
+#   2. Reads --asset / --cutoff, falling back to the bundle's schema 1.0.0
+#      manifest.json.
 #   3. Copies the bundle to audits/<asset>/<cutoff>/ (refuses to overwrite —
 #      reports are immutable).
 #   4. Scaffolds manifest.json if the bundle didn't include one.
@@ -54,8 +55,8 @@ done < <(find "$src" -name index.md -print0)
 
 mani="$bdir/manifest.json"
 if [[ -f "$mani" ]] && command -v jq >/dev/null 2>&1; then
-  [[ -n "$ASSET"  ]] || ASSET="$(jq -r '.asset // empty'          "$mani")"
-  [[ -n "$CUTOFF" ]] || CUTOFF="$(jq -r '.evidenceCutoff // empty' "$mani")"
+  [[ -n "$ASSET"  ]] || ASSET="$(jq -r '.subject.id // .asset // empty' "$mani")"
+  [[ -n "$CUTOFF" ]] || CUTOFF="$(jq -r '.evidence.cutoff // .evidenceCutoff // empty' "$mani")"
 fi
 [[ -n "$ASSET" && -n "$CUTOFF" ]] || {
   echo "error: --asset and --cutoff are required (or set them in the bundle's manifest.json)" >&2
@@ -72,16 +73,56 @@ cp -R "$bdir"/. "$dest"/
 if [[ ! -f "$dest/manifest.json" ]]; then
   cat > "$dest/manifest.json" <<JSON
 {
-  "asset": "$ASSET",
-  "evidenceCutoff": "$CUTOFF",
-  "generatedAt": null,
-  "entrypoint": "index.md",
-  "label": "TODO — e.g. Continuity & third-party operability (deep)",
-  "headline": "TODO — one-line takeaway shown in the index",
-  "generator": { "repo": "wgo-audit/code", "version": null, "commit": null },
-  "sources": [],
-  "reviewers": [],
-  "conclusions": {}
+  "\$schema": "https://wgo-audit.com/schemas/manifest/1.0.0.json",
+  "schemaVersion": "1.0.0",
+  "report": {
+    "id": "TODO-stable-report-id",
+    "title": "TODO report title",
+    "generatedAt": null,
+    "language": "en",
+    "entrypoint": "index.md",
+    "headline": {
+      "rating": "TODO",
+      "statement": "TODO one-line evidence-supported conclusion"
+    }
+  },
+  "subject": {
+    "id": "$ASSET",
+    "name": "TODO subject name",
+    "kind": "software-project",
+    "description": null,
+    "canonicalUrl": null
+  },
+  "audit": {
+    "type": "TODO-audit-type",
+    "mode": "unknown",
+    "depth": "custom"
+  },
+  "businessConcerns": [],
+  "evidence": {
+    "cutoff": "$CUTOFF",
+    "sources": [],
+    "accessBoundary": {
+      "level": "unknown",
+      "included": [],
+      "excluded": []
+    }
+  },
+  "execution": {
+    "generator": {
+      "name": "wgo-audit",
+      "repository": "wgo-audit/code",
+      "version": null,
+      "commit": null
+    },
+    "reviewers": []
+  },
+  "relationships": {
+    "previousAudit": null,
+    "baseline": null,
+    "comparesTo": [],
+    "supersedes": null
+  }
 }
 JSON
   echo "note: scaffolded manifest.json — fill in the TODO fields, then re-run build_index.py"
