@@ -1,0 +1,665 @@
+{
+  "schema_version": 1,
+  "coverage": "audit",
+  "status": "final",
+  "currency": "USD",
+  "pricing_basis": {
+    "id": "wgo-rate-card:api-rate-card-2026-08-07",
+    "date": "2026-08-07",
+    "source": "https://platform.openai.com/docs/pricing",
+    "service_tier_basis": "declared-standard-api-equivalent",
+    "context_band_basis": "derived-input-threshold"
+  },
+  "verification": {
+    "temporary_manifest_sha256": "ec4c3c0612d2776e1fbcbd5a219c653d90bc808e16265756f48718ece10eeb48",
+    "independent_passes": 2,
+    "normalized_match": true,
+    "pass_result_sha256": "266f43bcfc14a6253b4c3c1fbe57014de440255ab161c67c0993ba1b2965a4c8",
+    "calculation_issues": 0,
+    "suppressed_duplicate_echoes": 41
+  },
+  "rows": [
+    {
+      "phase": "audit",
+      "session": "session-001",
+      "role": "WGO audit coordinator",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 542744,
+      "cached_input_tokens": 63208960,
+      "output_tokens": 98605,
+      "reasoning_tokens": 14218,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "37.276350"
+    },
+    {
+      "phase": "audit",
+      "session": "session-002",
+      "role": "root/architecture_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 195189,
+      "cached_input_tokens": 7016448,
+      "output_tokens": 43097,
+      "reasoning_tokens": 7670,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.777079"
+    },
+    {
+      "phase": "audit",
+      "session": "session-017",
+      "role": "root/architecture_review/component_topology",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 126881,
+      "cached_input_tokens": 1420544,
+      "output_tokens": 8290,
+      "reasoning_tokens": 1326,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.6373508"
+    },
+    {
+      "phase": "audit",
+      "session": "session-018",
+      "role": "root/architecture_review/data_jobs",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 116276,
+      "cached_input_tokens": 1089792,
+      "output_tokens": 7423,
+      "reasoning_tokens": 1194,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.5395864"
+    },
+    {
+      "phase": "audit",
+      "session": "session-016",
+      "role": "root/architecture_review/architecture_quality",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 12935,
+      "cached_input_tokens": 108288,
+      "output_tokens": 3230,
+      "reasoning_tokens": 1129,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.0862876"
+    },
+    {
+      "phase": "audit",
+      "session": "session-004",
+      "role": "root/code_quality_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 10779,
+      "cached_input_tokens": 1372416,
+      "output_tokens": 4411,
+      "reasoning_tokens": 1460,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "0.872433"
+    },
+    {
+      "phase": "audit",
+      "session": "session-021",
+      "role": "root/code_quality_review/code_quality_artifact_review",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 35992,
+      "cached_input_tokens": 337920,
+      "output_tokens": 5818,
+      "reasoning_tokens": 3120,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2093840"
+    },
+    {
+      "phase": "audit",
+      "session": "session-010",
+      "role": "root/product_value_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 193934,
+      "cached_input_tokens": 6643968,
+      "output_tokens": 49230,
+      "reasoning_tokens": 3796,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.768554"
+    },
+    {
+      "phase": "audit",
+      "session": "session-025",
+      "role": "root/product_value_review/product_value_quality",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 51375,
+      "cached_input_tokens": 285440,
+      "output_tokens": 5703,
+      "reasoning_tokens": 2782,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2282740"
+    },
+    {
+      "phase": "audit",
+      "session": "session-014",
+      "role": "root/security_privacy_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 356209,
+      "cached_input_tokens": 7252224,
+      "output_tokens": 52548,
+      "reasoning_tokens": 7355,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "6.983597"
+    },
+    {
+      "phase": "audit",
+      "session": "session-031",
+      "role": "root/security_privacy_review/identity_boundaries",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 186120,
+      "cached_input_tokens": 2549504,
+      "output_tokens": 10415,
+      "reasoning_tokens": 3636,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "1.0071208"
+    },
+    {
+      "phase": "audit",
+      "session": "session-030",
+      "role": "root/security_privacy_review/edge_runtime",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 75678,
+      "cached_input_tokens": 1063424,
+      "output_tokens": 6842,
+      "reasoning_tokens": 2271,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.4461448"
+    },
+    {
+      "phase": "audit",
+      "session": "session-032",
+      "role": "root/security_privacy_review/security_quality",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 51612,
+      "cached_input_tokens": 285696,
+      "output_tokens": 3464,
+      "reasoning_tokens": 1470,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2019312"
+    },
+    {
+      "phase": "audit",
+      "session": "session-003",
+      "role": "root/business_continuity_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 156286,
+      "cached_input_tokens": 5418496,
+      "output_tokens": 34636,
+      "reasoning_tokens": 4680,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "4.529758"
+    },
+    {
+      "phase": "audit",
+      "session": "session-020",
+      "role": "root/business_continuity_review/recovery_dataops_alerting",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 83211,
+      "cached_input_tokens": 766464,
+      "output_tokens": 6621,
+      "reasoning_tokens": 1893,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.3991668"
+    },
+    {
+      "phase": "audit",
+      "session": "session-019",
+      "role": "root/business_continuity_review/business_continuity_quality",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 46298,
+      "cached_input_tokens": 265728,
+      "output_tokens": 5159,
+      "reasoning_tokens": 2287,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2076496"
+    },
+    {
+      "phase": "audit",
+      "session": "session-013",
+      "role": "root/scalability_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 221890,
+      "cached_input_tokens": 13721344,
+      "output_tokens": 44560,
+      "reasoning_tokens": 8548,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "9.306922"
+    },
+    {
+      "phase": "audit",
+      "session": "session-029",
+      "role": "root/scalability_review/scalability_quality",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 57228,
+      "cached_input_tokens": 459264,
+      "output_tokens": 9183,
+      "reasoning_tokens": 5235,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "0.791262"
+    },
+    {
+      "phase": "audit",
+      "session": "session-007",
+      "role": "root/expense_exposure_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 124845,
+      "cached_input_tokens": 7982592,
+      "output_tokens": 30537,
+      "reasoning_tokens": 8272,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.531631"
+    },
+    {
+      "phase": "audit",
+      "session": "session-024",
+      "role": "root/expense_exposure_review/vendor_commercial_collector",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 60536,
+      "cached_input_tokens": 388608,
+      "output_tokens": 4543,
+      "reasoning_tokens": 862,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2533096"
+    },
+    {
+      "phase": "audit",
+      "session": "session-023",
+      "role": "root/expense_exposure_review/expense_quality",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 25820,
+      "cached_input_tokens": 125952,
+      "output_tokens": 3097,
+      "reasoning_tokens": 1398,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.1139944"
+    },
+    {
+      "phase": "audit",
+      "session": "session-006",
+      "role": "root/contributor_vendor_value_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 14099,
+      "cached_input_tokens": 1392128,
+      "output_tokens": 5707,
+      "reasoning_tokens": 713,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "0.937769"
+    },
+    {
+      "phase": "audit",
+      "session": "session-009",
+      "role": "root/maintenance_cost_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 13654,
+      "cached_input_tokens": 941056,
+      "output_tokens": 3880,
+      "reasoning_tokens": 1153,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "0.655198"
+    },
+    {
+      "phase": "audit",
+      "session": "session-022",
+      "role": "root/contributor_vendor_value_review/feature_contribution_collector",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 136466,
+      "cached_input_tokens": 3343872,
+      "output_tokens": 20572,
+      "reasoning_tokens": 6506,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "2.971426"
+    },
+    {
+      "phase": "audit",
+      "session": "session-005",
+      "role": "root/contributor_value_quality",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 55995,
+      "cached_input_tokens": 230912,
+      "output_tokens": 2190,
+      "reasoning_tokens": 636,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.1844524"
+    },
+    {
+      "phase": "audit",
+      "session": "session-008",
+      "role": "root/maintenance_cost_quality",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 33885,
+      "cached_input_tokens": 461312,
+      "output_tokens": 4222,
+      "reasoning_tokens": 1396,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2106964"
+    },
+    {
+      "phase": "audit",
+      "session": "session-012",
+      "role": "root/revenue_risk_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 147637,
+      "cached_input_tokens": 3917312,
+      "output_tokens": 25759,
+      "reasoning_tokens": 3278,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "3.469611"
+    },
+    {
+      "phase": "audit",
+      "session": "session-028",
+      "role": "root/revenue_risk_review/quality_review",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 78083,
+      "cached_input_tokens": 181760,
+      "output_tokens": 3504,
+      "reasoning_tokens": 1496,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2345660"
+    },
+    {
+      "phase": "audit",
+      "session": "session-011",
+      "role": "root/project_health_review",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 164487,
+      "cached_input_tokens": 6803968,
+      "output_tokens": 32694,
+      "reasoning_tokens": 6859,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.205239"
+    },
+    {
+      "phase": "audit",
+      "session": "session-027",
+      "role": "root/project_health_review/github_history_collector",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 88591,
+      "cached_input_tokens": 795392,
+      "output_tokens": 12561,
+      "reasoning_tokens": 4594,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.4869924"
+    },
+    {
+      "phase": "audit",
+      "session": "session-026",
+      "role": "root/project_health_review/artifact_quality",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 92013,
+      "cached_input_tokens": 755712,
+      "output_tokens": 7003,
+      "reasoning_tokens": 2407,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.4192044"
+    },
+    {
+      "phase": "onboarding",
+      "session": "session-001",
+      "role": "WGO audit coordinator",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 132323,
+      "cached_input_tokens": 4774400,
+      "output_tokens": 29346,
+      "reasoning_tokens": 10501,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "3.929195"
+    },
+    {
+      "phase": "onboarding",
+      "session": "session-015",
+      "role": "root/wgo_documentation_catalog",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 11647,
+      "cached_input_tokens": 307200,
+      "output_tokens": 869,
+      "reasoning_tokens": 309,
+      "rate_per_million": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.0951620"
+    },
+    {
+      "phase": "summary",
+      "session": "session-001",
+      "role": "WGO audit coordinator",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 159377,
+      "cached_input_tokens": 2762240,
+      "output_tokens": 13513,
+      "reasoning_tokens": 1613,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "2.583395"
+    },
+    {
+      "phase": "unattributed",
+      "session": "session-001",
+      "role": "WGO audit coordinator",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "context_band": "short",
+      "uncached_input_tokens": 39199,
+      "cached_input_tokens": 289792,
+      "output_tokens": 4244,
+      "reasoning_tokens": 1572,
+      "rate_per_million": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "0.468211"
+    }
+  ],
+  "totals": {
+    "uncached_input_tokens": 3899294,
+    "cached_input_tokens": 148720128,
+    "output_tokens": 603476,
+    "reasoning_tokens": 127635,
+    "exact_cost_usd": "103.0189036"
+  },
+  "limitations": {
+    "legacy_state_identity_count": 1381,
+    "cache_write_exclusion_count": 0,
+    "provider_identifiers_persisted": false
+  }
+}
