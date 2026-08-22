@@ -1,0 +1,71 @@
+# Time-To-Safety And Care Envelope
+
+Reader question: What skill coverage, recurring attention, and successor proof should the library plan for under Run, Subscribe, or Replace?
+
+## Evidence Boundary
+
+This view uses the approved `primary-code` snapshot at commit `9cc669b97ece3ecd37fcb3950791cb3873d7944d`, [E-001](../../evidence/evidence-ledger.md#e-001), [E-003](../../evidence/evidence-ledger.md#e-003)–[E-007](../../evidence/evidence-ledger.md#e-007), [E-009](../../evidence/evidence-ledger.md#e-009)–[E-014](../../evidence/evidence-ledger.md#e-014), [E-035](../../evidence/evidence-ledger.md#e-035)–[E-051](../../evidence/evidence-ledger.md#e-051), and the completed delivery/quality, recovery/operations, vendor/commercial, and scalability packets/views. The cutoff is 2026-08-20 at onboarding start, America/Toronto.
+
+No library staffing, skills inventory, ticket history, on-call record, activity log, deployment, maintenance calendar, support account, contract, replacement candidate, or staff rate was inspected. No change, restore, upgrade, load test, handoff, or live operation was performed. Source responsibility does not prove current workload or competence.
+
+## Evidence Dimensions Used
+
+Implementation, source-declared operating responsibility, public support/commercial terms, declared and observed upstream quality gates, and source-visible recovery/capacity boundaries are present. Observed library operation, ownership/approval, successor readiness, actual hours, cash, incident demand, hosted support performance, and replacement maintenance are unknown.
+
+## Current Source-Bounded Position
+
+### Skill and operating-coverage map
+
+The rows describe capabilities that must be covered, not separate job titles or a staffing count.
+
+| Capability surface | Run coverage needed | Subscribe retained coverage | Replace position | Evidence and limit |
+|---|---|---|---|---|
+| Analytics product and instrumentation | Define privacy-minimizing search/registration events, goals, monthly outputs, journey semantics, and acceptance across 18 assumed properties. | Same outcome ownership; vendor operation does not define the library's event taxonomy or report meaning. | Carries unchanged into any shortlist. | [E-016](../../evidence/evidence-ledger.md#e-016)–[E-019](../../evidence/evidence-ledger.md#e-019), [OI-006](../open-items.md#oi-006)–[OI-008](../open-items.md#oi-008). Actual instrumentation and acceptance are unknown. |
+| Application and tracker change | Read Elixir/Phoenix and JavaScript/TypeScript tracker/dashboard behavior; reproduce the Docker/PostgreSQL/ClickHouse/Node development and test boundary when local correction is needed. | Usually vendor-owned, but library web teams still maintain snippets/custom events and must assess source-impacting defects or mitigations. | Candidate stack and integration work are unknown. | [E-009](../../evidence/evidence-ledger.md#e-009)–[E-014](../../evidence/evidence-ledger.md#e-014), [E-051](../../evidence/evidence-ledger.md#e-051). Upstream CI is strong; library reproduction and full path coverage are unproved. |
+| Deployment, edge, and artifact provenance | Pin/verify CE image, configuration/secrets, DNS/TLS/headers, container/storage boundary, upgrade approval, and rollback stop conditions. | Retain tracker deployment, domain/DNS/CSP or consent integration, account configuration, and vendor assurance; hosted platform release is vendor-controlled. | Candidate and delivery chain unknown. | [E-007](../../evidence/evidence-ledger.md#e-007), [E-040](../../evidence/evidence-ledger.md#e-040)–[E-043](../../evidence/evidence-ledger.md#e-043), [OI-001](../open-items.md#oi-001), [OI-005](../open-items.md#oi-005), [OI-011](../open-items.md#oi-011). |
+| PostgreSQL/ClickHouse and recovery | Operate, patch, monitor, back up, restore, and migrate two data authorities plus persistent files; respect cross-store ordering and irreversible/non-atomic boundaries. | Vendor operates stores; library retains recovery objectives, evidence review, reporting reconciliation, export, and exit acceptance. | Candidate recovery/storage model unknown. | [E-003](../../evidence/evidence-ledger.md#e-003), [E-005](../../evidence/evidence-ledger.md#e-005), [E-038](../../evidence/evidence-ledger.md#e-038), [OI-004](../open-items.md#oi-004), [OI-015](../open-items.md#oi-015). No restore or RPO/RTO proof exists. |
+| Queues, reports, data growth, and observability | Reconcile Oban work, monthly email, buffers, ClickHouse queries/parts/deletion, exports, and alerts; prepare for seasonal peaks. | Reconcile reports/usage and service notices; vendor owns internal queues/storage, but no public SLA/control proof closes library acceptance. | Requirements become candidate acceptance tests. | [E-035](../../evidence/evidence-ledger.md#e-035)–[E-039](../../evidence/evidence-ledger.md#e-039), [E-047](../../evidence/evidence-ledger.md#e-047)–[E-050](../../evidence/evidence-ledger.md#e-050), [OI-014](../open-items.md#oi-014), [OI-019](../open-items.md#oi-019). No live workload or alert evidence exists. |
+| Privacy, access, vendor, and commercial control | Own event/data/retention rules, roles/offboarding, security findings, infrastructure suppliers, and community-supported escalation. | Own the same policy and access outcomes plus account/billing, procurement, assurance, support escalation, renewal, export, and termination. | No candidate, owner, price, or control evidence exists. | [OI-008](../open-items.md#oi-008), [OI-010](../open-items.md#oi-010)–[OI-018](../open-items.md#oi-018), [E-039](../../evidence/evidence-ledger.md#e-039), [E-045](../../evidence/evidence-ledger.md#e-045). |
+
+### Recurring activity and proposed cadence
+
+These are unvalidated planning hypotheses for cadence and control coverage; they are neither source-supported minimums nor evidence of the library's current practice. [OI-020](../open-items.md#oi-020) must revise them from observed activity and the timed handoff.
+
+| Activity | Run planning cadence | Subscribe planning cadence | Trigger/stop condition |
+|---|---|---|---|
+| Collection, queue, query, storage, and report exceptions | Weekly; daily/active watch only around approved high-demand windows | Monthly report/usage reconciliation; active watch around high-demand windows | Escalate when accepted-versus-stored, report delivery, queue age, query latency, storage headroom, or quota approaches the approved tolerance; thresholds remain open in OI-002/OI-019. |
+| Backup, restore, and export/exit evidence | Review backup completion monthly; conduct coordinated non-production restore and successor exercise at least quarterly until stable evidence supports another cadence | Verify current vendor assurance/terms at least annually and on material change; exercise bounded export/account handoff at least annually | No dependable label before dated restore/export and successor completion. |
+| Security/release intake and upgrade | Review security/release notices at least weekly; assess each CE release; patch against the latest supported major.minor; rehearse material dual-store migration before production | Review vendor/security/terms notices monthly and at renewal; revalidate material tracking/access changes | Do not upgrade Run without exact digest, green applicable evidence, backup/restore proof, pending-migration review, and rollback stop conditions. |
+| Roles, keys, shared links, recipients, event schema, and retention | Review quarterly and on join/leave/service change; reconcile deletion to the approved policy | Same library policy cadence; include vendor admin, API/export, billing, and subprocessor/location evidence | OI-008 governs data/access/retention; OI-013/OI-015 govern alternate access and successor control. |
+| Monthly service report | Reconcile dashboard/CSV/API/email output each month; explicitly detect mail failure | Reconcile hosted dashboard/export/email and usage each month | No month is complete merely because the source job ran; OI-014 remains open. |
+| Runbook, topology, cost/activity log, and successor coverage | Update after each material change and exercise quarterly | Update on account/contract/topology change and exercise at least annually | OI-015 assigns owners; OI-017 captures comparable cost/hour evidence; OI-020 times the handoff. |
+
+### Provisional planning envelope
+
+The bands below are **auditor planning assumptions**, not observed effort, commitments, quotes, staffing recommendations, or cash. They assume a stable, documented service; one staff-hour is counted once even when multiple skills collaborate; incidents and new product work are excluded; and one FTE-month is shown only as a 160-hour arithmetic convention.
+
+| Option | Steady-state planning reserve | Transparent composition | Work outside the band | Validation route |
+|---|---|---|---|---|
+| Run | **16–40 staff-hours/month** (`0.10–0.25` of a 160-hour FTE-month) | Four weekly exception/capacity/security reviews at 1.5–3 hours each = 6–12; monthly backup/report/access/retention reconciliation = 4–10; quarterly restore/successor exercise averaged monthly = 3–8; release/provenance/configuration/runbook work averaged monthly = 3–10. | Reserve **5–15 staff-days per significant CE upgrade/recovery rehearsal** as a separate planning assumption. Incidents, major version remediation, security response, infrastructure migration, and new instrumentation are extra and unbounded. | Measure 8–12 weeks and one time-boxed handoff through [OI-020](../open-items.md#oi-020); reconcile rates/cash only through [OI-017](../open-items.md#oi-017). |
+| Subscribe | **5–16 staff-hours/month** (`0.03–0.10` of a 160-hour FTE-month) after transition | Monthly usage/report/admin reconciliation = 2–6; privacy/security/vendor/renewal evidence averaged monthly = 2–6; instrumentation and output reconciliation = 1–4. | Security/privacy/procurement review, implementation/migration, training, contract negotiation, incident escalation, and exit are first-year or event-driven work and are not estimated by this band. Vendor platform labour is included only if the final quote says so. | Validate retained duties and a successor account/export walkthrough through [OI-020](../open-items.md#oi-020); obtain quote/terms through [OI-017](../open-items.md#oi-017). |
+| Replace | **Unknown** until a candidate and migration boundary are funded and approved. | The current evidence can preserve requirements only; it cannot describe a candidate's operating stack, support, upgrades, hosting, or retained administration. | Selection, proof of concept, instrumentation rewrite, migration, dual run, training, procurement, and future recurring care are unbounded. | Apply the same activity map and timed handoff to an approved candidate; do not infer lower care from absence of evidence. |
+
+The Run-to-Subscribe difference is a hypothesis about transferred duties, not a measured saving. A stable Run instance could fall below the band; an undocumented or incident-prone one could exceed it materially. A hosted service with intensive governance, reporting, or support problems could exceed its band. Do not convert either band into cash without approved loaded rates and once-only hour records.
+
+### Time-to-safety gates
+
+| Gate | Run completion evidence | Subscribe completion evidence | Current position |
+|---|---|---|---|
+| 1. Identify and access | Exact version/digest, topology, stores, edge, integrations, secret/owner domains, primary and successor. | Accepted team/site/member topology, account/admin/billing/support owners, assurance and contract locators. | Unknown for both: OI-001/OI-015. |
+| 2. Reproduce and diagnose | Successor can stand up an approved non-production support environment or use an equivalent safe diagnostic route, inspect health/queues/stores, and map source to deployed artifact. | Successor can reach administration, support, reports, usage, assurance, and export without relying on one person. | Unknown: OI-005/OI-020. |
+| 3. Define acceptance | Event-loss/outage threshold, event/data/retention rules, ordered-journey decision, golden monthly output, and role matrix are approved. | Same, plus hosted entitlement and service/support thresholds. | Open: OI-002/OI-006–OI-008/OI-015/OI-019. |
+| 4. Prove safe change and recovery | Applicable green evidence; pre-change backup; pending migration review; non-production restore/upgrade/restart; rollback stop conditions; accepted-versus-stored/report reconciliation. | Security/privacy/procurement acceptance, test migration, report/role validation, support/escalation route, export/exit walkthrough. | Unproved: OI-003–OI-006/OI-011/OI-014/OI-015/OI-020. |
+| 5. Demonstrate successor completion | A named successor completes the bounded tasks within the approved recovery and service window using current documentation. | A named successor completes admin, report/usage, escalation, renewal, and exit tasks within the approved window. | No timed handoff evidence: OI-020. |
+
+Until gates 1–5 are evidenced, “one maintainer can handle it” and “hosted needs no maintenance” are both unsupported. Time-to-safety is unknown rather than infinite: the source has contributor setup, pinned runtimes, broad CI, explicit components, release commands, and public support routes, but the library-specific transfer proof is absent.
+
+## Material Unknowns And Closure Routes
+
+[OI-020](../open-items.md#oi-020) validates the effort bands and successor route without staff interviews or visitor-data access: use an 8–12-week once-only activity log and a bounded non-production handoff. [OI-015](../open-items.md#oi-015) assigns primary/successor responsibility; [OI-017](../open-items.md#oi-017) supplies actual hours/rates and hosted quote evidence; [OI-001](../open-items.md#oi-001), [OI-004](../open-items.md#oi-004), [OI-005](../open-items.md#oi-005), and [OI-019](../open-items.md#oi-019) close the Run topology, recovery, provenance, and capacity parts.
+
+Documented outside audited scope; not independently verified. The separate Community Edition repository may provide deployment and upgrade automation. The smallest useful expansion remains the deployed CE tag plus that repository and the library's redacted operating material; it must not be assumed to reduce effort until exercised.
