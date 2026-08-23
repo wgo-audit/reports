@@ -1,0 +1,220 @@
+{
+  "$schema": "https://wgo-audit.com/schemas/manifest/1.0.0.json",
+  "schemaVersion": "1.0.0",
+  "report": {
+    "id": "plausible-cto-inheritance-20260822",
+    "title": "Plausible Analytics CTO Inheritance Audit",
+    "entrypoint": "index.md"
+  },
+  "subject": {
+    "id": "plausible-analytics",
+    "name": "Plausible Analytics",
+    "kind": "product-and-engineering-organization"
+  },
+  "audit": {
+    "type": "cto-inheritance-and-role-decision",
+    "mode": "improve",
+    "depth": "deep"
+  },
+  "businessConcerns": [
+    {
+      "id": "plausible-cto-inheritance-mandate",
+      "type": "mandate",
+      "statement": "Conduct a detailed public-evidence audit with ranked strengths, risks, interview questions, and a separate first-30-day plan.",
+      "conclusion": {
+        "outcome": "yes",
+        "statement": "Fourteen specialist reviews cover the requested product, engineering, operational, security, assurance, scale, cost, continuity, and delivery dimensions with explicit evidence limits.",
+        "confidence": "high",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "accept-role-and-conditions-decision",
+      "type": "decision",
+      "statement": "Decide whether to accept the CTO role and under what mandate, authority, resources, assurances, and risk conditions.",
+      "conclusion": {
+        "outcome": "yes",
+        "statement": "Public evidence supports a positive lean toward accepting the role if the people, mandate, authority, expectations, resources, and compensation are attractive. Unavailable private operating evidence is neutral first-month discovery, not an offer condition; only a mandate mismatch, unrealistic expectations, concealment of known problems, or responsibility without meaningful authority should reverse the lean.",
+        "confidence": "medium",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "product-market-truth",
+      "type": "concern",
+      "statement": "Reconcile public product, pricing, documentation, privacy, and capability claims with source-visible behavior.",
+      "conclusion": {
+        "outcome": "yes",
+        "statement": "Broad product/source alignment, explicit limitations, and issue-to-fix evidence support a positive product-rigor judgment. A bounded set of promise and acceptance questions belongs to targeted improvement or normal onboarding discovery.",
+        "confidence": "high",
+        "source": "product-manager-notes.md"
+      }
+    },
+    {
+      "id": "architecture-and-evolvability",
+      "type": "concern",
+      "statement": "Assess whether architecture is understandable, maintainable, tested, and capable of safe change.",
+      "conclusion": {
+        "outcome": "yes",
+        "statement": "Source architecture is coherent, navigable, and appropriately specialized, with broad declared checks and deliberate operational safeguards. Private topology and operating evidence should be learned after joining and do not diminish the positive architecture judgment.",
+        "confidence": "high",
+        "source": "technical-lead-notes.md"
+      }
+    },
+    {
+      "id": "engineering-execution",
+      "type": "concern",
+      "statement": "Assess observable contribution, review, release, issue, automation, and maintenance maturity without grading people.",
+      "conclusion": {
+        "outcome": "yes",
+        "statement": "Segmented intake, substantive review examples, broad gates, releases, issue-to-fix paths, and security remediation support a positive engineering-rigor judgment. Private prioritization and acceptance mechanics are neutral onboarding context.",
+        "confidence": "medium",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "ownership-and-continuity",
+      "type": "concern",
+      "statement": "Identify visible knowledge or approval concentration and continuity or succession risk.",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "A bounded contribution sample is consistent with a small focused organization and can guide respectful knowledge-transfer discovery; it is not evidence of unhealthy ownership, staffing, performance, or key-person failure.",
+        "confidence": "medium",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "operational-inheritance",
+      "type": "concern",
+      "statement": "Assess deployment, migrations, observability, incident response, backups, restoration, and reliability.",
+      "conclusion": {
+        "outcome": "unknown",
+        "statement": "Source-visible mechanisms show operational forethought. Commit-to-live, RPO/RTO, restore completion, alert delivery, on-call, response closure, and live effectiveness are private and therefore remain neutral onboarding unknowns.",
+        "confidence": "high",
+        "source": "technical-lead-notes.md"
+      }
+    },
+    {
+      "id": "application-and-supply-chain-security",
+      "type": "concern",
+      "statement": "Assess attack surface, security architecture, dependencies, disclosure, patching, build inputs, and release integrity.",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "Strong auth and immutable-input hygiene coexist with Sentry disclosure, PR credential, permissive ingestion, Browserless enforcement, scan-proof, and historical-advisory closure work.",
+        "confidence": "high",
+        "source": "technical-lead-notes.md"
+      }
+    },
+    {
+      "id": "cloud-security-assurance",
+      "type": "concern",
+      "statement": "Reconcile public hosting, IAM, encryption, monitoring, resilience, and location claims with technical evidence.",
+      "conclusion": {
+        "outcome": "unknown",
+        "statement": "Public claims and source interfaces are mapped. Live Cloud control-plane and effective-configuration evidence is private and therefore remains a neutral onboarding unknown, not an adverse finding.",
+        "confidence": "high",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "privacy-and-compliance-assurance",
+      "type": "concern",
+      "statement": "Trace data flows, map privacy/compliance claims, and identify assurance unavailable publicly.",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "Visible no-cookie and access controls support part of the story, but salt/Sentry/deletion conflicts, customer-effective scope, live controls, specialist sign-off, and licensing records prevent a compliance conclusion.",
+        "confidence": "high",
+        "source": "product-manager-notes.md"
+      }
+    },
+    {
+      "id": "scalability-and-cost-exposure",
+      "type": "concern",
+      "statement": "Identify scaling constraints, bottlenecks, expensive choices, and cost drivers without production metrics or bills.",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "Source exposes topology-dependent ingestion, query, queue, export, storage, provider, and cost drivers plus deliberate safeguards, but live capacity, spend, contracts, headroom, and unit economics are unknown.",
+        "confidence": "high",
+        "source": "technical-lead-notes.md"
+      }
+    },
+    {
+      "id": "technical-and-organizational-debt",
+      "type": "concern",
+      "statement": "Rank consequential accumulated technical and organizational risks for the incoming CTO.",
+      "conclusion": {
+        "outcome": "yes",
+        "statement": "The audit prioritizes the bounded direct corrections first, while treating release, recovery, Cloud, succession, capacity, cost, and governance as normal onboarding baselines unless internal evidence shows a concrete problem.",
+        "confidence": "high",
+        "source": "executive-summary.md"
+      }
+    },
+    {
+      "id": "public-evidence-overclaim-failure-mode",
+      "type": "failure-mode",
+      "statement": "Do not convert incomplete public evidence into claims about people, live controls, finances, compliance, or private practice.",
+      "conclusion": {
+        "outcome": "yes",
+        "statement": "Reports preserve source timing, prohibit people and financial inference, and explicitly treat unavailable private evidence as neutral. Organizational judgment is led by affirmative product, architecture, review, testing, security, and remediation evidence.",
+        "confidence": "high",
+        "source": "index.md"
+      }
+    }
+  ],
+  "evidence": {
+    "cutoff": "2026-08-22",
+    "sources": [
+      {
+        "id": "primary-code",
+        "kind": "git-repository",
+        "url": "https://github.com/plausible/analytics",
+        "ref": "master",
+        "commit": "9cc669b97ece3ecd37fcb3950791cb3873d7944d"
+      },
+      {
+        "id": "WEB-001",
+        "kind": "website",
+        "url": "https://plausible.io"
+      }
+    ],
+    "accessBoundary": {
+      "level": "public-read-only",
+      "limitations": "No production, cloud accounts, internal repositories, customer data, contracts, private incident records, financial records, private communications, or staff access."
+    }
+  },
+  "execution": {
+    "generator": {
+      "name": "wgo-audit"
+    },
+    "reviewers": [
+      {"id": "architecture", "version": "0.2", "status": "completed"},
+      {"id": "code-quality", "version": "0.2", "status": "completed"},
+      {"id": "product-value", "version": "0.2", "status": "completed"},
+      {"id": "security-privacy", "version": "0.3", "status": "completed"},
+      {"id": "application-security", "version": "0.1", "status": "completed"},
+      {"id": "cloud-security", "version": "0.1", "status": "completed"},
+      {"id": "business-continuity", "version": "0.2", "status": "completed"},
+      {"id": "expense-exposure", "version": "0.2", "status": "completed"},
+      {"id": "scalability", "version": "0.2", "status": "completed"},
+      {"id": "compliance-assurance", "version": "0.1", "status": "completed"},
+      {"id": "contributor-vendor-value", "version": "0.2", "status": "completed"},
+      {"id": "maintenance-cost", "version": "0.2", "status": "completed"},
+      {"id": "revenue-risk", "version": "0.2", "status": "completed"},
+      {"id": "project-health", "version": "0.2", "status": "completed"}
+    ],
+    "costEstimate": {
+      "basis": "api-equivalent",
+      "coverage": "audit",
+      "status": "final",
+      "currency": "USD",
+      "totalUsd": 109.29,
+      "source": "controls/cost-estimate.md"
+    }
+  },
+  "relationships": {
+    "previousAudit": null,
+    "baseline": null,
+    "comparesTo": [],
+    "supersedes": null
+  }
+}

@@ -1,0 +1,80 @@
+# Security And Privacy
+
+## Audit Question, Depth, And Evidence Boundary
+
+This detailed review asks what material identity, credential, exposure, privacy/PII, product-abuse, dependency, build, and operating-control risks affect an incoming CTO. It covers `primary-code` at commit `9cc669b97ece3ecd37fcb3950791cb3873d7944d`, public privacy/security/documentation effective by the 2026-08-22 22:08:28 EDT cutoff, and targeted public GitHub issues, discussions, PRs, releases, advisories, and workflow history. Post-cutoff access validates only cutoff-bounded records. No secrets were copied, no package was installed/restored, no exploit or load test ran, and no live Cloud/IAM/DNS/TLS/WAF/registry/runtime evidence was approved. This is source review, not penetration testing, compliance certification, or live-control assurance.
+
+## Coverage And Material Gaps
+
+The review traced analytics request fields through identifier derivation, persisted attributes, filtering, error context, and public claims ([E-027](../../evidence/evidence-ledger.md#e-027), [E-031](../../evidence/evidence-ledger.md#e-031), [E-037](../../evidence/evidence-ledger.md#e-037)); inspected session/token/shared-link authorization and login protections ([E-038](../../evidence/evidence-ledger.md#e-038)); assessed domain-keyed ingestion abuse and defenses ([E-039](../../evidence/evidence-ledger.md#e-039)); and reconciled dependency/build/release controls, trust-anchor consumers, scanner limits, and one critical advisory response ([E-040](../../evidence/evidence-ledger.md#e-040)–[E-042](../../evidence/evidence-ledger.md#e-042)).
+
+Live secret rotation, offboarding, tenant/IdP negative paths, WAF/edge/cache/CORS behavior, production Sentry use and retention, scanner results, branch/repository settings, artifact promotion, registry verification, and deployed versions remain unknown. Deep source exploitability routes to Application Security; repository/runner/cloud/runtime effectiveness to Cloud Security; requirements and certification to Compliance Assurance; transfer ownership to Business Continuity.
+
+## Key Findings
+
+| Finding | Severity | Effort | Evidence links | Confidence and limitation | Consequence | Taxonomy |
+|---|---|---|---|---|---|---|
+| The ingestion controller places the complete request, including raw IP address and User-Agent, in Sentry context; the before-send filter only replaces its fingerprint. Public copy says those fields are never stored in logs, databases, or disk. | High | S | [E-037](../../evidence/evidence-ledger.md#e-037); [OI-015](../../controls/open-items.md#oi-015) | High for source path and claim conflict; Cloud DSN, error occurrence, vendor receipt/retention, and legal interpretation are unknown. | If Sentry is enabled and an event captures this context, visitor identifiers can cross an external error-reporting boundary contrary to a categorical privacy assurance. | CWE-532 |
+| Public domain-keyed ingestion is deliberately spoofable; hostname allowlisting is opt-in, site rate limiting can be absent, and limiter failure allows traffic, despite multiple bot/spam/shield controls. | High | M | [E-039](../../evidence/evidence-ledger.md#e-039); [OI-016](../../controls/open-items.md#oi-016) | High for source/defaults and maintainer acknowledgment; live abuse, thresholds, bypass/false-positive rates, and cost are unknown. | Attackers can poison tenant analytics, consume ingest/storage resources, and degrade trust in product decisions unless the accepted flexibility/control contract is explicit. | project-defined: analytics-integrity |
+| Tracker PR automation supplies a reusable bot token to PR-head checkout, retains credentials, and then executes PR-controlled dependency/compiler code. | High | S | [E-040](../../evidence/evidence-ledger.md#e-040); [OI-017](../../controls/open-items.md#oi-017) | High for workflow composition; fork-secret withholding, PAT scope, branch authority, runner behavior, and exploitability require specialist verification. | A contributor able to run a qualifying internal PR may reach a credential with unknown repository/release privilege, creating source and release-integrity risk. | CWE-269 |
+| Public visitor-data wording is broader/shorter-lived than source: not all persisted event attributes are hashed, customer URLs/properties can carry supplied content, and source retains current/previous salts with deletion older than 48 hours while policy says 24 hours. | Medium | M | [E-027](../../evidence/evidence-ledger.md#e-027); [E-031](../../evidence/evidence-ledger.md#e-031); [E-037](../../evidence/evidence-ledger.md#e-037); [OI-011](../../controls/open-items.md#oi-011) | High for text/source difference; deployed cleanup, logs/caches, intended terminology, customer inputs, and legal effect are unknown. | An incoming CTO can repeat an inaccurate privacy assurance or miss the guardrails required for customer-controlled fields and cross-midnight identity continuity. | none |
+| Public copy claims daily dependency and regular vulnerability scans, but approved public evidence proves only partial Dependabot/version-update configuration; no cutoff-valid scanner results were available, and the `/e2e` npm version-update surface is undeclared. | Medium | M | [E-040](../../evidence/evidence-ledger.md#e-040); [E-042](../../evidence/evidence-ledger.md#e-042); [OI-018](../../controls/open-items.md#oi-018) | High for public-source boundary; private GitHub/security tooling may close the gap. | Vulnerability posture, remediation latency, secret scanning, and the public assurance cannot be accepted from configuration presence alone. | SLSA: source/build provenance gap |
+
+## Mandate-Relevant Strengths
+
+- Session, API/plugin-token, shared-link, redirect, rate-limit, and handler-level authorization controls are explicit and tested in source, including random tokens, digest storage for API/plugin credentials, session revocation, and role/site guards ([E-038](../../evidence/evidence-ledger.md#e-038)).
+- Ingestion has layered bot, referrer-spam, datacenter/threat-IP, hostname, page, IP, and country controls; the weakness is default coverage/adoption, not absence of defenses ([E-039](../../evidence/evidence-ledger.md#e-039)).
+- All 73 inspected GitHub Action references and all three Docker base stages are commit/digest-pinned; lockfiles are present, and workflow source wires per-platform image digests into manifest construction/inspection. Hosted execution and deployed consumption remain unproved ([E-040](../../evidence/evidence-ledger.md#e-040)).
+- The critical Storybook advisory shows a strong public response sequence: reviewed removal on 2026-05-12, fixed release on 2026-05-15, advisory on 2026-06-03, and no route/dependency at the pinned commit. Deployment/adoption remains unproved ([E-041](../../evidence/evidence-ledger.md#e-041)).
+
+### Decision Insights
+
+1. **Privacy stop condition:** do not repeat the categorical raw-IP/User-Agent storage claim until [OI-015](../../controls/open-items.md#oi-015) removes the Sentry context path and establishes any retained vendor data. Assuming “not in the analytics database” equals “never stored” can transfer an undisclosed privacy and customer-trust liability.
+2. **Analytics-integrity decision:** decide whether unauthenticated flexible ingestion remains a supported product contract only after the measured abuse/control evidence in [OI-016](../../controls/open-items.md#oi-016). Tightening defaults without that proof could break legitimate multi-host use; retaining them without proof leaves poisoning and cost risk unbounded.
+3. **Source/release authority condition:** separate reusable write credentials from PR-controlled execution before treating public workflow hygiene as sufficient. The smallest correction is credential isolation and `persist-credentials: false`, followed by PAT-scope/history verification in [OI-017](../../controls/open-items.md#oi-017).
+
+## Vulnerability-Class Checklist Verdicts
+
+These are source-review verdicts, not an ASVS certification or penetration-test result.
+
+| Class/item | Verdict | Locator and reason |
+|---|---|---|
+| Canonicalization | verified | `primary-code:lib/plausible/ingestion/request.ex` bounds URLs/referrers/properties, parses URI, sanitizes hostnames, and derives decoded pathname before event validation; coverage is scoped to analytics ingress. |
+| Injection sinks | unknown | Parameterized Ecto/query patterns are visible, but command/template/header/log/analytics sinks were not exhaustively traced; Application Security owns full sink review. |
+| Redirect/forward targets | verified | `primary-code:lib/plausible_web/user_auth.ex` accepts stored return paths only when they begin with `/`; no external-host redirect was established in the reviewed identity flow. |
+| Deserialization/parsing | unknown | `primary-code:lib/plausible/ingestion/request.ex` limits body size to 1 MB and field lengths/counts, but explicit JSON depth and every parser-specific hazard were not established. |
+| Verifier correctness | verified | [E-038](../../evidence/evidence-ledger.md#e-038) shows signed/aged sessions and scoped digest-verified API/plugin credentials that fail closed; full SAML/OAuth issuer/audience/algorithm review routes to Application Security. |
+| Key lifecycle | unknown | Runtime requires `SECRET_KEY_BASE`, but live key generation, ownership, rotation, overlap, cache, revocation, and offboarding proof were unavailable. |
+| Authorization placement | verified | [E-038](../../evidence/evidence-ledger.md#e-038) locates team/site/role checks at router and handler pipelines with tests; live tenant-negative-path effectiveness remains [OI-013](../../controls/open-items.md#oi-013). |
+| Response headers | verified | `primary-code:lib/plausible_web/router.ex` browser pipelines apply secure browser headers and CSRF protection; exact live edge overrides and every API response class remain Cloud/Application Security scope. |
+| CORS | unknown | `primary-code:lib/plausible_web/endpoint.ex` applies `CORSPlug`, but effective origins/credentials and live edge behavior were not established from approved evidence. |
+| Cache/CDN behavior | unknown | No approved live CDN/cache configuration or cache-key observation was available; route to Cloud Security. |
+| Request construction | unknown | No complete outbound-request/header taint review was performed; route source-level behavior to Application Security and egress effectiveness to Cloud Security. |
+| Data minimization | finding | [E-027](../../evidence/evidence-ledger.md#e-027) and [E-037](../../evidence/evidence-ledger.md#e-037) show plaintext event attributes/customer fields plus raw identifier error context that require claim and classification correction. |
+| Secrets in motion | finding | [E-037](../../evidence/evidence-ledger.md#e-037) shows private visitor identifiers can enter Sentry context; [E-040](../../evidence/evidence-ledger.md#e-040) shows a reusable repository token crossing a PR-head checkout boundary. No secret values were inspected or recorded. |
+| Protection claims | finding | Salt 24h/48h, “all visitor data” hashing, raw-IP/User-Agent Sentry context, and scan-coverage tensions remain [OI-011](../../controls/open-items.md#oi-011), [OI-015](../../controls/open-items.md#oi-015), and [OI-018](../../controls/open-items.md#oi-018). Transport/storage/deletion effectiveness is otherwise unknown. |
+| Fail posture | finding | [E-039](../../evidence/evidence-ledger.md#e-039) shows missing hostname/rate-limit configuration allows ingestion and rate-limiter dependency failure fails open; whether that matches accepted intent is [OI-016](../../controls/open-items.md#oi-016). |
+| Trust-anchor consumption | finding | [E-040](../../evidence/evidence-ledger.md#e-040) verifies base/per-platform digest consumption, but no public signature/SBOM/provenance producer or downstream verifier was locatable; private delivery remains [OI-003](../../controls/open-items.md#oi-003). |
+| Diagnostic surfaces | verified | [E-041](../../evidence/evidence-ledger.md#e-041) shows the critical Storybook route/dependency removed; reviewed dev/e2e diagnostic routes are compile-time gated. Deployed versions/reachability remain Cloud Security verification. |
+| Dependency/build integrity | finding | [E-040](../../evidence/evidence-ledger.md#e-040) and [E-042](../../evidence/evidence-ledger.md#e-042) show strong pins/locks and a fixed critical advisory, but PR credential isolation, scanner proof, `/e2e` update coverage, and public provenance remain open. |
+| Product-class abuse | finding | [E-039](../../evidence/evidence-ledger.md#e-039) establishes analytics spoofing/poisoning as the dominant abuse path and multiple countermeasures, but default coverage, bypass, reporting/takedown, cost, and adoption are unproved through [OI-016](../../controls/open-items.md#oi-016). |
+
+## Selected Outputs
+
+- Triggered [Supply-Chain And Tooling Results](../../controls/security/supply-chain-and-tooling.md), including exact read-only checks and trust-anchor consumers.
+- Triggered [Identity, Data, And Abuse Boundaries](../../controls/security/diagrams/identity-data-and-abuse-boundaries.md), showing the source-confirmed analytics, tenant, and conditional error-reporting paths.
+- No edge-exposure view was created because its specific trigger requires approved live DNS/TLS/ingress/WAF/reachability evidence, which was unavailable.
+
+## Material Omissions, Unknowns, And Auditor Questions
+
+No dependency, secret, image, or code scanner executed. Five of five requested scanner binaries were unavailable. Separately, the dependency-free source inventory found **73/73 action references commit-qualified** and inventoried three npm lockfiles/five Dependabot entries ([E-042](../../evidence/evidence-ledger.md#e-042)). No current vulnerability DB was queried because it would provide post-cutoff context and require an external dependency submission.
+
+No material auditor question is raised. The result-changing gaps require Plausible-held runtime/vendor/repository evidence and responsible security/product/legal decisions, not an auditor assertion.
+
+## Reconciliation
+
+No prior Security/Privacy report existed. Three material claim conflicts/tensions are preserved rather than normalized: categorical raw-IP/User-Agent storage wording versus conditional Sentry context ([OI-015](../../controls/open-items.md#oi-015)); 24-hour salt copy versus current/previous salts and cleanup older than 48 hours ([OI-011](../../controls/open-items.md#oi-011)); and daily dependency/regular vulnerability scan copy versus unavailable results and partial public configuration ([OI-018](../../controls/open-items.md#oi-018)). E-027/E-031 remain valid direct navigation for the salt/customer-input boundary. The reusable GitHub packet was navigation only; this report cites direct ledger/source evidence. Public GitHub issues, discussions, PRs, advisory, releases, and workflows were inspected where relevant, including Discussion #183, PR #6186, PR #6344, GHSA-mhcv-h7gf-57cf, and release `v3.2.1`. The exactly-one quality worker completed with one terminal outcome (`completed`), returned `revision required`, and the two selected outputs were revised once.
+
+## Bounded Conclusion And Downstream Guidance
+
+The pinned source has meaningful identity, abuse-filtering, dependency pinning, and public remediation strengths, but it also contains a direct privacy-claim conflict at the error-reporting boundary, a deliberate analytics-integrity exposure with permissive defaults, and a reusable credential at a PR-controlled execution boundary. Security/Privacy can complete with open verification/action through OI-003, OI-011, OI-013, and OI-015–OI-018. Application Security may use the source paths but must establish exploitability; Cloud Security may use the declared boundaries but must not infer live control effectiveness; Compliance Assurance may map claims/requirements but must not infer certification; Business Continuity may use the ownership gaps but must not infer transfer readiness.
