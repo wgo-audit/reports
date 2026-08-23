@@ -11,8 +11,8 @@
       "title": "vanityURLs Continuity And Third-Party Operability Audit",
       "label": "Continuity & third-party operability (deep)",
       "headline": {
-        "rating": "continuity-gaps",
-        "statement": "vanityURLs has a portable codebase, but canonical continuity and existing-service takeover remain blocked by public evidence gaps in authority, custody, recovery, and independent proof."
+        "rating": "portable-with-transfer-unknowns",
+        "statement": "vanityURLs has a portable codebase and identifiable public-evidence improvements; canonical continuity remains unresolved because it requires normally private transfer evidence that this audit could not assess."
       },
       "generatedAt": "2026-07-24"
     },
