@@ -22,11 +22,11 @@ No existing document provides a complete cross-repository maintainer handover.
 
 Applicable partial sources are:
 
-- [`.github/GOVERNANCE.md`](../../.github/GOVERNANCE.md) defines users, contributors, maintainers, decision-making, and invitation to maintainership. It does not define nomination criteria, approval authority, probation, cross-repository scope, access transfer, conflict handling, revocation, or offboarding. It also contradicts its own two-person roster by saying the project is maintained by one individual.
-- [`.github/MAINTAINERS.md`](../../.github/MAINTAINERS.md) lists product maintainers and trusted release signers. It is not a cross-repository owner or successor register.
-- [`.github/repository-rules.md`](../../.github/repository-rules.md) defines desired product-repository protections. It explicitly says administrative application and exported rulesets remain external.
-- [`RELEASE_WORKFLOW.md`](../../RELEASE_WORKFLOW.md) is the primary product release procedure. It covers review, checks, signed tags, release publication, deployment, and rollback; it does not transfer signer or administrative authority.
-- The [Quickstart](../documentation/tmp/website/content/docs/setup/quickstart.en.md) and [`docs/README.md`](../../docs/README.md) are the primary independent-instance setup and everyday-operation procedures.
+- `product-code:.github/GOVERNANCE.md` defines users, contributors, maintainers, decision-making, and invitation to maintainership. It does not define nomination criteria, approval authority, probation, cross-repository scope, access transfer, conflict handling, revocation, or offboarding. It also contradicts its own two-person roster by saying the project is maintained by one individual.
+- `product-code:.github/MAINTAINERS.md` lists product maintainers and trusted release signers. It is not a cross-repository owner or successor register.
+- `product-code:.github/repository-rules.md` defines desired product-repository protections. It explicitly says administrative application and exported rulesets remain external.
+- `product-code:RELEASE_WORKFLOW.md` is the primary product release procedure. It covers review, checks, signed tags, release publication, deployment, and rollback; it does not transfer signer or administrative authority.
+- The [Quickstart](../documentation/tmp/website/content/docs/setup/quickstart.en.md) and `product-code:docs/README.md` are the primary independent-instance setup and everyday-operation procedures.
 
 This transition aid complements those sources with acceptance, authority, and stop conditions. It does not reproduce their commands.
 
@@ -87,7 +87,7 @@ Use redacted role and recovery records; never copy secret values into this packe
 
 ### 4. Demonstrate technical maintainership
 
-For an independent fork, use the [Isolated Rebuild Aid](isolated-rebuild.md). For canonical maintainership, add a reviewed product change and release rehearsal using the primary [`RELEASE_WORKFLOW.md`](../../RELEASE_WORKFLOW.md).
+For an independent fork, use the [Isolated Rebuild Aid](isolated-rebuild.md). For canonical maintainership, add a reviewed product change and release rehearsal using the primary `product-code:RELEASE_WORKFLOW.md`.
 
 At minimum, record whether the candidate can:
 

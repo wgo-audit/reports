@@ -20,9 +20,9 @@ Use these sources as primary for their narrower questions:
 - [Access control](../documentation/tmp/website/content/docs/customize/access-control.en.md) covers Cloudflare Access setup, identity-provider choices, audience-secret storage, allowed/denied tests, and protected paths.
 - [Cloudflare Access operations](../documentation/tmp/website/content/blog/operating-cloudflare-access-for-a-short-link-domain.en.md) covers review triggers when a maintainer, domain/account, team domain, provider, or exposed value changes.
 - [Setup prerequisites](../documentation/tmp/website/content/docs/setup/_index.en.md) requires operational secrets and recovery information outside Git.
-- [`.github/repository-rules.md`](../../.github/repository-rules.md) defines desired GitHub least privilege, phishing-resistant authentication, branch/tag rules, Actions permissions, secret scanning, and owner expectations. Applied settings are external.
-- [`RELEASE_WORKFLOW.md`](../../RELEASE_WORKFLOW.md), [`.github/release-signers.json`](../../.github/release-signers.json), and [`.github/MAINTAINERS.md`](../../.github/MAINTAINERS.md) define the release-signing procedure and trusted identities. Recovery and successor enrollment are not defined.
-- [`v8s-config/README.md`](../../tmp_debug/wgo-sources/v8s-config/README.md) defines least-permission Cloudflare token intent and notes that the observed DNSControl token lacked Access permissions.
+- `product-code:.github/repository-rules.md` defines desired GitHub least privilege, phishing-resistant authentication, branch/tag rules, Actions permissions, secret scanning, and owner expectations. Applied settings are external.
+- `product-code:RELEASE_WORKFLOW.md`, `product-code:.github/release-signers.json`, and `product-code:.github/MAINTAINERS.md` define the release-signing procedure and trusted identities. Recovery and successor enrollment are not defined.
+- `terraform-source:README.md` defines least-permission Cloudflare token intent and notes that the observed DNSControl token lacked Access permissions.
 
 This aid complements those sources with a redacted control inventory and lifecycle. It does not reproduce provider-specific setup or secret commands.
 

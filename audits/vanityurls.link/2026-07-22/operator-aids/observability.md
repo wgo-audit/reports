@@ -21,8 +21,8 @@ Use these partial sources:
 - [Analytics reference](../documentation/tmp/website/content/docs/reference/analytics.en.md) identifies Cloudflare Security Events, Workers analytics, DNS Analytics, and optional provider events. It explains that traffic blocked before the Worker is absent from Worker/provider analytics.
 - [Network protection](../documentation/tmp/website/content/docs/customize/network-protection.en.md) is the primary edge-control inspection procedure.
 - [Access control](../documentation/tmp/website/content/docs/customize/access-control.en.md) and [Cloudflare Access operations](../documentation/tmp/website/content/blog/operating-cloudflare-access-for-a-short-link-domain.en.md) identify Access tests and logs.
-- The deployment checklist in [`RELEASE_WORKFLOW.md`](../../RELEASE_WORKFLOW.md) requires deployment-log observation, custom-domain checks, first-request Worker logs, smoke checks, and incident recording.
-- [`.github/SECURITY.md`](../../.github/SECURITY.md) publishes one security-reporting route, but monitoring, backup recipient, response objective, and offboarding are not evidenced.
+- The deployment checklist at `product-code:RELEASE_WORKFLOW.md` requires deployment-log observation, custom-domain checks, first-request Worker logs, smoke checks, and incident recording.
+- `product-code:.github/SECURITY.md` publishes one security-reporting route, but monitoring, backup recipient, response objective, and offboarding are not evidenced.
 
 This aid connects those surfaces to ownership, routing, and evidence without duplicating their inspection steps.
 

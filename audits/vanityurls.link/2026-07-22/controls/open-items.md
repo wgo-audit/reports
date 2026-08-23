@@ -1,5 +1,7 @@
 # Open Items
 
+This register separates direct public-evidence concerns from proof needed for a particular continuity decision. Items involving account ownership, secrets, billing, live operations, or recovery do not imply that those controls are absent or deficient; they remain open because canonical takeover cannot be accepted without authorized verification. They should not be counted as adverse findings about project or team quality.
+
 | ID | Type | Priority | Item and consequence | Evidence/artifact links | Owner | Closure route | Status |
 |---|---|---|---|---|---|---|---|
 | OI-001 | decision-needed | P1 | Define whether succession must preserve the existing repositories, release trust, domain, demo service, and community identity, or only enable an independent fork. Without this scope, “third-party operable” can be answered inconsistently and community expectations can be breached. | [Architecture report](../reviewer-reports/architecture/report.md); [ADR-001](architecture/adr/ADR-001-cross-repository-authority-boundary.md) | Current maintainers and project creators, with community-visible approval | Publish the continuity scope, assets in/out, decision authority, and acceptance criteria. | open |
