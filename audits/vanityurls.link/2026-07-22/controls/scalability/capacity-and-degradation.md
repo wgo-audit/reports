@@ -20,7 +20,7 @@ This view uses cutoff-pinned source/configuration and public operations document
 ## Degradation Sequence
 
 ```mermaid
-flowchart LR
+flowchart TB
   REQUEST["Request"] --> EDGE{"DNS / Cloudflare edge"}
   EDGE -->|"allowed"| WORKER["Worker"]
   EDGE -. "unknown block / outage" .-> FAIL["No service or edge response"]

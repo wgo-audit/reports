@@ -16,7 +16,7 @@ Implementation and intended edge configuration are present. DNS/TLS reachability
 ## Diagram
 
 ```mermaid
-flowchart LR
+flowchart TB
   VISITOR["Public visitor"]
   DNS["Registrar + Cloudflare DNS/TLS"]
   EDGE["Cloudflare WAF / rate limits"]

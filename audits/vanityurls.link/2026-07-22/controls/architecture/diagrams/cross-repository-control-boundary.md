@@ -16,7 +16,7 @@ Implementation and documented rationale are present. Observed operation, ownersh
 ## Diagram
 
 ```mermaid
-flowchart LR
+flowchart TB
   CODE["code repository<br/>product defaults, tools, tests, release"]
   INST["v8s-link repository<br/>links and instance configuration"]
   TF["v8s-config repository<br/>Cloudflare control intent"]

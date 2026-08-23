@@ -16,7 +16,7 @@ Implementation, source history, hosted-check samples, and recovery documentation
 ## Diagram
 
 ```mermaid
-flowchart LR
+flowchart TB
   HUMAN["Human-authored<br/>custom links/config"]
   DEFAULTS["Upstream defaults<br/>and Worker template"]
   BUILD["npm build<br/>validation + overlay"]
