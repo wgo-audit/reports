@@ -6,6 +6,8 @@ This audit assesses whether pinned DocuSeal Community `3.1.7` is a sound foundat
 
 Start with the [Executive Summary](executive-summary.md). The evidence-supported recommendation is **continue evaluation conditionally**: the Community signing core is substantive and inspectable, while production reliance remains gated by edition, identity, evidence trust, readiness, target architecture, recovery, capacity, commercial, maintenance, ownership, claim, and release-authority decisions and proof.
 
+This is a decision boundary, not a negative score for DocuSeal or its team. Legal, vendor, production, recovery, and organization-control evidence is normally private and its public absence is neutral. It becomes decision-relevant here only where the approved mandate specifically asks whether a regulated production deployment can be authorized. Direct source concerns remain findings; other private topics are due-diligence or target-implementation questions without adverse weight.
+
 Canonical shared records:
 
 - [Audit brief](audit-brief.md) — mandate, source boundary, approved targets, and source limits
@@ -29,4 +31,4 @@ The review excluded DocuSeal Pro implementation, hosted DocuSeal Cloud, organiza
 
 The product repository was not changed. No local product, security, recovery, capacity, or production tests ran; upstream hosted CI/image-job results are reported only within their actual scope. Coverage remains unmeasured.
 
-Structural validation not run: the canonical validator is absent from the active audit root.
+The 2026-08-23 publication correction passed the current WGO final/public structural validator. It removed temporary provider calculation evidence, introduced the canonical alias-only public cost receipt, and calibrated the conclusion without recollecting subject evidence or changing the 2026-08-06 cutoff.

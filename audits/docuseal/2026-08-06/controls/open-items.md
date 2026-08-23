@@ -1,5 +1,7 @@
 # Open Items
 
+This register supports the regulated production-selection mandate; it is not a defect count or a score for DocuSeal or its team. Direct source concerns remain findings. Vendor, legal, live-control, recovery, staffing, and organization facts that are normally private carry no adverse weight merely because they were unavailable publicly. An item remains here only when the current production decision requires the authority or proof, or when direct evidence establishes a specific correction route.
+
 | ID | Type | Priority | Item and consequence | Evidence/artifact links | Owner | Closure route | Status |
 |---|---|---|---|---|---|---|---|
 | OI-001 | decision-needed | P1 | Choose the Community/Pro integration boundary; the target design otherwise remains unstable. | [ADR-003](architecture/adr/ADR-003-edition-specific-integration-boundary.md); [component diagram](architecture/diagrams/component-contract-boundaries.md) | VP Software Engineering, Product Manager, CISO | Obtain release-specific entitlement/component evidence and approve the target integration boundary. | open |

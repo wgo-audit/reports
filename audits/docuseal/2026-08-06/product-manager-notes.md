@@ -4,6 +4,8 @@
 
 DocuSeal Community `3.1.7` contains a substantive, inspectable signing foundation: templates, ordered/parallel signers, required fields, signature images, attachments, signer events, result/audit generation, downloads, API/webhook mechanisms, optional email OTP, hashes, conditional PDF signing/TSA, and verifier paths are present ([Product Value](reviewer-reports/product-value/report.md)). This is enough to continue product evaluation; it is not evidence that the organization's web/iOS/Android onboarding is ready.
 
+Unavailable vendor, legal, customer, and production evidence is neutral about product and team quality. It appears below only where the regulated-production decision requires a contract, authority decision, specialist judgment, or target acceptance result.
+
 The most important workflow distinction is **submission completion versus evidence readiness**. Signer completion commits relational state and then separately schedules artifact, email, and webhook work. The organization must decide which state authorizes customer activation or another commercial event under [OI-009](controls/open-items.md), then prove failure/retry/backlog/reconciliation behavior.
 
 Product language must remain narrower than vendor positioning:
