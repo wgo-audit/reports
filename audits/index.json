@@ -1,5 +1,5 @@
 {
-  "count": 4,
+  "count": 5,
   "reports": [
     {
       "reportId": "vanityurls-link-2026-07-22-continuity-third-party-operability",
@@ -15,6 +15,18 @@
         "statement": "vanityURLs has a portable codebase, but canonical continuity and existing-service takeover remain blocked by public evidence gaps in authority, custody, recovery, and independent proof."
       },
       "generatedAt": "2026-07-24"
+    },
+    {
+      "reportId": "plausible-cto-inheritance-20260822",
+      "subject": "plausible-analytics",
+      "subjectName": "Plausible Analytics",
+      "evidenceCutoff": "2026-08-22",
+      "path": "audits/plausible-analytics/2026-08-22",
+      "entrypoint": "index.md",
+      "title": "Plausible Analytics CTO Inheritance Audit",
+      "label": "Cto inheritance & role decision (deep)",
+      "headline": null,
+      "generatedAt": null
     },
     {
       "reportId": "wgo-plausible-library-20260820",
