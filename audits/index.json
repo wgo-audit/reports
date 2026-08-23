@@ -1,5 +1,5 @@
 {
-  "count": 2,
+  "count": 3,
   "reports": [
     {
       "reportId": "vanityurls-link-2026-07-22-continuity-third-party-operability",
@@ -15,6 +15,18 @@
         "statement": "vanityURLs has a portable codebase, but canonical continuity and existing-service takeover remain blocked by public evidence gaps in authority, custody, recovery, and independent proof."
       },
       "generatedAt": "2026-07-24"
+    },
+    {
+      "reportId": "acme-healthchecks-20260819",
+      "subject": "healthchecks",
+      "subjectName": "Healthchecks",
+      "evidenceCutoff": "2026-08-19",
+      "path": "audits/healthchecks/2026-08-19",
+      "entrypoint": "index.md",
+      "title": "Acme Healthchecks Pull, Make, or Buy Audit",
+      "label": "Pull make buy technical and operational audit (deep)",
+      "headline": null,
+      "generatedAt": null
     },
     {
       "reportId": "docuseal-2026-08-06-regulated-esignature-readiness",
