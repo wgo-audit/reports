@@ -1,0 +1,31 @@
+# Product Decision Candidate Inventory
+
+## Coverage Domains
+
+| Domain | Evidence boundary | Candidate count | Limitation/closure |
+|---|---|---:|---|
+| Tracker and event ingestion | Pinned tracker, request/ingestion source, public Events API reference | 2 | Live delivery and durability remain [OI-001](../open-items.md#oi-001); API response-copy mismatch is [OI-012](../open-items.md#oi-012). |
+| Dashboard, Stats API, and integrations | Dashboard query client, Stats API controllers/query engine, public API/export references | 2 | No customer acceptance or live result comparison; close the full journey under [OI-008](../open-items.md#oi-008). |
+| Goals and product analysis | Goal, revenue, funnel, exploration source and public guides | 1 | Live entitlement and output correctness were not demonstrated. |
+| Subscription and entitlement | Plan files, benefit/feature/quota source, current public plan descriptions | 1 | Runtime Paddle/custom contracts and grandfathered plans require [OI-009](../open-items.md#oi-009). |
+| Teams, sharing, and SSO | Membership/policy/controllers and public role/SSO/shared-link guides | 1 | Tenant configuration, IdP behavior, and customer acceptance are unknown. |
+| Imports and exports | Import/export workers/UI and public data-access/import/export guides | 2 | Scheduled raw export implementation is outside visible source and remains [OI-010](../open-items.md#oi-010). |
+| Privacy and data behavior | Ingestion/identity source and public data policy | 1 | Salt-copy wording and customer-input guardrails require [OI-011](../open-items.md#oi-011). |
+| Cloud and Community Edition | README/build boundaries and public self-hosting comparison | 1 | The separately referenced CE packaging repository was excluded; matrix verification remains [OI-004](../open-items.md#oi-004). |
+
+## Decision Candidates
+
+| Candidate ID | Decision or durable behavior | Domain | Evidence | Observed/approved status | Disposition | Record or closure |
+|---|---|---|---|---|---|---|
+| PROD-DC-001 | The Events API returns `202` even when policy filters drop an event; persistence completion is a separate boundary. | Tracker and event ingestion | [E-021](../../evidence/evidence-ledger.md#e-021), [E-002](../../evidence/evidence-ledger.md#e-002) | Observed behavior and public promise; approval unknown | record-created | [PDR-001](pdr/PDR-001-accepted-event-is-not-durable-event.md) |
+| PROD-DC-002 | One tracker source compiles into official, npm, installation, and legacy variants with site-specific runtime configuration. | Tracker and event ingestion | [E-020](../../evidence/evidence-ledger.md#e-020), [E-006](../../evidence/evidence-ledger.md#e-006) | Observed; rationale documented; live coverage unknown | record-created | [PDR-002](pdr/PDR-002-single-source-configurable-tracker.md) |
+| PROD-DC-003 | Share query semantics between dashboard and public Stats API, while returning warnings/skip reasons for constrained outputs. | Dashboard, Stats API, and integrations | [E-022](../../evidence/evidence-ledger.md#e-022), [E-017](../../evidence/evidence-ledger.md#e-017) | Observed; public documentation present | record-created | [PDR-003](pdr/PDR-003-shared-stats-query-semantics.md) |
+| PROD-DC-004 | Model conversion analysis as typed goals plus optional revenue, ordered funnels, and bounded user journeys. | Goals and product analysis | [E-023](../../evidence/evidence-ledger.md#e-023) | Observed and publicly promised | record-created | [PDR-004](pdr/PDR-004-layered-conversion-analysis.md) |
+| PROD-DC-005 | Collaboration uses team/site roles, constrained public links, and enterprise SAML policy as distinct access layers. | Teams, sharing, and SSO | [E-024](../../evidence/evidence-ledger.md#e-024) | Observed and publicly promised; specialist/runtime proof unknown | record-created | [PDR-005](pdr/PDR-005-layered-access-and-sso-governance.md) |
+| PROD-DC-006 | Versioned plans, central feature gates, limits, and sustained-overage grace/lock behavior determine visible commercial access. | Subscription and entitlement | [E-025](../../evidence/evidence-ledger.md#e-025) | Observed; current customer/runtime truth unknown | record-created | [PDR-006](pdr/PDR-006-versioned-commercial-entitlements.md) |
+| PROD-DC-007 | Treat imported analytics as a bounded historical aggregate source and expose its limitations in query outputs. | Imports and exports | [E-026](../../evidence/evidence-ledger.md#e-026) | Observed and documented | record-created | [PDR-007](pdr/PDR-007-bounded-imported-data-semantics.md) |
+| PROD-DC-008 | Offer limited dashboard aggregate exports and queued native-data exports as distinct workflows. | Imports and exports | [E-026](../../evidence/evidence-ledger.md#e-026) | Observed and documented | record-created | [PDR-008](pdr/PDR-008-distinct-aggregate-and-native-export-modes.md) |
+| PROD-DC-009 | Derive day/site-scoped visitor identity from transient IP/User-Agent inputs while permitting customer-supplied event properties. | Privacy and data behavior | [E-027](../../evidence/evidence-ledger.md#e-027) | Observed and publicly described; specialist sign-off unknown | record-created | [PDR-009](pdr/PDR-009-derived-identity-and-customer-input-boundary.md) |
+| PROD-DC-010 | Managed Cloud and Community Edition differ by responsibility, release cadence, support, and premium capabilities. | Cloud and Community Edition | [E-028](../../evidence/evidence-ledger.md#e-028), [E-011](../../evidence/evidence-ledger.md#e-011) | Observed/publicly described; CE operations unknown | record-created | [PDR-010](pdr/PDR-010-cloud-community-edition-product-boundary.md) |
+| PROD-DC-011 | Provide scheduled raw-event delivery as a configured Enterprise service. | Imports and exports | [E-029](../../evidence/evidence-ledger.md#e-029) | Public promise; implementation and fulfillment unknown | blocked | [OI-010](../open-items.md#oi-010) |
+| PROD-DC-012 | Expose Search Console, Data Studio, proxy, and ecosystem integrations. | Dashboard, Stats API, and integrations | [E-020](../../evidence/evidence-ledger.md#e-020) | Public promise; not deeply traced as a unit | deferred | Product capability matrix under [OI-009](../open-items.md#oi-009); no unsupported PDR created. |
