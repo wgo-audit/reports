@@ -3,7 +3,7 @@
 </p>
 
 <!-- BADGES:START -->
-<a href="#reports"><img alt="Reports" src="https://img.shields.io/badge/Reports-5-2DD4BF?style=flat-square&labelColor=111827"></a>
+<a href="#reports"><img alt="Reports" src="https://img.shields.io/badge/Reports-4-2DD4BF?style=flat-square&labelColor=111827"></a>
 <a href="https://github.com/wgo-audit/reports/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/wgo-audit/reports?style=flat-square&labelColor=111827&color=2DD4BF&label=Last%20commit"></a>
 <a href="LICENSE.md"><img alt="License" src="https://img.shields.io/github/license/wgo-audit/reports?style=flat-square&labelColor=111827&color=2DD4BF"></a>
 <!-- BADGES:END -->
@@ -29,7 +29,6 @@ situation evolves over time.
 | [docuseal](audits/docuseal/README.md) | [2026-08-06](audits/docuseal/2026-08-06/index.md) | Regulated esignature readiness (deep) |
 | [healthchecks](audits/healthchecks/README.md) | [2026-08-19](audits/healthchecks/2026-08-19/index.md) | Pull make buy technical and operational audit (deep) |
 | [plausible-analytics](audits/plausible-analytics/README.md) | [2026-08-22](audits/plausible-analytics/2026-08-22/index.md) | Cto inheritance & role decision (deep) |
-| [plausible-analytics](audits/plausible-analytics/README.md) | [2026-08-20](audits/plausible-analytics/2026-08-20/index.md) | Product & operating model assessment (deep) |
 | [vanityurls.link](audits/vanityurls.link/README.md) | [2026-07-22](audits/vanityurls.link/2026-07-22/index.md) | Continuity & third-party operability (deep) |
 <!-- REPORTS:END -->
 

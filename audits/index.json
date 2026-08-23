@@ -1,5 +1,5 @@
 {
-  "count": 5,
+  "count": 4,
   "reports": [
     {
       "reportId": "vanityurls-link-2026-07-22-continuity-third-party-operability",
@@ -25,18 +25,6 @@
       "entrypoint": "index.md",
       "title": "Plausible Analytics CTO Inheritance Audit",
       "label": "Cto inheritance & role decision (deep)",
-      "headline": null,
-      "generatedAt": null
-    },
-    {
-      "reportId": "wgo-plausible-library-20260820",
-      "subject": "plausible-analytics",
-      "subjectName": "Plausible Analytics",
-      "evidenceCutoff": "2026-08-20",
-      "path": "audits/plausible-analytics/2026-08-20",
-      "entrypoint": "index.md",
-      "title": "Plausible Analytics Run, Subscribe, or Replace Assessment",
-      "label": "Product & operating model assessment (deep)",
       "headline": null,
       "generatedAt": null
     },
