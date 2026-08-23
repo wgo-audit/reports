@@ -8,8 +8,8 @@
     "language": "en",
     "entrypoint": "index.md",
     "headline": {
-      "rating": "continuity-gaps",
-      "statement": "vanityURLs has a portable codebase, but canonical continuity and existing-service takeover remain blocked by public evidence gaps in authority, custody, recovery, and independent proof."
+      "rating": "portable-with-transfer-unknowns",
+      "statement": "vanityURLs has a portable codebase and identifiable public-evidence improvements; canonical continuity remains unresolved because it requires normally private transfer evidence that this audit could not assess."
     }
   },
   "subject": {
@@ -30,9 +30,9 @@
       "type": "question",
       "statement": "Can a new maintainer take over the canonical project with minimal creator involvement?",
       "conclusion": {
-        "outcome": "no",
-        "statement": "No",
-        "summary": "The code and public decision history are strong, but canonical maintainer appointment, cross-repository authority, administrative controls, release-signer recovery, and successor access are not defined and exercised end to end.",
+        "outcome": "unknown",
+        "statement": "Not established from public evidence",
+        "summary": "The code and public decision history are strong. The public corpus does not show whether normally private appointment, authority, recovery, and successor-access arrangements exist, so it cannot support either a yes or no answer.",
         "confidence": "high",
         "source": "executive-summary.md"
       }
@@ -54,9 +54,9 @@
       "type": "question",
       "statement": "Can a third party take over and operate the existing project, v8s.link domain, and demo service?",
       "conclusion": {
-        "outcome": "no",
-        "statement": "No, not on public evidence",
-        "summary": "GitHub, Cloudflare, registrar/domain, Terraform state, secrets, deployment, alert, renewal, and recovery custody are external to the repositories and have no evidenced transfer path.",
+        "outcome": "unknown",
+        "statement": "Unresolved; current-owner cooperation and private authority evidence are required",
+        "summary": "The required custody and transfer records are normally private. Their absence from this corpus does not show poor operations, but actual takeover cannot be accepted until transferability is verified.",
         "confidence": "high",
         "source": "executive-summary.md"
       }

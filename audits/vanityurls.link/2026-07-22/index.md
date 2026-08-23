@@ -4,12 +4,12 @@
 
 This detailed, public-evidence audit answers whether vanityURLs can survive a sudden departure or shift in interest by its creators/current maintainers.
 
-- **Canonical maintainer onboarding with minimal creator involvement:** **No.**
+- **Canonical maintainer onboarding with minimal creator involvement:** **Not established from public evidence.**
 - **A new independent third-party instance:** **Plausible, but not yet proven easy.**
-- **Third-party takeover of the existing project/domain/demo:** **No, not on public evidence.**
+- **Third-party takeover of the existing project/domain/demo:** **Unresolved; it requires current-owner cooperation and private authority evidence.**
 - **Fork and continued technical evolution after abandonment:** **Yes, probably with moderate effort; preserving the existing identity and service is not assured.**
 
-The codebase’s portability is a real strength. The decisive gaps are external authority, cross-repository governance, release/domain/cloud custody, recovery and alert ownership, and independent end-to-end proof. Read the [Executive Summary](executive-summary.md) for the reconciled assessment and 30–90 day plan.
+The codebase’s portability is a real strength. Public evidence directly identifies upgrade-authentication, demo/source-alignment, and cross-repository governance concerns. Authority, release/domain/cloud custody, recovery ownership, and handover readiness are decision dependencies for a canonical takeover, but their absence from the public corpus is not evidence that the team lacks those controls. Read the [Executive Summary](executive-summary.md) for the reconciled assessment and 30–90 day plan.
 
 ## Audience Routes
 
@@ -29,7 +29,7 @@ The codebase’s portability is a real strength. The decisive gaps are external 
 - **Excluded:** authenticated/private repository settings; cloud, registrar, secret, Terraform-state, billing, contract, and private operating records; post-cutoff facts except explicitly labeled validation.
 - **Execution:** zero local dependency restores, tests, builds, Terraform operations, deployments, or recovery exercises.
 
-An absent public control may exist privately. It is still unavailable to an independent successor until it is safely documented, transferred, and exercised.
+An absent public control may exist privately and is neutral when assessing project or team quality. It becomes a decision dependency only when a specific outcome—such as taking over the canonical service—requires that control to be documented, transferred, and exercised.
 
 ## Key Control Maps
 
@@ -57,7 +57,7 @@ These aids translate the audit into a successor-facing operating packet. They ar
 
 ## Reviewer Reports
 
-All 11 approved reviewers completed with open verification where public evidence could not establish live or private controls.
+All 11 approved reviewers completed. Normally private unknowns remain neutral unless the requested continuity outcome requires them; direct public-evidence concerns are identified separately.
 
 1. [Architecture](reviewer-reports/architecture/report.md)
 2. [Product Value](reviewer-reports/product-value/report.md)

@@ -20,8 +20,8 @@ Use these supporting sources:
 - [Setup prerequisites](../documentation/tmp/website/content/docs/setup/_index.en.md) defines the required domain, GitHub, Cloudflare, workstation, and secret-storage boundaries.
 - [Setup flowcharts](../documentation/tmp/website/content/docs/setup/flowcharts.en.md) explains installer branches and written files.
 - [Repository layout](../documentation/tmp/website/content/docs/reference/repository-layout.en.md) defines product-owned, instance-owned, and generated paths.
-- [`docs/README.md`](../../docs/README.md) covers everyday operation after detachment.
-- [Access control](../documentation/tmp/website/content/docs/customize/access-control.en.md), [Network protection](../documentation/tmp/website/content/docs/customize/network-protection.en.md), and the [`RELEASE_WORKFLOW.md`](../../RELEASE_WORKFLOW.md) deployment/rollback checklist cover the security and verification boundaries.
+- `product-code:docs/README.md` covers everyday operation after detachment.
+- [Access control](../documentation/tmp/website/content/docs/customize/access-control.en.md), [Network protection](../documentation/tmp/website/content/docs/customize/network-protection.en.md), and the `product-code:RELEASE_WORKFLOW.md` deployment/rollback checklist cover the security and verification boundaries.
 
 The Quickstart does not define an independent observer, creator-assistance budget, pass/fail record, isolated rollback/recovery exercise, canonical-versus-fork acceptance boundary, or cleanup evidence. This aid adds those controls without copying the procedure.
 
@@ -81,7 +81,7 @@ Do not patch source or documentation during the measured run. Record a blocker f
 
 ### 3. Execute declared quality gates
 
-Use the commands and groupings in [`package.json`](../../package.json) and [`docs/README.md`](../../docs/README.md). Record:
+Use the commands and groupings in `product-code:package.json` and `product-code:docs/README.md`. Record:
 
 - exact command and source commit;
 - tool/dependency versions and lockfile state;
@@ -99,7 +99,7 @@ This audit has no local result to use as an expected pass baseline. Expected cou
 
 Follow the Quickstart, [Access control](../documentation/tmp/website/content/docs/customize/access-control.en.md), [Network protection](../documentation/tmp/website/content/docs/customize/network-protection.en.md), and the existing deployment checklist. Record repository/deployment connection, target account/zone/hostname, deployment identifier, intended edge controls, and log evidence.
 
-If Terraform is included, use the public [`v8s-config/README.md`](../../tmp_debug/wgo-sources/v8s-config/README.md) only as reference. Create an exercise-specific state/backend; never import or target canonical resources.
+If Terraform is included, use the public `terraform-source:README.md` only as reference. Create an exercise-specific state/backend; never import or target canonical resources.
 
 **Stop** if account, zone, hostname, state backend, deployment target, or rollback path is ambiguous.
 

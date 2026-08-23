@@ -15,10 +15,10 @@ No restore, rollback, deployment, Terraform action, DNS change, secret recovery,
 
 Use these existing procedures as primary:
 
-- The deployment and rollback section of [`RELEASE_WORKFLOW.md`](../../RELEASE_WORKFLOW.md) covers a clean reviewed worktree, deployment-log observation, custom-domain and exposure checks, last-known-good rollback, smoke checks, registry validation, and incident recording.
+- The deployment and rollback section of `product-code:RELEASE_WORKFLOW.md` covers a clean reviewed worktree, deployment-log observation, custom-domain and exposure checks, last-known-good rollback, smoke checks, registry validation, and incident recording.
 - [Upgrading an instance](../documentation/tmp/website/content/docs/reference/upgrading.en.md) covers product-file refresh while preserving instance-owned source and secrets. It does not provide a full rollback or recovery process.
-- [`docs/README.md`](../../docs/README.md) covers everyday link changes, checks, Git publication, Cloudflare deployment, and source ownership.
-- [`v8s-config/README.md`](../../tmp_debug/wgo-sources/v8s-config/README.md) covers Terraform initialization, validation, planning, known discovery limitations, import addresses, and the rule that dashboard changes be reconciled into Terraform.
+- `product-code:docs/README.md` covers everyday link changes, checks, Git publication, Cloudflare deployment, and source ownership.
+- `terraform-source:README.md` covers Terraform initialization, validation, planning, known discovery limitations, import addresses, and the rule that dashboard changes be reconciled into Terraform.
 - The [Quickstart](../documentation/tmp/website/content/docs/setup/quickstart.en.md) is the primary first-deployment procedure for a new independent instance.
 
 None covers whole-service disaster recovery, Terraform backend/state restoration, registrar recovery, secret reconstitution, alert ownership, RTO/RPO, or a tested canonical takeover. This aid complements those missing boundaries and does not repeat their commands.
@@ -95,7 +95,7 @@ For the existing service:
 - identify the Terraform backend and current state before initialization against the target;
 - compare declared resources, imports, provider/lock versions, and authorized live discovery;
 - identify dashboard-only controls, emergency drift, DNS/domain settings, Worker deployment connection, Access application, WAF/rate limits, secrets by locator, and current deployed artifact;
-- use the primary [`v8s-config/README.md`](../../tmp_debug/wgo-sources/v8s-config/README.md) import guidance only after matching resources and authority are verified.
+- use the primary `terraform-source:README.md` import guidance only after matching resources and authority are verified.
 
 **Stop before `apply`, import, secret change, DNS change, or deployment** if backend/state/import coverage, target account/zone, drift, rollback path, or reviewer is **UNKNOWN**. Source presence is not proof that Terraform owns the live resource.
 
@@ -107,7 +107,7 @@ Use the [IAM And Credential Control Aid](iam-and-credential-control.md). Restore
 
 ### 6. Build, deploy, and verify
 
-Use the existing [`RELEASE_WORKFLOW.md`](../../RELEASE_WORKFLOW.md) deployment/rollback checklist and instance [Quickstart](../documentation/tmp/website/content/docs/setup/quickstart.en.md). Record:
+Use the existing `product-code:RELEASE_WORKFLOW.md` deployment/rollback checklist and instance [Quickstart](../documentation/tmp/website/content/docs/setup/quickstart.en.md). Record:
 
 - tool and provider versions;
 - exact source commits/tags;
