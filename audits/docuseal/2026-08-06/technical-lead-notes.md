@@ -4,6 +4,8 @@
 
 The assessed DocuSeal Community `3.1.7` source is a traceable Rails modular monolith with ERB/Turbo/Vue UI, SQL workflow state, Active Storage blobs, Redis/Sidekiq jobs, API/webhooks/mail, PDF/audit generation, optional PKCS/TSA signing, container delivery, and configurable SQL/blob/Redis/provider boundaries. It is technically intelligible enough to design exact target validation ([Architecture](reviewer-reports/architecture/report.md)).
 
+Private live-control and organization evidence was not expected to be public and is neutral about engineering quality. It becomes relevant only as target-deployment discovery or where this regulated production decision requires proof; source-visible adverse conditions remain separately identified.
+
 The upstream baseline is useful but bounded: five configured application jobs and the tag image-build/push job passed. Local reproduction did not run because the approved host lacked the locked toolchain/dependencies and installation was not authorized. Coverage and exact RSpec outcomes remain unmeasured. Upstream tag/image status does not identify an accepted or deployed digest ([Code Quality](reviewer-reports/code-quality/report.md)).
 
 ## Architecture, Operations, Quality, And Security Findings
@@ -39,4 +41,4 @@ The [API-equivalent cost estimate](controls/cost-estimate.md) is **Unreconciled*
 
 No dependency installation, local product suite, penetration test, load test, live topology inspection, deployment, migration, restore, incident, key rotation, or code remediation ran. Pro implementation, external packages, registry state, private review, operative contracts, and specialist determinations remain outside the evidence boundary. Source mechanisms do not prove live effectiveness, capacity, correctness, security, ownership, cost, or readiness.
 
-Structural validation not run: the canonical validator is absent from the active audit root.
+The 2026-08-23 publication correction passed the current WGO final/public structural validator without recollecting subject evidence or changing the cutoff.

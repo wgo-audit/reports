@@ -7,8 +7,8 @@
     "language": "en",
     "entrypoint": "index.md",
     "headline": {
-      "rating": "material-gaps",
-      "statement": "DocuSeal Community is a substantive foundation for further evaluation, but production reliance remains conditional on unresolved technical, vendor, specialist, and operating evidence."
+      "rating": "conditional-evaluation",
+      "statement": "DocuSeal Community is a substantive foundation for further evaluation; direct concerns and decision-critical proof define the next stage, while unavailable private evidence carries no negative product or team weight."
     }
   },
   "subject": {
@@ -31,7 +31,7 @@
       "conclusion": {
         "outcome": "partial",
         "statement": "Continue evaluation conditionally",
-        "summary": "The Community signing core is substantive and inspectable, while production reliance remains gated by unresolved evidence and decisions.",
+        "summary": "The Community signing core is substantive and inspectable. Regulated production reliance requires target decisions and proof; normally private unavailable evidence is not treated as an adverse product or team signal.",
         "confidence": "high",
         "source": "index.md"
       }
@@ -55,7 +55,7 @@
       "conclusion": {
         "outcome": "no",
         "statement": "No",
-        "summary": "Target architecture, Pro capabilities, identity binding, evidence trust, recovery, capacity, ownership, and specialist determinations remain unresolved.",
+        "summary": "The approved public evidence does not supply the target-specific and specialist proof required for regulated production authorization; this is a decision boundary, not evidence that those controls or capabilities are absent.",
         "confidence": "high",
         "source": "index.md"
       }

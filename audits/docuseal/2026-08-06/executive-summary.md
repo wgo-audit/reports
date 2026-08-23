@@ -6,6 +6,8 @@ The organization is evaluating self-hosted DocuSeal Community as the eSignature 
 
 **Recommendation: continue evaluation conditionally.** The pinned Community repository contains a substantive, inspectable multi-party signing core and a traceable release candidate. No reviewed evidence establishes a fatal absence that warrants stopping technical/vendor evaluation. Equally, no reviewed evidence supports production approval, an external legal/compliance/KYC claim, a customer commitment, or revenue-critical reliance.
 
+The second statement is calibrated to the decision, not treated as evidence of poor product or team performance. Vendor, legal, production, recovery, staffing, and organization-control records are normally private. Their public absence is neutral unless the current production-approval decision requires them, approved evidence was expected but unavailable, or direct evidence supplies a specific concern. Here, regulated production reliance genuinely requires several of those proofs; they are decision dependencies, while unrelated private unknowns carry no severity or negative weight.
+
 The next stage should be a governed decision-and-proof program, not implementation by assumption. The organization must first decide the edition/integration, signing trust, customer workflow/readiness, signer assurance, workload, commercial, maintenance, claim, and release-authority boundaries. It must then prove the selected target through independent artifacts, supported web/mobile paths, controlled release, failure/recovery, capacity, access transfer, vendor terms, and consequence scenarios.
 
 ## Current Product And Control Position
@@ -17,11 +19,11 @@ The strongest positive evidence is concrete:
 - The architecture, workflow, data, job, credential, provider, migration, and release surfaces are traceable enough to design exact target tests rather than rely on marketing claims ([Architecture](reviewer-reports/architecture/report.md)).
 - Public project activity, source access, and visible release outputs support further diligence, while the audit correctly avoids converting Git labels into staffing, authority, knowledge, or bus-factor claims ([Contributor & Vendor Value](reviewer-reports/contributor-vendor-value/report.md)).
 
-The production gap is also concrete:
+The production decision dependencies and direct concerns are also concrete:
 
 - Required web/mobile integration crosses unresolved Community/Pro API, embed, identity, role, SAML, SMS, package, entitlement, and support boundaries ([OI-001](controls/open-items.md), [OI-005](controls/open-items.md), [OI-020](controls/open-items.md)).
 - SQL completion precedes asynchronous evidence generation and downstream mail/webhook completion. The organization has not approved the authoritative readiness/revenue state or demonstrated reconciliation ([Product Value](reviewer-reports/product-value/report.md), [E-047](evidence/evidence-ledger.md)).
-- Signature images, hashes, conditional PKI signing, optional TSA, generated audit snapshots, and verifier results are distinct mechanisms. No independent artifact suite, accepted trust model, immutable tenant-bound evidence, or specialist decision exists ([OI-002](controls/open-items.md), [OI-006](controls/open-items.md)).
+- Signature images, hashes, conditional PKI signing, optional TSA, generated audit snapshots, and verifier results are distinct mechanisms. An independent artifact suite, accepted trust model, immutable tenant-bound evidence, and specialist decision were not available in the approved corpus; because regulated production approval requires them, they are decision dependencies rather than adverse product findings ([OI-002](controls/open-items.md), [OI-006](controls/open-items.md)).
 - Community administration is broad; signer assurance and KYC binding are unresolved; source-visible authorization/session edge cases require focused testing; target secret/key custody and privacy lifecycle are unproved ([Security & Privacy](reviewer-reports/security-privacy/report.md)).
 - Recovery must align SQL, blobs, keys, and queue state. The approved targets—99.5% monthly signing availability, 99% monthly onboarding availability, two-hour RPO, and permitted onboarding pause—are criteria, not achieved performance ([E-044](evidence/evidence-ledger.md), [Business Continuity](reviewer-reports/business-continuity/report.md)).
 - The approved low/base/high scenario method supplies a valid capacity approach, but actual demand, latency, backlog, catch-up, retention, provider, and topology values remain unpopulated ([E-045](evidence/evidence-ledger.md), [OI-017](controls/open-items.md)).
@@ -95,4 +97,4 @@ The [API-equivalent cost estimate](controls/cost-estimate.md) is **Unreconciled*
 
 No local product gates, penetration test, load test, live deployment, restore, incident, target golden path, Pro implementation review, contract review, or legal/compliance determination was performed. Coverage is unmeasured, and public list prices/terms are not commitments.
 
-Structural validation not run: the canonical validator is absent from the active audit root.
+The 2026-08-23 publication correction passed the current WGO final/public structural validator without recollecting subject evidence or changing the cutoff.
