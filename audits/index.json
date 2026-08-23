@@ -62,8 +62,8 @@
       "title": "DocuSeal Regulated eSignature Readiness Audit",
       "label": "Regulated esignature readiness (deep)",
       "headline": {
-        "rating": "material-gaps",
-        "statement": "DocuSeal Community is a substantive foundation for further evaluation, but production reliance remains conditional on unresolved technical, vendor, specialist, and operating evidence."
+        "rating": "conditional-evaluation",
+        "statement": "DocuSeal Community is a substantive foundation for further evaluation; direct concerns and decision-critical proof define the next stage, while unavailable private evidence carries no negative product or team weight."
       },
       "generatedAt": null
     }
