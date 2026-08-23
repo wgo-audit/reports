@@ -1,0 +1,80 @@
+{
+  "$schema": "https://wgo-audit.com/schemas/manifest/1.0.0.json",
+  "schemaVersion": "1.0.0",
+  "report": {
+    "id": "acme-healthchecks-20260819",
+    "title": "Acme Healthchecks Pull, Make, or Buy Audit",
+    "entrypoint": "index.md"
+  },
+  "subject": {
+    "id": "healthchecks",
+    "name": "Healthchecks",
+    "kind": "software-and-hosted-service"
+  },
+  "audit": {
+    "type": "pull-make-buy technical and operational audit",
+    "mode": "improve",
+    "depth": "deep"
+  },
+  "businessConcerns": [
+    {"id":"acme-pull-make-buy","type":"mandate","statement":"Conduct a technical, operational, security, strategic, and cost audit enabling Acme to choose pull, make, or buy for Healthchecks.","conclusion":{"outcome":"yes","statement":"Compare buy and pull through parallel bounded due diligence; consider make only for a demonstrated source-change need; no option has production approval.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"select-sustainable-option","type":"decision","statement":"Select an option Acme can depend on over time, or identify the smallest unresolved evidence preventing a responsible choice.","conclusion":{"outcome":"partial","statement":"The evidence does not support an all-in burden ranking between buy and pull; comparable Acme-specific vendor, topology, alert, ownership, cost, and exit evidence is required.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"five-minute-critical-alert","type":"concern","statement":"Determine whether each option can deliver an actionable human alert within five minutes of a critical job missing expected completion.","conclusion":{"outcome":"no","statement":"No option has T0-to-actionable-human evidence at or below 300 seconds with no silent loss.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"silent-monitor-failure","type":"failure-mode","statement":"Do not recommend an option whose monitoring or notification path can fail silently without a reasonable independent safeguard.","conclusion":{"outcome":"yes","statement":"The conditional recommendation requires an Acme-controlled independent watchdog and alert route.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"unsustainable-ownership","type":"failure-mode","statement":"Do not recommend self-hosting or a fork that Acme cannot sustainably operate, maintain, recover, and upgrade.","conclusion":{"outcome":"partial","statement":"Pull and buy both require measured Acme-specific ownership evidence; make additionally requires a demonstrated source-change need and accepted fork stewardship.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"team-readiness-unknown","type":"concern","statement":"Identify required skills and ownership without treating unavailable team evidence as proof of capability or incapability.","conclusion":{"outcome":"unknown","statement":"Required roles and skills are mapped; Acme team ability remains intentionally unassessed.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"workload-growth-envelope","type":"question","statement":"Assess slightly fewer than 100 jobs today and reasonable growth without inventing unavailable workload metrics.","conclusion":{"outcome":"partial","statement":"Source mechanisms and commercial tiers are known, but production capacity and growth headroom require measured workload evidence.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"job-monitoring-fit","type":"question","statement":"Assess heartbeat and cron semantics, grace periods, schedule edge cases, overlapping runs, exit status, duration measurement, and practical Windows Scheduled Task support.","conclusion":{"outcome":"partial","statement":"Fit is strong for known-schedule passive monitoring; business-output, overlap, and Windows operating contracts remain incomplete.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"pull-make-buy-risk","type":"question","statement":"Identify material risks, mitigations, stop conditions, and independent safeguards for pull, make, and buy.","conclusion":{"outcome":"yes","statement":"Option-specific risks and stop conditions are documented; every option retains Acme-owned alert and continuity duties.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"maintenance-love","type":"question","statement":"Estimate initial and recurring engineering and operational effort for pull and make, including upgrades, security patches, backup, recovery, cleanup, and host monitoring.","conclusion":{"outcome":"partial","statement":"Exact effort and an all-in buy-versus-pull burden ranking are unsupported; measured option-specific routine and surge work is required.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"option-cost","type":"question","statement":"Estimate setup, recurring infrastructure or vendor expense, labor effort, and uncertainty separately for every option.","conclusion":{"outcome":"partial","statement":"Hosted list price is known; all-in TCO and monetized opportunity cost remain unknown for every option.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"hosted-cloud-visibility","type":"concern","statement":"Determine whether Healthchecks.io data visibility and exposure can be acceptably controlled through security review and minimal architecture changes.","conclusion":{"outcome":"partial","statement":"Data minimization can reduce exposure, but vendor/security/contract acceptance remains open.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"payload-data-exposure","type":"concern","statement":"Assess sensitive ping payload, captured-log, environment-variable, credential, retention, pruning, and external-object-storage exposure.","conclusion":{"outcome":"yes","statement":"Material storage/provider boundaries are mapped; no-body-by-default and lifecycle controls are required.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"identity-access-security","type":"question","statement":"Assess enterprise identity, reverse-proxy SSO, WebAuthn, team isolation, credential storage, brute-force defenses, and supply-chain controls.","conclusion":{"outcome":"partial","statement":"Useful source controls exist, but proxy trust, bearer capabilities, privileges, credential lifecycle, and deployed supply-chain acceptance remain open.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"capacity-retention-footprint","type":"question","statement":"Assess rate limits, request sizes up to 100 kB, concurrency, database and storage growth, retention, pruning, and realistic compute footprint from source and operator evidence.","conclusion":{"outcome":"partial","statement":"Mechanisms are established; CPU, RAM, storage, burst, and queue capacity are not production-proven.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"upstream-continuity","type":"concern","statement":"Assess license obligations, primary-maintainer concentration, community health, issue and pull-request handling, release continuity, and integration of outside contributions.","conclusion":{"outcome":"partial","statement":"BSD rights and active history preserve options, but upstream/vendor concentration and Acme succession remain material.","confidence":"high","source":"executive-summary.md"}},
+    {"id":"assessment-absence-guard","type":"failure-mode","statement":"Do not treat missing scaling, reliability, team, or hosted-service evidence as positive or negative evidence; classify it by decision relevance.","conclusion":{"outcome":"yes","statement":"Normally private and Acme-specific unknowns are neutral unless a decision requires them; direct source findings are reported separately.","confidence":"high","source":"executive-summary.md"}}
+  ],
+  "evidence": {
+    "cutoff": "2026-08-19",
+    "sources": [
+      {"id":"HC-CODE-001","kind":"git-repository","url":"https://github.com/healthchecks/healthchecks","ref":"master","commit":"fafac59eeb00cfdc87166242544fa071ecad1723"},
+      {"id":"HC-WEB-001","kind":"public-web","url":"https://healthchecks.io"},
+      {"id":"HC-CONTEXT-001","kind":"auditor-approved-context","path":"audit-brief.md"}
+    ],
+    "accessBoundary": {
+      "level": "source-and-public-evidence-only",
+      "statement": "No Acme team interviews, infrastructure, job inventory, live deployment, hosted internals, contract, or production metrics were approved."
+    }
+  },
+  "execution": {
+    "generator": {"name":"wgo-audit"},
+    "reviewers": [
+      {"id":"architecture","version":"0.2","status":"completed"},
+      {"id":"business-continuity","version":"0.2","status":"completed"},
+      {"id":"code-quality","version":"0.2","status":"completed"},
+      {"id":"contributor-vendor-value","version":"0.2","status":"completed"},
+      {"id":"expense-exposure","version":"0.2","status":"completed"},
+      {"id":"maintenance-cost","version":"0.2","status":"completed"},
+      {"id":"product-value","version":"0.2","status":"completed"},
+      {"id":"project-health","version":"0.2","status":"completed"},
+      {"id":"revenue-risk","version":"0.2","status":"completed"},
+      {"id":"scalability","version":"0.2","status":"completed"},
+      {"id":"security-privacy","version":"0.2","status":"completed"}
+    ],
+    "costEstimate": {
+      "basis": "api-equivalent",
+      "coverage": "audit",
+      "status": "final",
+      "currency": "USD",
+      "totalUsd": 103.02,
+      "source": "controls/cost-estimate.md"
+    }
+  },
+  "relationships": {
+    "previousAudit": null,
+    "baseline": null,
+    "comparesTo": [],
+    "supersedes": null
+  }
+}
