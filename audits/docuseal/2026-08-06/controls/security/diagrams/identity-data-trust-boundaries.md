@@ -12,59 +12,118 @@ Reader question: Where do operator identity, signer capability, machine credenti
 
 ## Diagram
 
+The panels are read from top to bottom. Repeated application or target-control
+nodes refer to the same trust boundary; they are repeated to keep each panel
+legible at the default GitHub page width.
+
+### Panel 1 — Operator And Integration Entry
+
 ```mermaid
 flowchart TB
   classDef unknown stroke-dasharray: 5 5,fill:#f7f7f7,color:#555;
 
-  subgraph External["External actors and authority"]
-    Operator["Organization operator\npassword + optional TOTP"]
-    Integration["Web/mobile integration\nX-Auth-Token bearer credential"]
-    Signer["External signer\ncapability link; optional email check"]
-    IdP["Target IdP / SAML / SCIM / roles\nUNKNOWN; Pro/vendor dependency"]
-    Assurance["Required KYC-to-signer assurance\nUNKNOWN; specialist decision"]
-  end
-
-  subgraph Application["DocuSeal application trust boundary"]
-    App["Community Rails app"]
-    Queue["Redis / Sidekiq\njobs and retries"]
-    SecretSource["Environment / AWS secret / dotenv fallback"]
-    DBKey["Active Record encryption key"]
-    SigningRecord["Encrypted PKCS#12 bytes + password"]
-  end
-
-  subgraph Stores["Organization-controlled data stores (target state unknown)"]
-    SQL["SQL authority\nPII, workflow, events, search/text derivatives"]
-    Blob["Active Storage authority\ndocuments, uploads, results, audit artifacts"]
-  end
-
-  subgraph Egress["External egress"]
-    Webhook["Configured webhook destination"]
-    TSA["Timestamp authority / trust chain\nUNKNOWN"]
-  end
-
-  Target["Target IAM, KMS/HSM, network, storage,\nretention, backup, monitoring\nUNKNOWN"]
+  Operator["Organization operator\npassword + optional TOTP"]
+  Integration["Web/mobile integration\nX-Auth-Token bearer credential"]
+  IdP["Target IdP / SAML / SCIM / roles\nUNKNOWN; Pro/vendor dependency"]
+  App["Community Rails app\n(same application boundary)"]
 
   Operator -->|"session; account-scoped admin ability"| App
   Integration -->|"API request"| App
-  Signer -->|"public form request"| App
   IdP -.-> App
+
+  class IdP unknown;
+```
+
+### Panel 2 — Signer Identity And Assurance
+
+```mermaid
+flowchart TB
+  classDef unknown stroke-dasharray: 5 5,fill:#f7f7f7,color:#555;
+
+  Assurance["Required KYC-to-signer assurance\nUNKNOWN; specialist decision"]
+  Signer["External signer\ncapability link; optional email check"]
+  App["Community Rails app\n(same application boundary)"]
+
   Assurance -.-> Signer
+  Signer -->|"public form request"| App
+
+  class Assurance unknown;
+```
+
+### Panel 3 — Secrets, Encryption, And PDF Signing
+
+```mermaid
+flowchart TB
+  classDef unknown stroke-dasharray: 5 5,fill:#f7f7f7,color:#555;
+
+  Target["Target IAM, KMS/HSM, network, monitoring\nUNKNOWN"]
+  SecretSource["Environment / AWS secret / dotenv fallback"]
+  SigningRecord["Encrypted PKCS#12 bytes + password"]
+  TSA["Timestamp authority / trust chain\nUNKNOWN"]
+  App["Community Rails app\n(same application boundary)"]
+  DBKey["Active Record encryption key"]
+
+  Target -.-> App
   SecretSource -->|"root and configuration secrets"| App
   SecretSource -->|"default key derivation"| DBKey
   SigningRecord -->|"optional PDF signing"| App
+  TSA -.-> App
+
+  class Target,TSA unknown;
+```
+
+### Panel 4 — Runtime Processing
+
+```mermaid
+flowchart TB
+  classDef unknown stroke-dasharray: 5 5,fill:#f7f7f7,color:#555;
+
+  Target["Target runtime, recovery, and monitoring controls\nUNKNOWN"]
+  App["Community Rails app\n(same application boundary)"]
+  Queue["Redis / Sidekiq\njobs and retries"]
+
+  Target -.-> App
   App --> Queue
+  Target -.-> Queue
+
+  class Target unknown;
+```
+
+### Panel 5 — Sensitive-Data Stores
+
+```mermaid
+flowchart TB
+  classDef unknown stroke-dasharray: 5 5,fill:#f7f7f7,color:#555;
+
+  Target["Target storage, retention, backup, and recovery controls\nUNKNOWN"]
+  App["Community Rails app\n(same application boundary)"]
+  DBKey["Active Record encryption key\n(same key boundary)"]
+  SQL["SQL authority\nPII, workflow, events, search/text derivatives"]
+  Blob["Active Storage authority\ndocuments, uploads, results, audit artifacts"]
+
   App --> SQL
   App --> Blob
-  App -->|"PII, values, document/audit URLs"| Webhook
-  TSA -.-> App
   DBKey -->|"selected credential/config fields"| SQL
-  Target -.-> App
   Target -.-> SQL
   Target -.-> Blob
-  Target -.-> Queue
+
+  class Target unknown;
+```
+
+### Panel 6 — External Webhook Egress
+
+```mermaid
+flowchart TB
+  classDef unknown stroke-dasharray: 5 5,fill:#f7f7f7,color:#555;
+
+  Target["Target egress, allow-list, and monitoring controls\nUNKNOWN"]
+  App["Community Rails app\n(same application boundary)"]
+  Webhook["Configured webhook destination"]
+
+  App -->|"PII, values, document/audit URLs"| Webhook
   Target -.-> Webhook
 
-  class IdP,Assurance,TSA,Target unknown;
+  class Target unknown;
 ```
 
 ## Confirmed Paths And Limits

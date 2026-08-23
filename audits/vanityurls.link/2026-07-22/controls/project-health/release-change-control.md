@@ -20,7 +20,7 @@ Implementation declarations, Git history, public PR/issues/releases, and sampled
 ## Declared Product Release Path
 
 ```mermaid
-flowchart LR
+flowchart TB
   CHANGE["Contributor change"] --> PR["Pull request"]
   PR --> CHECK["Hosted check / dependency review"]
   CHECK --> REVIEW["Human review"]

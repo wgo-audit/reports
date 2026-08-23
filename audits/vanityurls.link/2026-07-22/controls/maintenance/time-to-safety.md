@@ -20,7 +20,7 @@ This map identifies gates and skills, not elapsed time or staffing cost. No non-
 ## Gate Sequence
 
 ```mermaid
-flowchart LR
+flowchart TB
   G0["0. Approve continuity scope"] --> G1["1. Inventory authority,<br/>state, secrets, renewals"]
   G1 --> G2["2. Reproduce builds/checks<br/>across four repositories"]
   G2 --> G3["3. Operate isolated instance:<br/>deploy, observe, rollback"]

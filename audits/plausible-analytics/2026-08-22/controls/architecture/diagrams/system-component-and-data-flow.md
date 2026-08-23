@@ -15,61 +15,68 @@ Implementation and selected history/rationale are present. Observed live operati
 
 ## Diagram
 
+Read the panels from top to bottom. Repeated application or state nodes refer
+to the same source-visible boundary.
+
+### Panel 1 — Client Entry And Application Routing
+
 ```mermaid
 flowchart TB
-  subgraph CLIENTS["Confirmed clients and contracts"]
-    direction LR
-    T["Compiled tracker variants"]
-    EV["POST /api/event"]
-    UI["Dashboard TypeScript"]
-    PA["Public API clients"]
+  subgraph ENTRY["Confirmed clients and contracts"]
+    T["Compiled tracker variants"] --> EV["POST /api/event"]
+    UI["Dashboard TypeScript"] --> IQ["Internal stats query contexts"]
+    PA["Public API clients"] --> PQ["Public API contexts"]
   end
 
-  subgraph APP["Confirmed Phoenix/OTP application boundary"]
-    direction LR
-    EP["Phoenix endpoint/router"]
-    ING["Request validation and enrichment"]
-    IQ["Internal stats query contexts"]
-    PQ["Public API contexts"]
-    EP --> Q["Stats/query contexts"]
-    EP --> AUTH["Auth, teams, billing, settings"]
-    ING --> PER["Pluggable persistor"]
-    JOB["Oban workers and cron"]
-  end
+  EP["Phoenix endpoint/router"]
+  ING["Request validation and enrichment"]
+  Q["Stats/query contexts"]
+  AUTH["Auth, teams, billing, settings"]
+  TOPO["Cloud nodes, replicas, routing, ownership\nUNKNOWN"]
 
-  subgraph STATE["Confirmed source-level state boundaries"]
-    direction LR
-    PG["PostgreSQL: relational state + Oban"]
-    CH["ClickHouse: events, sessions, imports, counters"]
-    SC["ETS/session cache"]
-    BUF["Local event/session write buffers"]
-  end
-
-  subgraph UNKNOWN["Unknown live boundary"]
-    direction LR
-    RP["Remote persistence service deployment"]
-    TOPO["Cloud nodes, replicas, routing, ownership"]
-  end
-
-  T --> EV
   EV --> EP
-  UI --> IQ
   IQ --> EP
-  PA --> PQ
   PQ --> EP
   EP --> ING
+  EP --> Q
+  EP --> AUTH
+  EP -. "runtime realization unknown" .-> TOPO
+```
+
+### Panel 2 — Event Persistence And Remote Boundary
+
+```mermaid
+flowchart TB
+  ING["Request validation and enrichment\n(same application boundary)"]
+  PER["Pluggable persistor"]
+  SC["ETS/session cache"]
+  BUF["Local event/session write buffers"]
+  CH["ClickHouse: events, sessions, imports, counters"]
+  RP["Remote persistence service deployment\nUNKNOWN"]
+
   ING --> PER
   PER --> SC
   PER --> BUF
   BUF --> CH
   PER -. "remote backend path; deployment unknown" .-> RP
   RP -. "remote ClickHouse write path unknown" .-> CH
+```
+
+### Panel 3 — Query, Account, And Background State
+
+```mermaid
+flowchart TB
+  Q["Stats/query contexts\n(same application boundary)"]
+  AUTH["Auth, teams, billing, settings\n(same application boundary)"]
+  JOB["Oban workers and cron"]
+  PG["PostgreSQL: relational state + Oban"]
+  CH["ClickHouse: events, sessions, imports, counters\n(same state boundary)"]
+
   Q --> CH
   Q --> PG
   AUTH --> PG
   JOB --> PG
   JOB --> CH
-  EP -. "runtime realization unknown" .-> TOPO
 ```
 
 ## Known Gaps And Follow-Up

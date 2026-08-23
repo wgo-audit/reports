@@ -16,7 +16,7 @@ Product promise, implementation, source history, and documentation are present. 
 ## Diagram
 
 ```mermaid
-flowchart LR
+flowchart TB
   NEED["Operator needs<br/>a branded short link"]
   SETUP["Detach + setup<br/>independent instance"]
   EDIT["Edit custom/ or use lnk"]

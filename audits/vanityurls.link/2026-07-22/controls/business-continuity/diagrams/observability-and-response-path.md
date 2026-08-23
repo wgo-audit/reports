@@ -16,7 +16,7 @@ Implementation, logging declarations, public intake, and rollback guidance are p
 ## Diagram
 
 ```mermaid
-flowchart LR
+flowchart TB
   FAILURE["Redirect, DNS, deploy,<br/>Access, abuse, or expiry event"]
   LOGS["Cloudflare invocation logs<br/>and security events"]
   CONTACT["Public security/abuse contact"]

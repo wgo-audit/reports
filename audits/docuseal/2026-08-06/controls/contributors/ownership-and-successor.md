@@ -30,25 +30,40 @@ This view uses the [ownership/support packet](../../evidence/packets/contributor
 
 ## Dependency And Handoff Diagram
 
+The panels are read from top to bottom. Repeated boundary nodes refer to the
+same source, organization, or vendor boundary.
+
+### Panel 1 — Confirmed Upstream Outputs
+
 ```mermaid
 flowchart TB
-  subgraph UPSTREAM["Confirmed upstream outputs"]
-    direction LR
-    SRC["Community source and history"] --> REL["Tag, CI, image-build workflow"]
-    SRC --> DOC["README, API docs, security mailbox"]
-  end
+  SRC["Community source and history"] --> REL["Tag, CI, image-build workflow"]
+  SRC --> DOC["README, API docs, security mailbox"]
+```
 
-  subgraph TARGET["Unknown organization control"]
-    direction LR
-    INTAKE["Artifact and patch intake owner"] -. "unknown" .-> OPS["Two trained operators / successors"]
-    OPS -. "unknown" .-> DATA["Runtime, data, keys, providers"]
-  end
+### Panel 2 — Unknown Organization Control
 
-  subgraph VENDOR["Unverified vendor / edition dependency"]
-    direction LR
-    PRO["Pro API / embed / identity implementation"] -. "unknown" .-> SUPPORT["Support, versions, escalation"]
-    SUPPORT -. "unknown" .-> EXIT["Renewal, transition, replacement"]
-  end
+```mermaid
+flowchart TB
+  INTAKE["Artifact and patch intake owner"] -. "unknown" .-> OPS["Two trained operators / successors"]
+  OPS -. "unknown" .-> DATA["Runtime, data, keys, providers"]
+```
+
+### Panel 3 — Unverified Vendor Or Edition Dependency
+
+```mermaid
+flowchart TB
+  PRO["Pro API / embed / identity implementation"] -. "unknown" .-> SUPPORT["Support, versions, escalation"]
+  SUPPORT -. "unknown" .-> EXIT["Renewal, transition, replacement"]
+```
+
+### Panel 4 — Cross-Boundary Handoffs
+
+```mermaid
+flowchart TB
+  UPSTREAM["Confirmed upstream outputs\n(same source boundary)"]
+  TARGET["Unknown organization control\n(same organization boundary)"]
+  VENDOR["Unverified vendor / edition dependency\n(same vendor boundary)"]
 
   UPSTREAM -. "public output available; controlled intake unproved" .-> TARGET
   TARGET -. "contract / entitlement unknown" .-> VENDOR
