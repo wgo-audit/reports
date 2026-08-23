@@ -6,7 +6,7 @@ Use the [report](report.md), [time-to-safety and care envelope](../../controls/m
 
 ## Constraints And Conflicts
 
-Run's 16–40 hours/month plus 5–15 staff-days/significant upgrade and Subscribe's 5–16 hours/month are transparent planning assumptions, not measured effort, staffing, cash, or promises. No material source conflict was found; hosted “no maintenance” is bounded to transferred platform operation.
+The source supports distinct Run and Subscribe duty maps but no numeric effort reserve or saving. Missing library activity and hosted responsibility evidence is neutral until measured. No material source conflict was found; hosted “no maintenance” is bounded to transferred platform operation.
 
 ## Material Unknowns
 

@@ -29,7 +29,7 @@ The rows describe capabilities that must be covered, not separate job titles or 
 
 ### Recurring activity and proposed cadence
 
-These are unvalidated planning hypotheses for cadence and control coverage; they are neither source-supported minimums nor evidence of the library's current practice. [OI-020](../open-items.md#oi-020) must revise them from observed activity and the timed handoff.
+These are candidate measurement categories for cadence and control coverage; they are neither source-supported minimums nor evidence of the library's current practice. [OI-020](../open-items.md#oi-020) must establish actual cadence and effort from observed activity and the timed handoff.
 
 | Activity | Run planning cadence | Subscribe planning cadence | Trigger/stop condition |
 |---|---|---|---|
@@ -40,17 +40,19 @@ These are unvalidated planning hypotheses for cadence and control coverage; they
 | Monthly service report | Reconcile dashboard/CSV/API/email output each month; explicitly detect mail failure | Reconcile hosted dashboard/export/email and usage each month | No month is complete merely because the source job ran; OI-014 remains open. |
 | Runbook, topology, cost/activity log, and successor coverage | Update after each material change and exercise quarterly | Update on account/contract/topology change and exercise at least annually | OI-015 assigns owners; OI-017 captures comparable cost/hour evidence; OI-020 times the handoff. |
 
-### Provisional planning envelope
+<a id="provisional-planning-envelope"></a>
 
-The bands below are **auditor planning assumptions**, not observed effort, commitments, quotes, staffing recommendations, or cash. They assume a stable, documented service; one staff-hour is counted once even when multiple skills collaborate; incidents and new product work are excluded; and one FTE-month is shown only as a 160-hour arithmetic convention.
+### Evidence-Based Effort Measurement
 
-| Option | Steady-state planning reserve | Transparent composition | Work outside the band | Validation route |
+The evidence does not support numeric planning bands. The table preserves the duty categories and measurement routes without inventing hours, staffing, savings, or cash.
+
+| Option | Evidence-supported effort position | Duties to measure | Event-driven work to measure separately | Validation route |
 |---|---|---|---|---|
-| Run | **16–40 staff-hours/month** (`0.10–0.25` of a 160-hour FTE-month) | Four weekly exception/capacity/security reviews at 1.5–3 hours each = 6–12; monthly backup/report/access/retention reconciliation = 4–10; quarterly restore/successor exercise averaged monthly = 3–8; release/provenance/configuration/runbook work averaged monthly = 3–10. | Reserve **5–15 staff-days per significant CE upgrade/recovery rehearsal** as a separate planning assumption. Incidents, major version remediation, security response, infrastructure migration, and new instrumentation are extra and unbounded. | Measure 8–12 weeks and one time-boxed handoff through [OI-020](../open-items.md#oi-020); reconcile rates/cash only through [OI-017](../open-items.md#oi-017). |
-| Subscribe | **5–16 staff-hours/month** (`0.03–0.10` of a 160-hour FTE-month) after transition | Monthly usage/report/admin reconciliation = 2–6; privacy/security/vendor/renewal evidence averaged monthly = 2–6; instrumentation and output reconciliation = 1–4. | Security/privacy/procurement review, implementation/migration, training, contract negotiation, incident escalation, and exit are first-year or event-driven work and are not estimated by this band. Vendor platform labour is included only if the final quote says so. | Validate retained duties and a successor account/export walkthrough through [OI-020](../open-items.md#oi-020); obtain quote/terms through [OI-017](../open-items.md#oi-017). |
+| Run | **Unknown; no numeric reserve is supported by the audit corpus.** | Collection, queue, query, storage and report review; backup/restore; access/retention; security/release intake; provenance, configuration, runbook, and successor upkeep. | Incidents, major-version remediation, security response, infrastructure migration, recovery rehearsal, and new instrumentation. | Measure 8–12 weeks and one time-boxed handoff through [OI-020](../open-items.md#oi-020); reconcile rates/cash only through [OI-017](../open-items.md#oi-017). |
+| Subscribe | **Unknown; no numeric reserve or saving is supported before a topology, contract, and retained-duty measurement exist.** | Usage/report/admin reconciliation; privacy/security/vendor/renewal evidence; instrumentation and output reconciliation; support and exit ownership. | Security/privacy/procurement review, implementation/migration, training, contract negotiation, incident escalation, and exit. Vendor platform labour transfers only if the final contract establishes it. | Validate retained duties and a successor account/export walkthrough through [OI-020](../open-items.md#oi-020); obtain quote/terms through [OI-017](../open-items.md#oi-017). |
 | Replace | **Unknown** until a candidate and migration boundary are funded and approved. | The current evidence can preserve requirements only; it cannot describe a candidate's operating stack, support, upgrades, hosting, or retained administration. | Selection, proof of concept, instrumentation rewrite, migration, dual run, training, procurement, and future recurring care are unbounded. | Apply the same activity map and timed handoff to an approved candidate; do not infer lower care from absence of evidence. |
 
-The Run-to-Subscribe difference is a hypothesis about transferred duties, not a measured saving. A stable Run instance could fall below the band; an undocumented or incident-prone one could exceed it materially. A hosted service with intensive governance, reporting, or support problems could exceed its band. Do not convert either band into cash without approved loaded rates and once-only hour records.
+Run and Subscribe have different duty allocations, but the difference is not a measured saving. Do not rank or convert either option into cash without observed activity, an accepted hosted responsibility boundary, approved rates, and once-only hour records.
 
 ### Time-to-safety gates
 
@@ -66,6 +68,6 @@ Until gates 1–5 are evidenced, “one maintainer can handle it” and “hoste
 
 ## Material Unknowns And Closure Routes
 
-[OI-020](../open-items.md#oi-020) validates the effort bands and successor route without staff interviews or visitor-data access: use an 8–12-week once-only activity log and a bounded non-production handoff. [OI-015](../open-items.md#oi-015) assigns primary/successor responsibility; [OI-017](../open-items.md#oi-017) supplies actual hours/rates and hosted quote evidence; [OI-001](../open-items.md#oi-001), [OI-004](../open-items.md#oi-004), [OI-005](../open-items.md#oi-005), and [OI-019](../open-items.md#oi-019) close the Run topology, recovery, provenance, and capacity parts.
+[OI-020](../open-items.md#oi-020) establishes effort and the successor route without visitor-data access: use an 8–12-week once-only activity log and a bounded non-production handoff. [OI-015](../open-items.md#oi-015) assigns primary/successor responsibility; [OI-017](../open-items.md#oi-017) supplies actual hours/rates and hosted quote evidence; [OI-001](../open-items.md#oi-001), [OI-004](../open-items.md#oi-004), [OI-005](../open-items.md#oi-005), and [OI-019](../open-items.md#oi-019) close the Run topology, recovery, provenance, and capacity parts.
 
 Documented outside audited scope; not independently verified. The separate Community Edition repository may provide deployment and upgrade automation. The smallest useful expansion remains the deployed CE tag plus that repository and the library's redacted operating material; it must not be assumed to reduce effort until exercised.

@@ -4,7 +4,7 @@
 
 This first WGO audit assesses Plausible Analytics for a regional public-library system at the 2026-08-20 cutoff. It compares continuing the self-hosted Community Edition (**Run**), moving to Plausible's hosted service (**Subscribe**), and preserving a future privacy-first replacement assessment (**Replace**).
 
-Start with the [Executive Summary](executive-summary.md). The evidence supports a conditional decision path, not unconditional acceptance of any option: validate Subscribe as the preferred operating direction, keep Run as the controlled interim/fallback, and defer Replace to a funded future shortlist.
+Start with the [Executive Summary](executive-summary.md). The evidence supports parallel, bounded validation of Run and Subscribe, not a preference based on unequal public visibility. Compare functional fit, transferred and retained duties, recovery, governance, exit, and actual cost on equivalent evidence. Defer Replace to a funded future shortlist unless both Plausible options fail a mandatory requirement.
 
 ## Audience Routes
 
@@ -26,6 +26,6 @@ Operationalization produced four source-linked aids without executing a procedur
 
 The primary code evidence is Plausible Analytics commit `9cc669b97ece3ecd37fcb3950791cb3873d7944d`. Public pages were classified by cutoff; later observations are labelled post-cutoff validation. The review did not inspect the library's deployment, visitor traffic, staff, cloud accounts, backups, contracts, non-public hosted systems, or a replacement candidate. It installed no dependencies and ran no product, load, failure, restore, or penetration tests.
 
-The assumed 18 sites, 2 million annual visits, 14 million annual pageviews, 25 dashboard users, and seasonal peaks are planning inputs, not verified production facts. Missing evidence is carried as an owned [open item](controls/open-items.md), not treated as proof of safety or risk.
+The assumed 18 sites, 2 million annual visits, 14 million annual pageviews, 25 dashboard users, and seasonal peaks are planning inputs, not verified production facts. Missing evidence is neutral unless a decision requires it; direct source findings and decision-dependent [open items](controls/open-items.md) are kept separate.
 
 The reconciled [audit-and-operationalization cost estimate](controls/cost-estimate.md) is **$87.24 USD** on an API-equivalent token basis, not a Codex invoice; its exact public calculation is in the [current receipt](controls/cost-calculation.json), with the original [audit-only receipt](controls/cost-calculation-audit-only.json) preserved unchanged.

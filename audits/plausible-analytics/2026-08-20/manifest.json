@@ -23,7 +23,7 @@
       "statement": "Assess whether Plausible Analytics can responsibly and dependably meet the regional public-library system's service-measurement needs, and compare Run, Subscribe, and Replace using public evidence and clearly labelled assumptions.",
       "conclusion": {
         "outcome": "partial",
-        "statement": "Plausible is a credible privacy-first measurement foundation, but no option has complete readiness evidence; Subscribe is the preferred direction to validate, Run is the controlled interim or fallback, and Replace is deferred to a funded future shortlist.",
+        "statement": "Plausible is a credible privacy-first measurement foundation. Validate Run and Subscribe in parallel on equivalent evidence; defer Replace to a funded future shortlist unless both fail a mandatory requirement.",
         "confidence": "high",
         "source": "executive-summary.md#mandate-boundary-and-bottom-line"
       }
@@ -34,7 +34,7 @@
       "statement": "Decide whether to continue Plausible Community Edition, subscribe to Plausible's hosted service, or identify replacement assessment as the preferred future direction without funding a full selection project this fiscal year.",
       "conclusion": {
         "outcome": "partial",
-        "statement": "The evidence supports a conditional decision sequence rather than final acceptance: validate Subscribe first, keep Run as interim or fallback subject to proof, and defer Replace unless Plausible fails mandatory gates.",
+        "statement": "The evidence supports parallel bounded validation of Run and Subscribe, without a current burden ranking; defer Replace unless both Plausible options fail mandatory gates.",
         "confidence": "high",
         "source": "executive-summary.md#mandate-boundary-and-bottom-line"
       }
@@ -78,8 +78,8 @@
       "statement": "How much ongoing maintenance time and cost should be planned for self-hosted and hosted options?",
       "conclusion": {
         "outcome": "partial",
-        "statement": "Transparent but unmeasured planning reserves are 16 to 40 staff-hours monthly for Run plus significant upgrade or recovery rehearsal effort, and 5 to 16 staff-hours monthly for Subscribe after transition; actual cash is unknown for every option.",
-        "confidence": "medium",
+        "statement": "Actual effort and cash are unknown for every option. Measure Run activity and obtain a topology-specific Subscribe quote and retained-duty estimate before comparison; no numeric hour reserve is supportable from this corpus.",
+        "confidence": "high",
         "source": "reviewer-reports/maintenance-cost/report.md"
       }
     },
@@ -111,7 +111,7 @@
       "statement": "Avoid recommending or normalizing an option on unsupported assumptions that introduces avoidable tracking or governance risk, fails during high-demand services, or creates an unsustainable burden while presenting missing evidence as proof of safety or risk.",
       "conclusion": {
         "outcome": "partial",
-        "statement": "The recommendation is conditional and uses explicit stop conditions, but final option acceptance remains dependent on unresolved authority decisions and option-specific verification.",
+        "statement": "The recommendation is conditional, does not rank options from unequal evidence, and makes final acceptance dependent on comparable decision-specific verification.",
         "confidence": "high",
         "source": "executive-summary.md#material-risks-unknowns-and-decisions"
       }
