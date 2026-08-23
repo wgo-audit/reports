@@ -1,0 +1,1763 @@
+{
+  "schema_version": 1,
+  "coverage": "audit-and-operationalization",
+  "status": "final",
+  "currency": "USD",
+  "pricing_basis": {
+    "provider": "OpenAI",
+    "basis": "API-equivalent token pricing; not a Codex invoice",
+    "rate_card_date": "2026-08-07",
+    "rate_card_source": "https://platform.openai.com/docs/pricing",
+    "rate_card_sha256": "8edab7455b613f3a313190a3da5fd25807a7a1a903f174c9eac63fe460509cae",
+    "default_service_tier": "standard",
+    "default_service_tier_status": "declared API-equivalent basis when not returned",
+    "context_band_rule": {
+      "long_context_input_tokens_gt": 272000,
+      "short": "input_tokens <= 272000",
+      "long": "input_tokens > 272000",
+      "source": "OpenAI pricing context threshold"
+    },
+    "formula": "uncached input x input rate + cached input x cached-input rate + output x output rate; USD per 1,000,000 tokens",
+    "reasoning_treatment": "informational output subcomponent; not added again",
+    "cache_write_treatment": "excluded by formula; all observed included requests reported zero cache-write tokens"
+  },
+  "frozen_input": {
+    "alias": "temporary-input-002",
+    "sha256": "d2fce62922a9512b646640d7229352186c8e6e9bd5d3c9562ba7cdb983f6360c",
+    "session_count": 29,
+    "prior_audit_receipt": "cost-calculation-audit-only.json",
+    "prior_audit_manifest_sha256": "f23563cba811f1a025ebaeca47d0c0670f996dd4b66bccfe2e89cdf490c55b12",
+    "repair": {
+      "supersedes_sha256": "f78eaf307c38d77eb2368d098589ce08897dcebbef7370849e4e286b6571a34b",
+      "reason": "Restarted child transcripts preserve inherited root timestamps; the first adapter selected inherited turns instead of explicit inter-agent child task turns."
+    }
+  },
+  "phase_policy": {
+    "included": [
+      "unattributed",
+      "onboarding",
+      "audit",
+      "summary",
+      "operationalization"
+    ],
+    "excluded": [
+      "cost-estimation"
+    ],
+    "phase_boundaries": [
+      {
+        "phase": "onboarding",
+        "session": "session-001",
+        "marker": "WGO_PHASE_ONBOARDING_START",
+        "line_number": 37
+      },
+      {
+        "phase": "audit",
+        "session": "session-001",
+        "marker": "WGO_PHASE_AUDIT_START",
+        "line_number": 439
+      },
+      {
+        "phase": "summary",
+        "session": "session-001",
+        "marker": "WGO_PHASE_SUMMARY_START",
+        "line_number": 1864
+      },
+      {
+        "phase": "cost-estimation",
+        "session": "session-001",
+        "marker": "WGO_AUDIT_COMPLETE_COST_PHASE_STARTS",
+        "line_number": 1949
+      },
+      {
+        "phase": "operationalization",
+        "session": "session-001",
+        "marker": "WGO_PHASE_OPERATIONALIZATION_START",
+        "line_number": 2255
+      },
+      {
+        "phase": "cost-estimation",
+        "session": "session-001",
+        "marker": "WGO_OPERATIONALIZATION_COMPLETE_COST_PHASE_STARTS",
+        "line_number": 2365
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "session": "session-001",
+      "role": "Audit coordinator",
+      "parent": null,
+      "phase": "from-markers",
+      "decision": "included",
+      "rationale": "Current audit root extended through the explicit operationalization-complete cost-phase marker; earlier cost-estimation requests remain excluded by phase policy.",
+      "session_meta_line": 1,
+      "lifecycle": null,
+      "cutoff": {
+        "marker": "WGO_OPERATIONALIZATION_COMPLETE_COST_PHASE_STARTS",
+        "line_number": 2365
+      },
+      "prefix_sha256": "c51f619ac5c9964978048e55bfa39dc54b1520ff9363fe1b290cd59f0cd9b8bd",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-002",
+      "role": "Documentation catalog preparation",
+      "parent": "session-001",
+      "phase": "onboarding",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 93
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 93
+      },
+      "prefix_sha256": "0d48ceec1245c6872849d4ddcee2531b730ce511ffec6d7236ce4d930db0e327",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-003",
+      "role": "Architecture reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 267,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 515
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 515
+      },
+      "prefix_sha256": "bf4a09f1a07f51f56c989dff7d60614b43356f74b36eb5bea6f6105d05f3eefe",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-004",
+      "role": "Code Quality reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 360,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 708
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 708
+      },
+      "prefix_sha256": "c9a1c6871e00bc0b642a4917ca8c0fff81c0d8c71376afb0e84265b398b944a7",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-005",
+      "role": "Product Value reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 407,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 726
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 726
+      },
+      "prefix_sha256": "36efd1bf0c307c64892521e5be834b6c7d33fcd2559e8e8f0e94b569815a725b",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-006",
+      "role": "Security and Privacy reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 466,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 805
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 805
+      },
+      "prefix_sha256": "9520fcd37dedf6d587091236d3b27f2d9850a54eac9e4eb0b867b64fac42849a",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-007",
+      "role": "Application Security reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 514,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 836
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 836
+      },
+      "prefix_sha256": "a698c2b5ea14fd3b9bca3f6b99e1ac15bd6e4eedd4fd8345239d4a8b9c68369c",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-008",
+      "role": "Business Continuity reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 536,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 805
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 805
+      },
+      "prefix_sha256": "0df48808cec234233debf3a691c731b5f5f846007554d901f6b14d06f6fa6b5b",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-009",
+      "role": "Cloud Security reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 572,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 781
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 781
+      },
+      "prefix_sha256": "2aea850adc8e12204c33f3fbb9feda9adc064cfcfd7b65f0bc2611a4af8746b7",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-010",
+      "role": "Expense Exposure reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 607,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 843
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 843
+      },
+      "prefix_sha256": "d4b42907809f30b7baa68e4fb04cd1122a34ef57e62df3a7818f2b232001436c",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-011",
+      "role": "Scalability reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 649,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 847
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 847
+      },
+      "prefix_sha256": "83dce7bf1f5fb212ba6fd70eb70c9428addf52cf2bdd3dd400938a89fe15347e",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-012",
+      "role": "Maintenance Cost reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 672,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 798
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 798
+      },
+      "prefix_sha256": "b97fa92d466ae7637355ecd11ed228db7e7dffb717440bfdc741195cff9b5544",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-013",
+      "role": "Contributor and Vendor Value reviewer",
+      "parent": "session-001",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 689,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 979
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 979
+      },
+      "prefix_sha256": "8976f1088c064c1b58663bc9fff2b219039fbc35247e9f93e254cb0bc0be404e",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-014",
+      "role": "Architecture artifact quality review",
+      "parent": "session-003",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 99
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 99
+      },
+      "prefix_sha256": "bf67cbccdd3b14f4d6e2487a7cf2edab30aeddbb6848afbc0e5734565e4019ed",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-015",
+      "role": "CI gate evidence collector",
+      "parent": "session-004",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 82
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 82
+      },
+      "prefix_sha256": "a92d22f2e8b2bb8e59f39f7a3a96cc54299be68d8e56b0f4593a83008f60625f",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-016",
+      "role": "Runtime and build quality evidence collector",
+      "parent": "session-004",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 66
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 66
+      },
+      "prefix_sha256": "dc53a704a9116cdf4ee9cc6556b92cc5c3c7254f567d4dcc2754428d57c7903b",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-017",
+      "role": "Code Quality artifact quality review",
+      "parent": "session-004",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 69
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 69
+      },
+      "prefix_sha256": "6c6555c8e28c498ea675c99a7dafa2b69e14505d73f5d7e8e4a9bdba0196e54e",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-018",
+      "role": "Product Value artifact quality review",
+      "parent": "session-005",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 89
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 89
+      },
+      "prefix_sha256": "c81298372716c22b28780e8e144958b740955fccc1783409aa41a77220d1fff3",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-019",
+      "role": "Security and Privacy artifact quality review",
+      "parent": "session-006",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 222,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 270
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 270
+      },
+      "prefix_sha256": "e432dd17c61de2929da18d6961448c60ff68d8560ce7cf9c3bcdf5ad11ef7ef4",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-020",
+      "role": "Application Security artifact quality review",
+      "parent": "session-007",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 67
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 67
+      },
+      "prefix_sha256": "2d8cec6083b4a9f2375a74181f6a6bea5b610cd15db42955955f756e12d0d160",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-021",
+      "role": "Recovery and data-operations evidence collector",
+      "parent": "session-008",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 96
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 96
+      },
+      "prefix_sha256": "5b7e2c58e2eec984d7106ec204f5c1cadb6d5a3c1d9f89a7dce5bff9d6babdd5",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-022",
+      "role": "Business Continuity artifact quality review",
+      "parent": "session-008",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 57
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 57
+      },
+      "prefix_sha256": "c434426176f919225a842d7e44ecc95aab52fe248c8f2856ebc339b013e81113",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-023",
+      "role": "Cloud Security artifact quality review",
+      "parent": "session-009",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 55
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 55
+      },
+      "prefix_sha256": "e91aa96dfdbe9886aec7e6cfd30e7b9480e67111ab25c4c37e2d8c829c5080c3",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-024",
+      "role": "Vendor and commercial evidence collector",
+      "parent": "session-010",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 626,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 724
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 724
+      },
+      "prefix_sha256": "980f4847ac10d73a4db1217a5ec494c2bb4f48b4f48261c4c4d0caf63561448e",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-025",
+      "role": "Expense Exposure artifact quality review",
+      "parent": "session-010",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 678,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 732
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 732
+      },
+      "prefix_sha256": "656130d22c1709b5631eb83eb3b97c1bf229546ea928f2ce76b24629d50b675f",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-026",
+      "role": "Scalability artifact quality review",
+      "parent": "session-011",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 72
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 72
+      },
+      "prefix_sha256": "ed46f3eb1753e74e24c0103224bc48c1deef1fb1c9a8634d9eb230733135c378",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-027",
+      "role": "Maintenance Cost artifact quality review",
+      "parent": "session-012",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 82
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 82
+      },
+      "prefix_sha256": "433ab21464ae283c4e6a2b099b82243f1ce6d4e0aff1e1703f658fed0fb3057c",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-028",
+      "role": "Feature contribution evidence collector",
+      "parent": "session-013",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 125
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 125
+      },
+      "prefix_sha256": "1c3e98983ab37d2858c999f3fd40ccac5edc713ada1081fced8bbeeedc4de70d",
+      "usage_schema": "codex-rollout-token-count-v1"
+    },
+    {
+      "session": "session-029",
+      "role": "Contributor and Vendor Value artifact quality review",
+      "parent": "session-013",
+      "phase": "audit",
+      "decision": "included",
+      "rationale": "Recorded parent start, matching child thread metadata, explicit inter-agent turn trigger, and one correlated bounded lifecycle.",
+      "session_meta_line": 1,
+      "lifecycle": {
+        "correlation": "turn-alias-withheld",
+        "start_event": "task_started",
+        "start_line": 2,
+        "terminal_event": "task_complete",
+        "terminal_outcome": "completed",
+        "terminal_line": 129
+      },
+      "cutoff": {
+        "provenance": "task_complete",
+        "line_number": 129
+      },
+      "prefix_sha256": "537b46427197e8842395f28cf953ac78cf987cf58639b393641c72e1ced4b7cf",
+      "usage_schema": "codex-rollout-token-count-v1"
+    }
+  ],
+  "session_exclusions": [
+    {
+      "session": "excluded-session-001",
+      "role": "Earlier audit-only cost verification pass A",
+      "phase": "cost-estimation",
+      "decision": "excluded",
+      "rationale": "Earlier audit-only cost-calculation worker; cost-calculation work is excluded from audit-and-operationalization coverage."
+    },
+    {
+      "session": "excluded-session-002",
+      "role": "Earlier audit-only cost verification pass B",
+      "phase": "cost-estimation",
+      "decision": "excluded",
+      "rationale": "Earlier audit-only cost-calculation worker; cost-calculation work is excluded from audit-and-operationalization coverage."
+    }
+  ],
+  "request_exclusions": {
+    "count": 53,
+    "phases": {
+      "cost-estimation": 53
+    },
+    "rationale": "These requests occurred within the refreshed root prefix during the earlier cost-estimation phase and are excluded by the frozen phase policy. Requests for the refreshed calculation occur after the root cutoff and are outside the manifest."
+  },
+  "rows": [
+    {
+      "phase": "audit",
+      "role": "Audit coordinator",
+      "session": "session-001",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 435458,
+      "cached_input_tokens": 33624832,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 39075,
+      "reasoning_tokens_informational": 9625,
+      "request_count": 270,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "20.161956",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Architecture reviewer",
+      "session": "session-003",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 192285,
+      "cached_input_tokens": 5551616,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 26775,
+      "reasoning_tokens_informational": 3577,
+      "request_count": 46,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "4.540483",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Architecture artifact quality review",
+      "session": "session-014",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 63416,
+      "cached_input_tokens": 338176,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 8032,
+      "reasoning_tokens_informational": 4976,
+      "request_count": 11,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2908512",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Code Quality reviewer",
+      "session": "session-004",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 235707,
+      "cached_input_tokens": 8550144,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 36165,
+      "reasoning_tokens_informational": 8152,
+      "request_count": 65,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "6.538557",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "CI gate evidence collector",
+      "session": "session-015",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 92862,
+      "cached_input_tokens": 402688,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7827,
+      "reasoning_tokens_informational": 2916,
+      "request_count": 11,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.3601856",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Runtime and build quality evidence collector",
+      "session": "session-016",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 90867,
+      "cached_input_tokens": 548096,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 9817,
+      "reasoning_tokens_informational": 2185,
+      "request_count": 11,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.4091572",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Code Quality artifact quality review",
+      "session": "session-017",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 66814,
+      "cached_input_tokens": 396032,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 5589,
+      "reasoning_tokens_informational": 2928,
+      "request_count": 9,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2799024",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Product Value reviewer",
+      "session": "session-005",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 309022,
+      "cached_input_tokens": 6327296,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 34312,
+      "reasoning_tokens_informational": 5718,
+      "request_count": 61,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.738118",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Product Value artifact quality review",
+      "session": "session-018",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 63646,
+      "cached_input_tokens": 487424,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7070,
+      "reasoning_tokens_informational": 2930,
+      "request_count": 12,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.3096168",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Security and Privacy reviewer",
+      "session": "session-006",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 285083,
+      "cached_input_tokens": 7041024,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 31640,
+      "reasoning_tokens_informational": 6261,
+      "request_count": 65,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.895127",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Security and Privacy artifact quality review",
+      "session": "session-019",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 59060,
+      "cached_input_tokens": 239104,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 3361,
+      "reasoning_tokens_informational": 1358,
+      "request_count": 6,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2062728",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Application Security reviewer",
+      "session": "session-007",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 272093,
+      "cached_input_tokens": 6917632,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 23734,
+      "reasoning_tokens_informational": 4941,
+      "request_count": 67,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.531301",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Application Security artifact quality review",
+      "session": "session-020",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 65587,
+      "cached_input_tokens": 279296,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 5222,
+      "reasoning_tokens_informational": 2571,
+      "request_count": 9,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2496972",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Business Continuity reviewer",
+      "session": "session-008",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 210259,
+      "cached_input_tokens": 7153664,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 28939,
+      "reasoning_tokens_informational": 5032,
+      "request_count": 52,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.496297",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Recovery and data-operations evidence collector",
+      "session": "session-021",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 83611,
+      "cached_input_tokens": 1064448,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7210,
+      "reasoning_tokens_informational": 1256,
+      "request_count": 18,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.4666316",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Business Continuity artifact quality review",
+      "session": "session-022",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 52237,
+      "cached_input_tokens": 396800,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 2561,
+      "reasoning_tokens_informational": 1115,
+      "request_count": 10,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2145660",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Cloud Security reviewer",
+      "session": "session-009",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 174943,
+      "cached_input_tokens": 4872960,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 23203,
+      "reasoning_tokens_informational": 4359,
+      "request_count": 41,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "4.007285",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Cloud Security artifact quality review",
+      "session": "session-023",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 24870,
+      "cached_input_tokens": 120576,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 3388,
+      "reasoning_tokens_informational": 2263,
+      "request_count": 5,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.1145112",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Expense Exposure reviewer",
+      "session": "session-010",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 166708,
+      "cached_input_tokens": 4792832,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 24976,
+      "reasoning_tokens_informational": 5942,
+      "request_count": 42,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "3.979236",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Vendor and commercial evidence collector",
+      "session": "session-024",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 122301,
+      "cached_input_tokens": 1458688,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7719,
+      "reasoning_tokens_informational": 2578,
+      "request_count": 18,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.6289676",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Expense Exposure artifact quality review",
+      "session": "session-025",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 47937,
+      "cached_input_tokens": 354560,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 4585,
+      "reasoning_tokens_informational": 2409,
+      "request_count": 7,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2218060",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Scalability reviewer",
+      "session": "session-011",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 195681,
+      "cached_input_tokens": 4852992,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 24037,
+      "reasoning_tokens_informational": 4560,
+      "request_count": 39,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "4.126011",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Scalability artifact quality review",
+      "session": "session-026",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 65756,
+      "cached_input_tokens": 413952,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 4052,
+      "reasoning_tokens_informational": 1736,
+      "request_count": 11,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2629264",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Maintenance Cost reviewer",
+      "session": "session-012",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 146463,
+      "cached_input_tokens": 2073856,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 21324,
+      "reasoning_tokens_informational": 3624,
+      "request_count": 23,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "2.408963",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Maintenance Cost artifact quality review",
+      "session": "session-027",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 55508,
+      "cached_input_tokens": 414976,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 6002,
+      "reasoning_tokens_informational": 2936,
+      "request_count": 11,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.2660352",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Contributor and Vendor Value reviewer",
+      "session": "session-013",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 211190,
+      "cached_input_tokens": 7161856,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 33157,
+      "reasoning_tokens_informational": 8556,
+      "request_count": 52,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "5.631588",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Feature contribution evidence collector",
+      "session": "session-028",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 89972,
+      "cached_input_tokens": 964864,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 14500,
+      "reasoning_tokens_informational": 5907,
+      "request_count": 19,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.5469168",
+      "priced": true
+    },
+    {
+      "phase": "audit",
+      "role": "Contributor and Vendor Value artifact quality review",
+      "session": "session-029",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 114989,
+      "cached_input_tokens": 1223424,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 8577,
+      "reasoning_tokens_informational": 4299,
+      "request_count": 21,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.5775868",
+      "priced": true
+    },
+    {
+      "phase": "onboarding",
+      "role": "Audit coordinator",
+      "session": "session-001",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 227833,
+      "cached_input_tokens": 2838784,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 20904,
+      "reasoning_tokens_informational": 6850,
+      "request_count": 59,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "3.185677",
+      "priced": true
+    },
+    {
+      "phase": "onboarding",
+      "role": "Documentation catalog preparation",
+      "session": "session-002",
+      "model": "gpt-5.6-terra",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 46471,
+      "cached_input_tokens": 440064,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 12126,
+      "reasoning_tokens_informational": 3163,
+      "request_count": 13,
+      "rate_per_million_usd": {
+        "input": "2.00",
+        "cached_input": "0.20",
+        "output": "12.00"
+      },
+      "exact_cost_usd": "0.3264668",
+      "priced": true
+    },
+    {
+      "phase": "operationalization",
+      "role": "Audit coordinator",
+      "session": "session-001",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 144899,
+      "cached_input_tokens": 2298368,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 15269,
+      "reasoning_tokens_informational": 2462,
+      "request_count": 22,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "2.331749",
+      "priced": true
+    },
+    {
+      "phase": "summary",
+      "role": "Audit coordinator",
+      "session": "session-001",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 87523,
+      "cached_input_tokens": 1761792,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 13492,
+      "reasoning_tokens_informational": 1250,
+      "request_count": 18,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "1.723271",
+      "priced": true
+    },
+    {
+      "phase": "unattributed",
+      "role": "Audit coordinator",
+      "session": "session-001",
+      "model": "gpt-5.6-sol",
+      "service_tier": "standard",
+      "service_tier_sources": [
+        "declared-api-equivalent"
+      ],
+      "context_band": "short",
+      "context_band_sources": [
+        "derived-input-threshold"
+      ],
+      "uncached_input_tokens": 26259,
+      "cached_input_tokens": 86784,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 1226,
+      "reasoning_tokens_informational": 292,
+      "request_count": 5,
+      "rate_per_million_usd": {
+        "input": "5.00",
+        "cached_input": "0.50",
+        "output": "30.00"
+      },
+      "exact_cost_usd": "0.211467",
+      "priced": true
+    }
+  ],
+  "phase_subtotals": [
+    {
+      "uncached_input_tokens": 3994325,
+      "cached_input_tokens": 108023808,
+      "output_tokens": 452849,
+      "reasoning_tokens": 114710,
+      "exact_cost_usd": "79.4605528",
+      "request_count": 1012,
+      "phase": "audit"
+    },
+    {
+      "uncached_input_tokens": 274304,
+      "cached_input_tokens": 3278848,
+      "output_tokens": 33030,
+      "reasoning_tokens": 10013,
+      "exact_cost_usd": "3.5121438",
+      "request_count": 72,
+      "phase": "onboarding"
+    },
+    {
+      "uncached_input_tokens": 144899,
+      "cached_input_tokens": 2298368,
+      "output_tokens": 15269,
+      "reasoning_tokens": 2462,
+      "exact_cost_usd": "2.331749",
+      "request_count": 22,
+      "phase": "operationalization"
+    },
+    {
+      "uncached_input_tokens": 87523,
+      "cached_input_tokens": 1761792,
+      "output_tokens": 13492,
+      "reasoning_tokens": 1250,
+      "exact_cost_usd": "1.723271",
+      "request_count": 18,
+      "phase": "summary"
+    },
+    {
+      "uncached_input_tokens": 26259,
+      "cached_input_tokens": 86784,
+      "output_tokens": 1226,
+      "reasoning_tokens": 292,
+      "exact_cost_usd": "0.211467",
+      "request_count": 5,
+      "phase": "unattributed"
+    }
+  ],
+  "model_totals": [
+    {
+      "uncached_input_tokens": 3321406,
+      "cached_input_tokens": 105906432,
+      "output_tokens": 398228,
+      "reasoning_tokens": 81201,
+      "exact_cost_usd": "81.507086",
+      "request_count": 927,
+      "model": "gpt-5.6-sol"
+    },
+    {
+      "uncached_input_tokens": 1205904,
+      "cached_input_tokens": 9543168,
+      "output_tokens": 117638,
+      "reasoning_tokens": 47526,
+      "exact_cost_usd": "5.7320976",
+      "request_count": 202,
+      "model": "gpt-5.6-terra"
+    }
+  ],
+  "verification": {
+    "independent_passes": 2,
+    "normalized_match": true,
+    "byte_identical": true,
+    "calculation_issues": 0,
+    "pass_result_sha256": {
+      "pass-a": "32f32e50df6ee6e764342280f2fb5a7f51c264ae1f7c94eceb283d6339dd2fd6",
+      "pass-b": "32f32e50df6ee6e764342280f2fb5a7f51c264ae1f7c94eceb283d6339dd2fd6"
+    },
+    "duplicate_suppression": {
+      "count": 21,
+      "kinds": {
+        "unchanged-legacy-state": 21
+      }
+    }
+  },
+  "limitations": {
+    "provider_identifiers_persisted": false,
+    "legacy_state_identity_count": 1129,
+    "legacy_state_identity_statement": "The inspected rollout schema exposed no stable provider request ID. The prescribed deterministic legacy-state fallback counted changed per-turn usage states and suppressed consecutive unchanged echoes; it cannot distinguish genuinely separate requests with identical usage state.",
+    "cache_write_input_excluded_count": 0,
+    "unpriced_models_or_rates": 0,
+    "non_token_tool_subscription_and_regional_charges": "not represented"
+  },
+  "totals": {
+    "uncached_input_tokens": 4527310,
+    "cached_input_tokens": 115449600,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 515866,
+    "reasoning_tokens_informational": 128727,
+    "request_count": 1129,
+    "exact_cost_usd": "87.2391836"
+  }
+}

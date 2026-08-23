@@ -1,0 +1,178 @@
+{
+  "$schema": "https://wgo-audit.com/schemas/manifest/1.0.0.json",
+  "schemaVersion": "1.0.0",
+  "report": {
+    "id": "wgo-plausible-library-20260820",
+    "title": "Plausible Analytics Run, Subscribe, or Replace Assessment",
+    "entrypoint": "index.md"
+  },
+  "subject": {
+    "id": "plausible-analytics",
+    "name": "Plausible Analytics",
+    "kind": "software-service"
+  },
+  "audit": {
+    "type": "product-and-operating-model-assessment",
+    "mode": "improve",
+    "depth": "deep"
+  },
+  "businessConcerns": [
+    {
+      "id": "mandate-plausible-options",
+      "type": "mandate",
+      "statement": "Assess whether Plausible Analytics can responsibly and dependably meet the regional public-library system's service-measurement needs, and compare Run, Subscribe, and Replace using public evidence and clearly labelled assumptions.",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "Plausible is a credible privacy-first measurement foundation. Validate Run and Subscribe in parallel on equivalent evidence; defer Replace to a funded future shortlist unless both fail a mandatory requirement.",
+        "confidence": "high",
+        "source": "executive-summary.md#mandate-boundary-and-bottom-line"
+      }
+    },
+    {
+      "id": "decision-run-subscribe-replace",
+      "type": "decision",
+      "statement": "Decide whether to continue Plausible Community Edition, subscribe to Plausible's hosted service, or identify replacement assessment as the preferred future direction without funding a full selection project this fiscal year.",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "The evidence supports parallel bounded validation of Run and Subscribe, without a current burden ranking; defer Replace unless both Plausible options fail mandatory gates.",
+        "confidence": "high",
+        "source": "executive-summary.md#mandate-boundary-and-bottom-line"
+      }
+    },
+    {
+      "id": "question-functional-fit",
+      "type": "question",
+      "statement": "Does Plausible provide the reports, goals, event measurement, visitor trends, monthly reporting, search and registration journey measurement, and role-restricted access the team needs?",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "The assessed source provides the baseline capabilities, but CE lacks EE-only ordered journey analysis and no exact-option synthetic acceptance has been performed.",
+        "confidence": "high",
+        "source": "reviewer-reports/product-value/report.md"
+      }
+    },
+    {
+      "id": "question-data-governance",
+      "type": "question",
+      "statement": "Can visitor data for Canada, the United States, and the European Union be collected, retained, protected, and governed responsibly?",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "The source has privacy-minimizing defaults and useful access and deletion mechanisms, but option-specific data, access, retention, diagnostics, edge, deletion, and legal-governance acceptance remain open.",
+        "confidence": "high",
+        "source": "reviewer-reports/security-privacy/report.md"
+      }
+    },
+    {
+      "id": "question-option-risks",
+      "type": "question",
+      "statement": "What risks, trade-offs, and reasonable mitigations apply to Run, Subscribe, and Replace?",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "Run retains broad technical and successor risk; Subscribe may transfer platform operation but retains governance, commercial, assurance, escalation, and exit duties; Replace has unknown fit and unfunded transition risk. Each has bounded mitigation and validation routes.",
+        "confidence": "high",
+        "source": "executive-summary.md#material-risks-unknowns-and-decisions"
+      }
+    },
+    {
+      "id": "question-care-and-cost",
+      "type": "question",
+      "statement": "How much ongoing maintenance time and cost should be planned for self-hosted and hosted options?",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "Actual effort and cash are unknown for every option. Measure Run activity and obtain a topology-specific Subscribe quote and retained-duty estimate before comparison; no numeric hour reserve is supportable from this corpus.",
+        "confidence": "high",
+        "source": "reviewer-reports/maintenance-cost/report.md"
+      }
+    },
+    {
+      "id": "question-dependability-growth",
+      "type": "question",
+      "statement": "Can the self-hosted stack remain dependable as the sites and reporting needs grow, including seasonal peaks?",
+      "conclusion": {
+        "outcome": "unknown",
+        "statement": "Source mechanisms support tuning and observation, but no approved peak workload, resource, capacity, degradation, retention-growth, recovery, or cross-process session-correctness evidence establishes dependability.",
+        "confidence": "high",
+        "source": "reviewer-reports/scalability/report.md"
+      }
+    },
+    {
+      "id": "concern-public-evidence-limits",
+      "type": "concern",
+      "statement": "Keep the assessment read-only and public-source-only; treat evidence gaps as decision dependencies with validation routes.",
+      "conclusion": {
+        "outcome": "yes",
+        "statement": "The audit remained read-only and public-source bounded; excluded live, internal, staff, hosted-private, load-test, and legal evidence is explicitly identified and routed rather than inferred.",
+        "confidence": "high",
+        "source": "executive-summary.md#reader-routing-and-limits"
+      }
+    },
+    {
+      "id": "failure-unsupported-recommendation",
+      "type": "failure-mode",
+      "statement": "Avoid recommending or normalizing an option on unsupported assumptions that introduces avoidable tracking or governance risk, fails during high-demand services, or creates an unsustainable burden while presenting missing evidence as proof of safety or risk.",
+      "conclusion": {
+        "outcome": "partial",
+        "statement": "The recommendation is conditional, does not rank options from unequal evidence, and makes final acceptance dependent on comparable decision-specific verification.",
+        "confidence": "high",
+        "source": "executive-summary.md#material-risks-unknowns-and-decisions"
+      }
+    }
+  ],
+  "evidence": {
+    "cutoff": "2026-08-20",
+    "sources": [
+      {
+        "id": "primary-code",
+        "kind": "git-repository",
+        "name": "Plausible Analytics",
+        "url": "https://github.com/plausible/analytics",
+        "ref": "master",
+        "commit": "9cc669b97ece3ecd37fcb3950791cb3873d7944d",
+        "locator": "primary-code:."
+      },
+      {
+        "id": "PUBLIC-WEB-001",
+        "kind": "public-web",
+        "name": "Plausible public product, privacy, security, terms, support, and pricing material",
+        "url": "https://plausible.io"
+      }
+    ],
+    "accessBoundary": {
+      "level": "public-only",
+      "statement": "No library internal system, live visitor traffic, staff interview, load test, non-public hosted service, contract, or legal opinion was accessed."
+    }
+  },
+  "execution": {
+    "generator": {
+      "name": "wgo-audit",
+      "platform": "Codex",
+      "model": "active GPT-5-family audit model; exact runtime identifier unavailable"
+    },
+    "reviewers": [
+      {"id": "architecture", "version": "0.2", "status": "partial"},
+      {"id": "code-quality", "version": "0.2", "status": "partial"},
+      {"id": "product-value", "version": "0.2", "status": "partial"},
+      {"id": "security-privacy", "version": "0.3", "status": "partial"},
+      {"id": "application-security", "version": "0.1", "status": "partial"},
+      {"id": "business-continuity", "version": "0.2", "status": "partial"},
+      {"id": "cloud-security", "version": "0.1", "status": "partial"},
+      {"id": "expense-exposure", "version": "0.2", "status": "partial"},
+      {"id": "scalability", "version": "0.2", "status": "partial"},
+      {"id": "maintenance-cost", "version": "0.2", "status": "partial"},
+      {"id": "contributor-vendor-value", "version": "0.2", "status": "partial"}
+    ],
+    "costEstimate": {
+      "basis": "api-equivalent",
+      "coverage": "audit-and-operationalization",
+      "status": "final",
+      "currency": "USD",
+      "totalUsd": 87.24,
+      "source": "controls/cost-estimate.md"
+    }
+  },
+  "relationships": {
+    "previousAudit": null,
+    "baseline": null,
+    "comparesTo": [],
+    "supersedes": null
+  }
+}
