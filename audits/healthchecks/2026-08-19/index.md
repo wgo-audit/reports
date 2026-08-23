@@ -3,9 +3,10 @@
 ## Start Here
 
 Start with the [Executive Summary](executive-summary.md). Its decision is
-conditional: pursue **buy first as a bounded acceptance track**, retain **pull as
-the fallback and exit path**, and keep **make stopped** unless testing proves a
-narrow source-level need. No option is approved for core production use yet.
+conditional: compare **buy and pull through parallel, bounded due diligence**,
+and consider **make only if a demonstrated requirement needs source divergence**.
+No option is approved for core production use yet, and the public evidence does
+not support an all-in burden ranking between buy and pull.
 
 Canonical evidence and unresolved work remain in the [evidence ledger](evidence/evidence-ledger.md)
 and [open-items register](controls/open-items.md). The evidence cutoff is
@@ -33,5 +34,6 @@ used Healthchecks commit `fafac59eeb00cfdc87166242544fa071ecad1723`, repository
 history and hosted CI, public Healthchecks.io documentation, and the approved
 Acme context. It did not inspect Acme infrastructure, job definitions, team
 ability, contracts, production metrics, or hosted internals; it did not deploy
-or load-test any option. Missing evidence is recorded as unknown or as a
-production gate, never as reassurance.
+or load-test any option. Missing evidence is neutral unless the selection or
+production decision requires it; direct source findings and decision-dependent
+verification are reported separately.
